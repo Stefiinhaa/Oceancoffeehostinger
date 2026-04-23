@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Equipe - Ocean Coffee</title>
+    <link class="novo" rel="icon" href="IMG/Loginho2.png" type="image/png">
+     <link rel="stylesheet" href="CSS/styles.css">
+     <link rel="stylesheet" href="CSS/responsive.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #102A43;
+            --color-primary-light: #243B53;
+            --color-accent: #F97316;
+            --color-text-headings: #1E293B;
+            --color-text-body: #475467;
+            --color-surface: #FFFFFF;
+            --color-background: #F8FAFC;
+            --color-border: #E2E8F0;
+            --font-family-base: 'Poppins', sans-serif;
+            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .oc-header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky; top: 0;
+            width: 100%; height: 80px;
+            z-index: 1000;
+        }
+
+        .oc-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .oc-header__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .oc-header__logo-img { height: 48px; }
+
+        .oc-header-nav { display: none; }
+        .oc-header-nav__link { 
+            text-decoration: none; 
+            color: var(--color-text-headings); 
+            font-weight: 600; 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            transition: all var(--transition-base);
+        }
+        .oc-header-nav__link:hover { 
+            background-color: var(--color-background); 
+            color: var(--color-primary); 
+        }
+
+        .team-hero {
+            background: linear-gradient(rgba(16, 42, 67, 0.8), rgba(16, 42, 67, 0.8)), url('IMG/fundoteste4.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--color-surface);
+            border-bottom: 5px solid var(--color-accent);
+        }
+
+        .team-section { padding: 80px 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; color: var(--color-text-headings); margin-bottom: 1rem; }
+        .section-subtitle { text-align: center; font-size: 1.1rem; max-width: 600px; margin: 0 auto 4rem auto; }
+
+        /* GRID PRINCIPAL */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CLASSE PAI PARA OS DOIS ÚLTIMOS CARDS */
+        .team-grid-footer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+        }
+
+        .team-card {
+            background-color: var(--color-surface);
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid transparent;
+            width: 100%;
+        }
+
+        .team-grid-footer .team-card {
+            max-width: 320px; 
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px -10px rgb(0 0 0 / 0.15);
+            border-top-color: var(--color-accent);
+        }
+
+        .team-card__image-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .team-card img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-surface);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative; z-index: 2;
+        }
+
+        .team-card__bg-circle {
+            position: absolute; top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            background-color: var(--color-primary-light);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            z-index: 1;
+            transition: transform var(--transition-base);
+        }
+
+        .team-card:hover .team-card__bg-circle { transform: translate(-50%, -50%) scale(1.2); }
+
+        .team-card h3 { font-size: 1.4rem; font-weight: 600; color: var(--color-text-headings); margin-bottom: 0.25rem; }
+        .team-card .role { font-size: 0.95rem; color: var(--color-primary); font-weight: 500; margin-bottom: 1.5rem; }
+        .team-card .bio { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+
+        .social-links {
+            display: flex; justify-content: center; gap: 1.5rem;
+            padding-top: 1.5rem; border-top: 1px solid var(--color-border);
+            margin-top: auto;
+        }
+
+        .social-links a { color: var(--color-text-body); font-size: 1.4rem; transition: all 0.3s ease; }
+        .social-links a:hover { color: var(--color-accent); transform: scale(1.2); }
+
+        
+
+        /* OCULTA OS ELEMENTOS MOBILE NA VERSÃO WEB */
+        .mobile-header, .mobile-nav, .nav-overlay { 
+            display: none; 
+        }
+
+        /* RESPONSIVIDADE (MENOR QUE 992px) */
+        @media (max-width: 992px) {
+            .oc-header { display: none; }
+            .mobile-header { display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; height: 60px; background-color: var(--color-surface); position: sticky; top: 0; width: 100%; z-index: 100; border-bottom: 1px solid var(--color-border); }
+            .mobile-header .logo-img { height: 40px; }
+            .menu-toggle { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+            .mobile-nav { display: flex; flex-direction: column; position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh; background-color: #f9f5e7; z-index: 110; transition: right 0.35s ease; padding: 1.5rem; }
+            .mobile-nav.is-open { right: 0; }
+            .nav-overlay.is-open { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 105; }
+        }
+        @media (min-width: 993px) { .oc-header-nav { display: flex; } }
+    </style>
+</head>
+<body>
+
+    <header class="oc-header">
+        <div class="oc-container oc-header__container">
+            <a href="index.html"><img class="oc-header__logo-img" src="IMG/Loginho2.png" alt="Logo"></a>
+            <nav class="oc-header-nav">
+                <a href="index.html" class="oc-header-nav__link">Home</a>
+                <a href="Market.html" class="oc-header-nav__link">Loja</a>
+                <a href="Login.html" class="oc-header-nav__link">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <header class="mobile-header">
+        <a href="index.html"><img src="IMG/Loginho2.png" alt="Logo" class="logo-img"></a>
+        <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul class="mobile-nav-links" style="list-style:none;">
+            <li><a href="index.html" style="text-decoration:none; color:#3e2f1c; display:block; padding:1rem;"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="Market.html" style="text-decoration:none; color:#3e2f1c; display:block; padding:1rem;"><i class="fas fa-store"></i> Loja</a></li>
+            <li><a href="Login.html" style="text-decoration:none; color:#3e2f1c; display:block; padding:1rem;"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="team-hero">
+            <h1>A Mente por Trás do Café</h1>
+            <p>Conheça os especialistas apaixonados que impulsionam a inovação na Ocean Coffee.</p>
+        </section>
+
+        <section class="team-section">
+            <div class="oc-container">
+                <h2 class="section-title">Nossa Equipe de Desenvolvimento</h2>
+                <p class="section-subtitle">Estudantes de Análise e Desenvolvimento de Sistemas da Fatec Garça.</p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="IMG/Diego.jpeg" alt="Diego"></div>
+                        <h3>Diego Colares</h3>
+                        <p class="role">Gerente do Projeto</p>
+                        <p class="bio">Como ponte entre a estratégia e o desenvolvimento, Diego guia os projetos 
+                            do início ao fim, alinhando equipes para inovar no mercado de café.</p>
+                        <div class="social-links"><a href="https://www.instagram.com/__diegocolares/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="IMG/Eduarda.png" alt="Eduarda"></div>
+                        <h3>Eduarda Moraes</h3>
+                        <p class="role">Tech Lead & Product Owner</p>
+                        <p class="bio">Lidera o desenvolvimento técnico e garante que o produto atenda às necessidades dos 
+                            clientes, transformando requisitos de negócio em uma plataforma robusta.</p>
+                        <div class="social-links"><a href="https://www.instagram.com/_dudamartins0302/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="IMG/stefani.jpg" alt="Stefani"></div>
+                        <h3>Stefani Santos</h3>
+                        <p class="role">Desenvolvedora Back-End & DBA</p>
+                        <p class="bio">Constrói a lógica do servidor e administra o banco 
+                            de dados, garantindo uma experiência de usuário rápida, confiável e segura.</p>
+                        <div class="social-links"><a href="https://www.instagram.com/stefaniisant0s/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="IMG/gabi.jpg" alt="Gabrielle"></div>
+                        <h3>Gabrielle Rodrigues</h3>
+                        <p class="role">Marketing e Comunicação</p>
+                        <p class="bio">Guardiã da nossa história e a voz da nossa marca, ela transforma nossa essência em narrativas que conectam e engajam nossa comunidade.<br/>
+
+                        Participou do projeto até o dia 30/11/2025.
+
+                        </p>
+                        <div class="social-links"><a href="https://www.instagram.com/gabirodriguex_/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="IMG/lyan.jpg" alt="Lyan"></div>
+                        <h3>André Lyan</h3>
+                        <p class="role">UX/UI Designer & Quality Owner</p>
+                        <p class="bio">Como nosso principal defensor do usuário, André projeta a jornada visual da plataforma e garante que cada funcionalidade seja entregue com 
+                            máxima excelência.</p>
+                        <div class="social-links"><a href="https://www.instagram.com/lyaan_latrel/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="IMG/pena.jpg" alt="João"></div>
+                        <h3>João Vinicius</h3>
+                        <p class="role">Assistente de Projeto e Revisor</p>
+                        <p class="bio">Com dedicação aos detalhes, João dá suporte à gestão de projetos e revisa cada etapa, garantindo um resultado 
+                            final coeso e profissional.</p>
+                        <div class="social-links"><a href="https://www.instagram.com/_joaovnx/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="team-grid-footer">
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="https://media.licdn.com/dms/image/v2/D4D0BAQHkzgVSzm5j3A/company-logo_200_200/B4DZZuNo57GcAI-/0/1745605791810/cps_fatecgarca_logo?e=2147483647&v=beta&t=se91PMESCv3-3eLNZH6t5r_YBlhwnHTryJ9iygN5xJ8" alt="Lyan"></div>
+                        <h3>Fatec Garça</h3>
+                        <p class="role"><I>Faculdade de técnologia de Garça</I></p>
+                        <p class="bio">A Ocean Coffee é um orgulhoso fruto do curso de Análise e Desenvolvimento de Sistemas da 
+                            Fatec Garça. Agradecemos à nossa instituição por todo o apoio, estrutura e incentivo fornecidos 
+                            durante o desenvolvimento do nosso Projeto Integrador de Gestão de Projetos Ágeis. 
+                           </p>
+                        <div class="social-links"><a href="https://www.instagram.com/fatecgarca/"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-card__image-wrapper"><div class="team-card__bg-circle"></div><img src="https://media.licdn.com/dms/image/v2/C5103AQE4mxPp4Vf10w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516758996317?e=1776297600&v=beta&t=-FD-FRwanxXYE1ibtnyveZtBTDVcXB9JgGZ3AF2A3tE" alt="Lyan"></div>
+                        <h3>Professor Fábio Rodrigues</h3>
+                        <p class="role">Professor Orientador</p>
+                        <p class="bio">Um agradecimento muito especial ao professor Fábio Rodrigues por toda a orientação, paciência
+                             e partilha de conhecimento. A sua mentoria foi fundamental para o sucesso e desenvolvimento da Ocean Coffee.</p>
+                        <div class="social-links"><a href="https://www.linkedin.com/in/f%C3%A1bio-rodrigues-gon%C3%A7alves-5376b654/"><i class="fab fa-linkedin"></i></a></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+     <footer class="footer">
+    <div class="footer-content">
+<div class="footer-column footer-about">
+    <img src="IMG/Logo.png" alt="Logo Ocean Coffee" class="footer-logo">
+    <p>&copy; 2025 Ocean Coffee. <br>Todos os direitos reservados.</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">
+        <a href="equipe.html" style="color: #ccc; text-decoration: none;">Equipe de Desenvolvimento</a>
+    </p>
+</div>
+        <div class="footer-column footer-links">
+            <h4>Links Rápidos</h4>
+            <a href="#NossoCafe">Nosso Café</a>
+            <a href="#Serviços">Serviços</a>
+            <a href="#Sobre">Sobre</a>
+            <a href="#NossoEstabelecimento">Estabelecimento</a>
+            <a href="#Colaboradores">Colaboradores</a>
+        </div>
+        <div class="footer-column footer-company-info">
+            <h4>Sobre a Ocean Coffee</h4>
+            <p>A Ocean Coffee foi fundada em 01 de outubro de 2019, com a missão de revolucionar o mercado cafeeiro ao unir tradição e inovação.</p>
+        </div>
+        <div class="footer-column footer-social">
+            <h4>Siga-nos</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const navOverlay = document.getElementById('nav-overlay');
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.add('is-open');
+                navOverlay.classList.add('is-open');
+            });
+            navOverlay.addEventListener('click', () => {
+                mobileNav.classList.remove('is-open');
+                navOverlay.classList.remove('is-open');
+            });
+        });
+    </script>
+</body>
+</html>
