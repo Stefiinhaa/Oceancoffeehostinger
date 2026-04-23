@@ -7,7 +7,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 try {
-    include_once 'conexao.php';
+    include_once '../conexao.php';
 
     $dados = json_decode(file_get_contents("php://input"));
 
