@@ -122,9 +122,9 @@
                     setTimeout(() => {
                         if (data.usuario.tipo === "Administrador") {
                             localStorage.setItem("bemVindo", data.usuario.nome);
-                            window.location.replace("dashboard.html");
+                            window.location.replace("./dashboard.html");
                         } else {
-                            window.location.replace("perfil.html");
+                            window.location.replace("./perfil.html");
                         }
                     }, 500);
                 } else {
