@@ -1,1 +1,14 @@
 conexao.php
+# Ignorar arquivos de upload de usuários
+uploads/*
+
+# Manter a pasta uploads vazia no repositório (opcional, mas recomendado)
+!uploads/.gitkeep
+
+# Arquivos de sistema operacional que costumam ser gerados automaticamente
+.DS_Store
+Thumbs.db
+
+# Arquivos de log de erros do PHP/Servidor (caso venham a ser gerados)
+error_log
+*.log
