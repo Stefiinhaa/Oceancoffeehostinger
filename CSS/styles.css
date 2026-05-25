@@ -507,9 +507,19 @@ text-align: center;
 
 .container-caixas {
   display: flex;
-  justify-content: space-evenly; 
-  gap: 20px; 
-  flex-wrap:wrap; 
+  justify-content: center; /* Centraliza os cards com elegância */
+  gap: 30px; /* Aumenta levemente o respiro entre os cards */
+  flex-wrap: wrap;
+  max-width: 1350px; /* Permite 4 cards lado a lado em monitores largos */
+  margin: 0 auto; /* Centraliza o bloco todo na página */
+}
+
+/* --- SEGREDO DO LAYOUT PROFISSIONAL --- */
+/* Em telas de notebooks ou tablets, força um grid perfeito de 2x2 */
+@media (max-width: 1360px) {
+  .container-caixas {
+    max-width: 700px; /* Como cada card tem 300px, isso obriga a quebrar de 2 em 2 */
+  }
 }
 
 .contorno {
