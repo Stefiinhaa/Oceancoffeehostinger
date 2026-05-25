@@ -505,26 +505,30 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* --- CONTAINER PRINCIPAL (FORÇANDO 1 LINHA NO DESKTOP) --- */
+/* =======================================================
+   SEÇÃO DE COLABORADORES (4 EM LINHA NO DESKTOP)
+========================================================== */
+
+/* 1. CONTAINER DOS CARDS */
 .container-caixas {
   display: flex;
   justify-content: center;
-  gap: 20px; 
-  flex-wrap: nowrap; /* O SEGREDO: Proíbe o 4º card de cair para a linha de baixo no desktop! */
-  max-width: 1250px; 
-  margin: 0 auto; 
-  padding: 0 15px; /* Respiro lateral para não grudar na borda */
+  gap: 15px; /* Espaço mais justo entre eles */
+  flex-wrap: nowrap; /* FORÇA a ficar 100% na mesma linha no Desktop */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
-/* --- ESTILO DO CARD --- */
+/* 2. OS CARDS (MENORES) */
 .caixa {
-  width: 100%; /* Substitui o width fixo de 300px para o card poder se adaptar */
-  max-width: 300px; /* Mantém os 300px como limite máximo de largura */
-  height: 460px; 
+  width: 24%; /* Força cada um a ocupar um quarto da tela */
+  max-width: 265px; /* Diminuído para ficarem menores como você pediu */
+  height: 440px; 
   background-color: #d8d8c5;
   border-radius: 16px;
   border: 2px solid #8b4513;
-  padding: 20px;
+  padding: 15px; /* Padding menor */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -533,87 +537,82 @@ text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* --- RESPONSIVIDADE: TABLETS E NOTEBOOKS MUITO PEQUENOS --- */
-/* Só abaixo de 992px a quebra de linha é permitida */
-@media (max-width: 992px) {
-  .container-caixas {
-    flex-wrap: wrap; /* Libera a quebra de linha para telas menores */
-  }
-  .caixa {
-    width: 45%; /* Ficam 2 cards em cima e 2 embaixo */
-  }
-}
-
-/* --- RESPONSIVIDADE: CELULARES --- */
-@media (max-width: 650px) {
-  .caixa {
-    width: 100%; /* Fica 1 card embaixo do outro ocupando a tela toda */
-  }
-}
+/* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
 .contorno {
-     MARGIN-RIGHT: 4PX;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 102%;
-
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* O SEGREDO: Centraliza todas as fotos e aspas automaticamente */
+  width: 100%;
+  height: 100%;
+  padding: 10px 5px;
+  box-sizing: border-box;
 }
 
-
-
+/* 4. ÍCONE DE ASPAS E TEXTO */
 .aspas {
-  width: 100px;
-  height: 70px;
+  width: 75px; /* Ícone levemente menor */
+  height: 50px;
   margin-bottom: 10px;
-  margin-left: 85px;
+  /* margin-left foi removido para poder centralizar sozinho! */
 }
 
 .complemento {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 13px; /* Texto um pouquinho menor para caber bonito no card reduzido */
   text-align: center;
   color: #000;
-  margin-bottom: 20px;
-  margin-top: 25px;
-  MARGIN-RIGHT: 2PX;
+  margin-bottom: auto; /* Empurra o texto para cima e a foto para baixo */
 }
 
-.jorge1, .jorge {
+/* 5. AS FOTOS DOS COLABORADORES (SEM MARGIN-LEFT FIXA) */
+.jorge1, .jorge, .user {
   border-radius: 50%;
   object-fit: cover;
-  margin-top: 15px;
+  margin: 15px auto 0 auto; /* Centraliza a foto de forma inteligente */
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  cursor: pointer;
+  display: block;
 }
 
-.jorge1 {
-  width: 95px;
-  height: 95px;
-  margin-left: 84px;
-  margin-right: 10px;
+.jorge1 { width: 85px; height: 85px; }
+.jorge { width: 80px; height: 80px; }
+.user { width: 65px; height: 65px; }
+
+/* Mantém o zoom ao clicar (não apague!) */
+.jorge1.zoomed, .jorge.zoomed, .user.zoomed {
+  transform: scale(3);
+  z-index: 9999;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-.jorge {
-  width: 80px;
-  height: 80px;
-  margin-left: 87px;
-}
-
+/* 6. NOMES */
 .nome, .nome2, .nome3 {
   font-family: Garamond;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: bold;
   color: #ba391c;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
-.user {
-  width: 57px;
-  height: 57px;
-  object-fit: cover;
-  margin-left: 98px;
-  margin-top: 34px;
+/* =======================================================
+   RESPONSIVIDADE: MANTÉM RESPONSIVO EM TABLETS/CELULARES
+========================================================== */
+@media (max-width: 992px) {
+  .container-caixas {
+    flex-wrap: wrap; /* Só permite quebrar a linha se a tela for muito pequena (notebooks/tablets pequenos) */
+  }
+  .caixa {
+    width: 45%; /* Ficam 2 de cada lado no tablet */
+  }
+}
+
+@media (max-width: 650px) {
+  .caixa {
+    width: 100%; /* No celular fica um embaixo do outro */
+  }
 }
 
 
