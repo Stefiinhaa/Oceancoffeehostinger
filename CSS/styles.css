@@ -511,12 +511,9 @@ text-align: center;
 
 /* 1. CONTAINER DOS CARDS */
 .container-caixas {
-  display: flex;
-  justify-content: center;
-  gap: 16px; /* Espaço mais justo entre eles */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 10px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
 }
 
 /* 2. OS CARDS (MENORES) */
@@ -601,7 +598,7 @@ text-align: center;
 ========================================================== */
 @media (max-width: 992px) {
   .container-caixas {
-    
+    flex-wrap: wrap; /* Só permite quebrar a linha se a tela for muito pequena (notebooks/tablets pequenos) */
   }
   .caixa {
     width: 45%; /* Ficam 2 de cada lado no tablet */
