@@ -513,8 +513,7 @@ text-align: center;
 .container-caixas {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Espaço mais justo entre eles */
-  flex-wrap: nowrap; /* FORÇA a ficar 100% na mesma linha no Desktop */
+  gap: 16px; /* Espaço mais justo entre eles */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
