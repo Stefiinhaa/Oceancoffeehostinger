@@ -500,6 +500,14 @@
             gridProdutos.innerHTML = "<p style='text-align: center; width: 100%; color: red;'>Ocorreu um erro ao comunicar com a base de dados.</p>";
         }
     });
+
+    // 5. Zoom nas fotos dos colaboradores
+    const fotosColaboradores = document.querySelectorAll('.jorge1, .jorge, .user');
+    fotosColaboradores.forEach(foto => {
+        foto.addEventListener('click', function() {
+            this.classList.toggle('zoomed');
+        });
+    });
   </script>
 
 <script>

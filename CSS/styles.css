@@ -559,6 +559,9 @@ text-align: center;
   border-radius: 50%;
   object-fit: cover;
   margin-top: 15px;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
 .jorge1 {
@@ -589,6 +592,14 @@ text-align: center;
   object-fit: cover;
   margin-left: 98px;
   margin-top: 34px;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.jorge1.zoomed, .jorge.zoomed, .user.zoomed {
+  transform: scale(2.5);
+  z-index: 10;
 }
 
 
