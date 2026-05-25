@@ -158,6 +158,13 @@
             z-index: 1;
             transition: transform var(--transition-base);
         }
+        .team-card img.zoomed {
+    transform: scale(2.5);
+    z-index: 9999;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
 
         .team-card:hover .team-card__bg-circle { transform: translate(-50%, -50%) scale(1.2); }
 
@@ -308,6 +315,7 @@
                         <div class="social-links"><a href="https://www.linkedin.com/in/f%C3%A1bio-rodrigues-gon%C3%A7alves-5376b654/"><i class="fab fa-linkedin"></i></a></div>
                     </div>
                 </div>
+                
 
             </div>
         </section>
@@ -350,6 +358,8 @@
             const menuToggle = document.getElementById('menu-toggle');
             const mobileNav = document.getElementById('mobile-nav');
             const navOverlay = document.getElementById('nav-overlay');
+            const imagensEquipe = document.querySelectorAll('.team-card img');
+// (o resto da lógica do clique segue exatamente igual ao código de cima)
             menuToggle.addEventListener('click', () => {
                 mobileNav.classList.add('is-open');
                 navOverlay.classList.add('is-open');
@@ -359,6 +369,7 @@
                 navOverlay.classList.remove('is-open');
             });
         });
+        
     </script>
 </body>
 </html>
