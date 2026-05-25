@@ -507,33 +507,18 @@ text-align: center;
 
 .container-caixas {
   display: flex;
-  justify-content: center; /* Centraliza os cards com elegância */
-  gap: 30px; /* Aumenta levemente o respiro entre os cards */
-  flex-wrap: wrap;
-  max-width: 1350px; /* Permite 4 cards lado a lado em monitores largos */
-  margin: 0 auto; /* Centraliza o bloco todo na página */
-}
-
-/* --- SEGREDO DO LAYOUT PROFISSIONAL --- */
-/* Em telas de notebooks ou tablets, força um grid perfeito de 2x2 */
-@media (max-width: 1360px) {
-  .container-caixas {
-    max-width: 700px; /* Como cada card tem 300px, isso obriga a quebrar de 2 em 2 */
-  }
-}
-
-.contorno {
-     MARGIN-RIGHT: 4PX;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 102%;
-
+  justify-content: center; /* Mantém os cards centralizados */
+  gap: 20px; 
+  flex-wrap: wrap; 
+  max-width: 1300px; /* Garante uma largura total generosa para o desktop */
+  margin: 0 auto; /* Centraliza todo o bloco na tela */
+  padding: 0 20px; /* Respiro lateral de segurança */
 }
 
 .caixa {
-  width: 300px;
+  flex: 1; /* Permite que os cards se adaptem ao espaço de forma inteligente */
+  min-width: 250px; /* Impede que fiquem finos demais no desktop */
+  max-width: 300px; /* Mantém o tamanho original de 300px como limite máximo */
   height: 460px; 
   background-color: #d8d8c5;
   border-radius: 16px;
@@ -546,6 +531,18 @@ text-align: center;
   justify-content: space-between;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.contorno {
+     MARGIN-RIGHT: 4PX;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 102%;
+
+}
+
+
 
 .aspas {
   width: 100px;
