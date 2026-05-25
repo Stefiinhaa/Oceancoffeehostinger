@@ -193,6 +193,57 @@
             .nav-overlay.is-open { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 105; }
         }
         @media (min-width: 993px) { .oc-header-nav { display: flex; } }
+
+        /* --- NOVO: FULLSCREEN IMAGE MODAL PARA FOTOS DA EQUIPE --- */
+        #fullscreen-modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: rgba(0, 0, 0, 0.9); 
+            z-index: 3000; 
+            justify-content: center; 
+            align-items: center; 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        }
+        #fullscreen-modal.visible { 
+            display: flex; 
+            opacity: 1; 
+        }
+        #fullscreen-image { 
+            max-width: 90vw; 
+            max-height: 85vh; 
+            object-fit: contain; 
+            box-shadow: 0 0 40px rgba(0,0,0,0.5); 
+            border-radius: 10px; 
+        }
+        .fullscreen-btn { 
+            position: absolute; 
+            background-color: transparent; 
+            color: white; 
+            border: none; 
+            font-size: 48px; 
+            cursor: pointer; 
+            user-select: none; 
+            padding: 20px; 
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
+            opacity: 0.7; 
+            transition: opacity 0.2s ease; 
+            z-index: 3001;
+        }
+        .fullscreen-btn:hover { 
+            opacity: 1; 
+        }
+        .fullscreen-close { 
+            top: 15px; 
+            right: 15px; 
+            font-weight: 100; 
+        }
+
+        /* Modificar o cursor para indicar que as fotos são clicáveis */
+        .team-card img { 
+            cursor: pointer; 
+        }
     </style>
 </head>
 <body>
@@ -346,19 +397,72 @@
         </div>
     </div>
   </footer>
+  <div id="fullscreen-modal">
+        <span class="fullscreen-btn fullscreen-close" onclick="fecharModalFullscreen()">&times;</span>
+        <img id="fullscreen-image" src="" alt="Imagem Ampliada" />
+    </div>
 
-    <script>
+   <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Lógica do Menu Responsivo (Já existente)
             const menuToggle = document.getElementById('menu-toggle');
             const mobileNav = document.getElementById('mobile-nav');
             const navOverlay = document.getElementById('nav-overlay');
-            menuToggle.addEventListener('click', () => {
-                mobileNav.classList.add('is-open');
-                navOverlay.classList.add('is-open');
+            
+            if (menuToggle && mobileNav && navOverlay) {
+                menuToggle.addEventListener('click', () => {
+                    mobileNav.classList.add('is-open');
+                    navOverlay.classList.add('is-open');
+                });
+                navOverlay.addEventListener('click', () => {
+                    mobileNav.classList.remove('is-open');
+                    navOverlay.classList.remove('is-open');
+                });
+            }
+
+            // --- NOVA LÓGICA: Ampliar Fotos da Equipe (Estilo Admin) ---
+            const fullscreenModal = document.getElementById('fullscreen-modal');
+            const fullscreenImage = document.getElementById('fullscreen-image');
+            const fotosEquipe = document.querySelectorAll('.team-card img');
+
+            // Abrir o modal ao clicar em qualquer foto de equipa
+            fotosEquipe.forEach(foto => {
+                foto.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (fullscreenImage && fullscreenModal) {
+                        fullscreenImage.src = this.src; // Define a foto clicada no modal
+                        fullscreenModal.style.display = 'flex';
+                        setTimeout(() => {
+                            fullscreenModal.classList.add('visible');
+                        }, 10);
+                    }
+                });
             });
-            navOverlay.addEventListener('click', () => {
-                mobileNav.classList.remove('is-open');
-                navOverlay.classList.remove('is-open');
+
+            // Função para fechar o modal (Botão X)
+            window.fecharModalFullscreen = () => {
+                if (fullscreenModal) {
+                    fullscreenModal.classList.remove('visible');
+                    setTimeout(() => {
+                        fullscreenModal.style.display = 'none';
+                    }, 300); // Aguarda o fim da animação CSS
+                }
+            };
+
+            // Fechar ao clicar na área escura (fundo do modal)
+            if (fullscreenModal) {
+                fullscreenModal.addEventListener('click', (e) => {
+                    if (e.target === fullscreenModal) {
+                        fecharModalFullscreen();
+                    }
+                });
+            }
+
+            // Fechar ao pressionar a tecla ESC
+            window.addEventListener("keydown", e => {
+                if (fullscreenModal && fullscreenModal.classList.contains("visible") && e.key === "Escape") {
+                    fecharModalFullscreen();
+                }
             });
         });
     </script>
