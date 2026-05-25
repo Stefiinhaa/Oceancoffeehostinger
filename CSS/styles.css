@@ -505,21 +505,21 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* --- CONTAINER COM CSS GRID (GRUDADO NAS BORDAS) --- */
+/* --- CONTAINER PRINCIPAL (FORÇANDO 1 LINHA NO DESKTOP) --- */
 .container-caixas {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Força exatamente 4 colunas */
-  gap: 10px; /* Diminui bastante o espaçamento entre os cards */
-  width: 100%; /* Faz o bloco esticar e ocupar a tela inteira */
-  max-width: 1600px; /* Limite super largo para monitores grandes */
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
+  flex-wrap: nowrap; /* O SEGREDO: Proíbe o 4º card de cair para a linha de baixo no desktop! */
+  max-width: 1250px; 
   margin: 0 auto; 
-  padding: 0 15px; /* Define que os cards das pontas ficarão a apenas 15px da borda da tela */
+  padding: 0 15px; /* Respiro lateral para não grudar na borda */
 }
 
-/* --- CARD DOS COLABORADORES --- */
+/* --- ESTILO DO CARD --- */
 .caixa {
-  width: 100%; 
-  max-width: 350px; /* Permite que o card alargue um pouquinho para preencher a tela */
+  width: 100%; /* Substitui o width fixo de 300px para o card poder se adaptar */
+  max-width: 300px; /* Mantém os 300px como limite máximo de largura */
   height: 460px; 
   background-color: #d8d8c5;
   border-radius: 16px;
@@ -531,22 +531,23 @@ text-align: center;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Mantém o card centralizado na sua própria fração */
 }
 
-/* --- RESPONSIVIDADE PROFISSIONAL --- */
-/* Em notebooks menores ou tablets, vira 2x2 para não espremer o texto */
-@media (max-width: 1200px) {
+/* --- RESPONSIVIDADE: TABLETS E NOTEBOOKS MUITO PEQUENOS --- */
+/* Só abaixo de 992px a quebra de linha é permitida */
+@media (max-width: 992px) {
   .container-caixas {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; /* Devolve um pouco de respiro quando empilhar */
+    flex-wrap: wrap; /* Libera a quebra de linha para telas menores */
+  }
+  .caixa {
+    width: 45%; /* Ficam 2 cards em cima e 2 embaixo */
   }
 }
 
-/* No celular, fica 1 embaixo do outro */
+/* --- RESPONSIVIDADE: CELULARES --- */
 @media (max-width: 650px) {
-  .container-caixas {
-    grid-template-columns: 1fr;
+  .caixa {
+    width: 100%; /* Fica 1 card embaixo do outro ocupando a tela toda */
   }
 }
 .contorno {
