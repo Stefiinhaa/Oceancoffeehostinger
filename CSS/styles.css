@@ -505,21 +505,30 @@ text-align: center;
   margin-bottom: 40px;
 }
 
+/* =======================================================
+   SEÇÃO DE COLABORADORES (4 EM LINHA COMPACTOS)
+========================================================== */
+
+/* 1. CONTAINER DOS CARDS */
 .container-caixas {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: nowrap; /* Trava na mesma linha no Desktop */
+  max-width: 1050px; /* Reduzido para forçar os cards a ficarem menores */
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
-/* 2. OS CARDS (MENORES) */
+/* 2. OS CARDS (TAMANHO REDUZIDO) */
 .caixa {
-  width: 24%; /* Força cada um a ocupar um quarto da tela */
-  max-width: 265px; /* Diminuído para ficarem menores como você pediu */
-  height: 440px; 
+  width: 24%;
+  max-width: 230px; /* Limite bem menor para os cards */
+  height: 380px; /* Altura reduzida */
   background-color: #d8d8c5;
   border-radius: 16px;
   border: 2px solid #8b4513;
-  padding: 15px; /* Padding menor */
+  padding: 10px; /* Padding menor */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -533,7 +542,7 @@ text-align: center;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center; /* O SEGREDO: Centraliza todas as fotos e aspas automaticamente */
+  align-items: center; 
   width: 100%;
   height: 100%;
   padding: 10px 5px;
@@ -542,36 +551,37 @@ text-align: center;
 
 /* 4. ÍCONE DE ASPAS E TEXTO */
 .aspas {
-  width: 75px; /* Ícone levemente menor */
-  height: 50px;
-  margin-bottom: 10px;
-  /* margin-left foi removido para poder centralizar sozinho! */
+  width: 55px; /* Aspas menores */
+  height: auto;
+  margin-bottom: 8px;
 }
 
 .complemento {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 13px; /* Texto um pouquinho menor para caber bonito no card reduzido */
+  font-size: 12px; /* Fonte reduzida para caber no card menor */
   text-align: center;
   color: #000;
-  margin-bottom: auto; /* Empurra o texto para cima e a foto para baixo */
+  margin-bottom: auto;
+  line-height: 1.4;
 }
 
-/* 5. AS FOTOS DOS COLABORADORES (SEM MARGIN-LEFT FIXA) */
+/* 5. AS FOTOS DOS COLABORADORES (MENORES) */
 .jorge1, .jorge, .user {
   border-radius: 50%;
   object-fit: cover;
-  margin: 15px auto 0 auto; /* Centraliza a foto de forma inteligente */
+  margin: 10px auto 0 auto; 
   transition: transform 0.3s ease, z-index 0.3s ease;
   cursor: pointer;
   display: block;
 }
 
-.jorge1 { width: 85px; height: 85px; }
-.jorge { width: 80px; height: 80px; }
+/* Todas as fotos com o mesmo tamanho compacto */
+.jorge1 { width: 65px; height: 65px; }
+.jorge { width: 65px; height: 65px; }
 .user { width: 65px; height: 65px; }
 
-/* Mantém o zoom ao clicar (não apague!) */
+/* Mantém o zoom ao clicar */
 .jorge1.zoomed, .jorge.zoomed, .user.zoomed {
   transform: scale(3);
   z-index: 9999;
@@ -581,20 +591,24 @@ text-align: center;
 /* 6. NOMES */
 .nome, .nome2, .nome3 {
   font-family: Garamond;
-  font-size: 20px;
+  font-size: 18px; /* Fonte do nome reduzida */
   font-weight: bold;
   color: #ba391c;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 /* =======================================================
-   RESPONSIVIDADE: MANTÉM RESPONSIVO EM TABLETS/CELULARES
+   RESPONSIVIDADE: MANTÉM ORGANIZADO EM TELAS MENORES
 ========================================================== */
 @media (max-width: 992px) {
- 
+  .container-caixas {
+    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
+    max-width: 700px; /* Força ficar 2x2 */
+  }
   .caixa {
-    width: 45%; /* Ficam 2 de cada lado no tablet */
+    width: 45%; 
+    max-width: none;
   }
 }
 
@@ -603,7 +617,6 @@ text-align: center;
     width: 100%; /* No celular fica um embaixo do outro */
   }
 }
-
 
 .containers {
   width: 100%;
