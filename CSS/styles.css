@@ -601,7 +601,7 @@ text-align: center;
 ========================================================== */
 @media (max-width: 992px) {
   .container-caixas {
-    flex-wrap: wrap; /* Só permite quebrar a linha se a tela for muito pequena (notebooks/tablets pequenos) */
+    
   }
   .caixa {
     width: 45%; /* Ficam 2 de cada lado no tablet */
