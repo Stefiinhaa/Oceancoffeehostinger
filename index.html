@@ -635,14 +635,17 @@
     bannerPersonalizado.style.display = 'none';
   });
 
-    document.addEventListener('DOMContentLoaded', function() {
+    
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
     const track = document.getElementById('trackColaboradores');
     const btnEsq = document.getElementById('btnEsq');
     const btnDir = document.getElementById('btnDir');
 
     if (track && btnEsq && btnDir) {
       btnDir.addEventListener('click', () => {
-        // Pega a largura exata de 1 cartão + os 20px do gap
+        // Pega a largura exata de 1 cartão + os 20px de espaçamento (gap)
         const cardWidth = track.querySelector('.caixa').offsetWidth + 20; 
         track.scrollBy({ left: cardWidth, behavior: 'smooth' });
       });
@@ -654,7 +657,6 @@
     }
   });
 </script>
-
 
   <script src="JS/dolar-api.js" defer></script>
   <script src="JS/weather-api.js" defer></script>
