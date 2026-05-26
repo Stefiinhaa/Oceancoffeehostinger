@@ -505,110 +505,21 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* =======================================================
-   CARROSSEL DE COLABORADORES
-========================================================== */
-
-/* 1. ENVOLTÓRIO DO CARROSSEL */
-.carrossel-colaboradores-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  max-width: 1100px; /* Largura total do carrossel */
-  margin: 0 auto;
-  padding: 0 60px; /* Espaço nas bordas para as setas não cobrirem os cartões */
-}
-
-/* 2. O TRILHO DOS CARDS (O QUE VAI ROLAR) */
-.container-caixas {
-  display: flex;
-  gap: 20px; /* Distância exata entre cada card */
-  overflow-x: auto; /* Habilita o scroll horizontal */
-  scroll-snap-type: x mandatory; /* Faz o scroll "travar" magneticamente nos cards */
-  scroll-behavior: smooth; /* Animação suave ao clicar na seta */
-  padding: 20px 10px; /* Padding para o efeito hover (levitar) não ser cortado */
-  width: 100%;
-  
-  /* Esconde a barra de rolagem feia do navegador */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-}
-.container-caixas::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-
-/* 3. DESIGN DAS SETAS */
-.seta-carrossel {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #ba391c; /* Segue a identidade visual Ocean Coffee */
-  color: white;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.seta-carrossel:hover {
-  background-color: #883a1b; /* Fica mais escuro ao passar o mouse */
-  transform: translateY(-50%) scale(1.1); /* Efeito do botão pulsar um pouquinho */
-}
-.seta-esq { left: 0; }
-.seta-dir { right: 0; }
-
-/* 4. OS CARDS DOS COLABORADORES */
-.caixa {
-  /* Calcula para mostrar exatamente 3 cartões no Computador */
-  flex: 0 0 calc(33.333% - 14px); 
-  scroll-snap-align: center; /* Trava o alinhamento no centro da tela ao rolar */
-  height: 380px; 
-  background-color: #d8d8c5;
-  border-radius: 16px;
-  border: 2px solid #8b4513;
-  padding: 15px 10px; 
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito levitar bem profissional ao passar o mouse */
-.caixa:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(139, 69, 19, 0.2);
-}
-
 /* Em Tablets: Mostra 2 colaboradores por vez */
 @media (max-width: 992px) {
   .caixa {
-    flex: 0 0 calc(50% - 10px); 
+    flex: 0 0 calc(50% - 10px) !important; 
+    width: auto !important;
   }
 }
 
-/* Em Celulares: Mostra 1 colaborador por vez e aproxima as setas */
+/* Em Celulares: Mostra 1 colaborador por vez */
 @media (max-width: 650px) {
-  .caixa {
-    flex: 0 0 100%; 
-  }
   .carrossel-colaboradores-wrapper {
-    padding: 0 35px; /* Diminui o espaço lateral das setas na tela pequena */
+    padding: 0 40px; /* Aproxima as setas */
   }
-  .seta-carrossel {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
+  .caixa {
+    flex: 0 0 100% !important; 
   }
 }
 
@@ -623,6 +534,8 @@ text-align: center;
   padding: 10px 5px;
   box-sizing: border-box;
 }
+
+
 
 /* 4. ÍCONE DE ASPAS E TEXTO */
 .aspas {
