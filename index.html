@@ -302,70 +302,14 @@
       <div class="right-card"><img class="Local" src="IMG/local.png"></div>
     </div>
   </section>
-<section id="Colaboradores" class="Colaboradores">
-    <h2>Colaboradores</h2>
-    <p class="subtitulo-colaboradores">Conheça a equipe especialista que faz a Ocean Coffee acontecer</p>
-    
-    <div class="colab-carousel-wrapper">
-      <button class="colab-carousel-btn colab-btn-left" id="colabPrevBtn" aria-label="Anterior">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <div class="colab-carousel-track" id="colabTrack">
-        
-        <div class="colab-card">
-          <div class="colab-card-inner">
-            <img class="colab-quote-icon" src="IMG/aspas.png" alt="Aspas">
-            <p class="colab-text">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim, cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor.</p>
-            <div class="colab-profile">
-              <img class="colab-img jorge1" src="IMG/jorge.png" alt="Jorge Luiz">
-              <h4 class="colab-name">Jorge Luiz</h4>
-              <span class="colab-role">Proprietário</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="colab-card">
-          <div class="colab-card-inner">
-            <img class="colab-quote-icon" src="IMG/aspas.png" alt="Aspas">
-            <p class="colab-text">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim, cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor.</p>
-            <div class="colab-profile">
-              <img class="colab-img user" src="IMG/user.png" alt="Agatha">
-              <h4 class="colab-name">Agatha</h4>
-              <span class="colab-role">Especialista de Grãos</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="colab-card">
-          <div class="colab-card-inner">
-            <img class="colab-quote-icon" src="IMG/aspas.png" alt="Aspas">
-            <p class="colab-text">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim, cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor.</p>
-            <div class="colab-profile">
-              <img class="colab-img jorge" src="IMG/gabriel.png" alt="Gabriel">
-              <h4 class="colab-name">Gabriel</h4>
-              <span class="colab-role">Classificador de Café</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="colab-card">
-          <div class="colab-card-inner">
-            <img class="colab-quote-icon" src="IMG/aspas.png" alt="Aspas">
-            <p class="colab-text">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim, cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor.</p>
-            <div class="colab-profile">
-              <img class="colab-img user" src="IMG/user.png" alt="Beatriz">
-              <h4 class="colab-name">Beatriz</h4>
-              <span class="colab-role">Barista Chefe</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <button class="colab-carousel-btn colab-btn-right" id="colabNextBtn" aria-label="Próximo">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
+ <section id="Colaboradores" class="Colaboradores">
+      <h2>Colaboradores</h2>
+    <br>
+    <div class="container-caixas">
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge1" src="IMG/jorge.png"><div class="nome2">Jorge Luiz</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png"><div class="nome3">Agatha</div></div></div>
+     <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge" src="IMG/gabriel.png"><div class="nome">Gabriel</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png" alt="Beatriz"><div class="nome3">Beatriz</div></div></div>
     </div>
   </section>
   <section id="equipamentos-destaque" class="equipamentos-destaque-section">
@@ -676,35 +620,6 @@
   // Fechar o banner
   btnFechar.addEventListener('click', () => {
     bannerPersonalizado.style.display = 'none';
-  });
-
-    ///////////////////////////////////////////////////////////////////////
-
-</script>
- <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const colabTrack = document.getElementById('colabTrack');
-    const colabPrevBtn = document.getElementById('colabPrevBtn');
-    const colabNextBtn = document.getElementById('colabNextBtn');
-
-    if (colabTrack && colabPrevBtn && colabNextBtn) {
-      colabNextBtn.addEventListener('click', () => {
-        const firstCard = colabTrack.querySelector('.colab-card');
-        if (firstCard) {
-          // Calcula dinamicamente o tamanho atual de um card + o espaçamento (gap)
-          const scrollAmount = firstCard.offsetWidth + 24;
-          colabTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-      });
-
-      colabPrevBtn.addEventListener('click', () => {
-        const firstCard = colabTrack.querySelector('.colab-card');
-        if (firstCard) {
-          const scrollAmount = firstCard.offsetWidth + 24;
-          colabTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        }
-      });
-    }
   });
 </script>
 

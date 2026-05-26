@@ -488,200 +488,6 @@ text-align: center;
   margin-bottom: 10px;
   margin-top: 50px;
 }
-/*  */
-
-/* =======================================================
-   NOVA SEÇÃO DE COLABORADORES (CARROSSEL PREMIUM & CLEAN)
-========================================================== */
-.Colaboradores {
-  padding: 60px 20px;
-  background-color: #f9f5e7;
-  text-align: center;
-}
-
-.Colaboradores h2 {
-  font-family: Garamond, serif;
-  font-size: 36px;
-  color: #ba391c;
-  border-bottom: 2.5px solid #883a1b;
-  border-top: 2.5px solid #883a1b;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  display: inline-block;
-  width: auto;
-  min-width: 250px;
-}
-
-.subtitulo-colaboradores {
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  color: #6b6b6b;
-  margin-bottom: 40px;
-}
-
-/* Envoltório da área do carrossel */
-.colab-carousel-wrapper {
-  position: relative;
-  max-width: 1150px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-/* O trilho que move horizontalmente (Estilo Inteligente) */
-.colab-carousel-track {
-  display: flex !important;
-  flex-wrap: nowrap !important; /* Proíbe rigidamente as caixas de pularem para baixo */
-  gap: 24px;
-  overflow-x: auto !important;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  padding: 20px 10px;
-  width: 100%;
-  scrollbar-width: none; /* Remove barra padrão do Firefox */
-  -ms-overflow-style: none; /* Remove barra padrão do IE/Edge */
-}
-
-.colab-carousel-track::-webkit-scrollbar {
-  display: none; /* Remove barra padrão do Chrome/Safari */
-}
-
-/* Tamanho de exibição dos cartões por tela */
-.colab-card {
-  flex: 0 0 calc(33.333% - 16px); /* Exibe exatamente 3 cards simultâneos no Desktop */
-  scroll-snap-align: start;
-  box-sizing: border-box;
-}
-
-/* O corpo interno do cartão - Visual Clean */
-.colab-card-inner {
-  background-color: #ffffff; /* Fundo branco e limpo */
-  border-radius: 16px;
-  border: 1px solid rgba(139, 69, 19, 0.12);
-  padding: 35px 24px;
-  height: 100%;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.3s;
-}
-
-/* Efeito hover de levitação e destaque */
-.colab-card-inner:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 35px rgba(186, 57, 28, 0.1);
-  border-color: rgba(186, 57, 28, 0.25);
-}
-
-.colab-quote-icon {
-  width: 38px;
-  height: auto;
-  margin-bottom: 12px;
-  opacity: 0.85;
-}
-
-.colab-text {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #4a4a4a;
-  text-align: center;
-  font-style: italic;
-  margin-bottom: 20px;
-}
-
-.colab-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: auto;
-}
-
-.colab-img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #f9f5e7;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.colab-img:hover {
-  transform: scale(1.06);
-}
-
-.colab-name {
-  font-family: Garamond, serif;
-  font-size: 18px;
-  font-weight: bold;
-  color: #ba391c;
-  margin-bottom: 1px;
-}
-
-.colab-role {
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  color: #883a1b;
-  font-weight: 500;
-}
-
-/* Botões Modernos e Clean das Setas */
-.colab-carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #ffffff;
-  color: #ba391c;
-  border: 1px solid rgba(186, 57, 28, 0.15);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  font-size: 15px;
-  cursor: pointer;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  transition: all 0.3s ease;
-}
-
-.colab-carousel-btn:hover {
-  background-color: #ba391c;
-  color: #ffffff;
-  box-shadow: 0 6px 18px rgba(186, 57, 28, 0.25);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.colab-btn-left { left: -22px; }
-.colab-btn-right { right: -22px; }
-
-/* Responsividade Adaptativa do Carrossel */
-@media (max-width: 992px) {
-  .colab-card {
-    flex: 0 0 calc(50% - 12px); /* Mostra exatamente 2 cards em tablets */
-  }
-  .colab-btn-left { left: -10px; }
-  .colab-btn-right { right: -10px; }
-}
-
-@media (max-width: 650px) {
-  .colab-card {
-    flex: 0 0 100%; /* Mostra 1 card por vez no celular */
-  }
-  .colab-carousel-btn {
-    display: none; /* No celular, usa o arraste do dedo nativo e esconde as setas */
-  }
-}
-
-
-/*  */
 
 .Colaboradores {
   padding: 40px;
@@ -699,24 +505,39 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* Em Tablets: Mostra 2 colaboradores por vez */
+/* =======================================================
+   SEÇÃO DE COLABORADORES (4 EM LINHA COMPACTOS)
+========================================================== */
+
+.container-caixas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: nowrap; /* Trava na mesma linha no Desktop */
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.caixa {
+  width: 24%; /* Aproximadamente 1/4 da largura */
+  max-width: 230px;
+  /* ... */
+}
 @media (max-width: 992px) {
+  .container-caixas {
+    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
+    max-width: 700px; /* Força ficar 2x2 */
+  }
   .caixa {
-    flex: 0 0 calc(50% - 10px) !important; 
-    width: auto !important;
+    width: 45%; 
+    max-width: none;
   }
 }
-
-/* Em Celulares: Mostra 1 colaborador por vez */
 @media (max-width: 650px) {
-  .carrossel-colaboradores-wrapper {
-    padding: 0 40px; /* Aproxima as setas */
-  }
   .caixa {
-    flex: 0 0 100% !important; 
+    width: 100%; /* No celular fica um embaixo do outro */
   }
 }
-
 
 /* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
 .contorno {
@@ -729,8 +550,6 @@ text-align: center;
   padding: 10px 5px;
   box-sizing: border-box;
 }
-
-
 
 /* 4. ÍCONE DE ASPAS E TEXTO */
 .aspas {
@@ -781,7 +600,25 @@ text-align: center;
   margin-top: 8px;
 }
 
+/* =======================================================
+   RESPONSIVIDADE: MANTÉM ORGANIZADO EM TELAS MENORES
+========================================================== */
+@media (max-width: 992px) {
+  .container-caixas {
+    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
+    max-width: 700px; /* Força ficar 2x2 */
+  }
+  .caixa {
+    width: 45%; 
+    max-width: none;
+  }
+}
 
+@media (max-width: 650px) {
+  .caixa {
+    width: 100%; /* No celular fica um embaixo do outro */
+  }
+}
 
 .containers {
   width: 100%;
