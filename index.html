@@ -303,14 +303,25 @@
     </div>
   </section>
  <section id="Colaboradores" class="Colaboradores">
-      <h2>Colaboradores</h2>
-    <br>
-    <div class="container-caixas">
+  <h2>Colaboradores</h2>
+  <br>
+  
+  <div class="carrossel-colaboradores-wrapper">
+    <button class="seta-carrossel seta-esq" id="btnEsq" aria-label="Anterior">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="container-caixas" id="trackColaboradores">
       <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge1" src="IMG/jorge.png"><div class="nome2">Jorge Luiz</div></div></div>
       <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png"><div class="nome3">Agatha</div></div></div>
-     <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge" src="IMG/gabriel.png"><div class="nome">Gabriel</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge" src="IMG/gabriel.png"><div class="nome">Gabriel</div></div></div>
       <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png" alt="Beatriz"><div class="nome3">Beatriz</div></div></div>
     </div>
+
+    <button class="seta-carrossel seta-dir" id="btnDir" aria-label="Próximo">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
   </section>
   <section id="equipamentos-destaque" class="equipamentos-destaque-section">
       <div class="equipamentos-destaque-container">
@@ -620,6 +631,26 @@
   // Fechar o banner
   btnFechar.addEventListener('click', () => {
     bannerPersonalizado.style.display = 'none';
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('trackColaboradores');
+    const btnEsq = document.getElementById('btnEsq');
+    const btnDir = document.getElementById('btnDir');
+
+    if (track && btnEsq && btnDir) {
+      btnDir.addEventListener('click', () => {
+        // Pega a largura exata de 1 cartão + os 20px do gap
+        const cardWidth = track.querySelector('.caixa').offsetWidth + 20; 
+        track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      });
+
+      btnEsq.addEventListener('click', () => {
+        const cardWidth = track.querySelector('.caixa').offsetWidth + 20; 
+        track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      });
+    }
   });
 </script>
 
