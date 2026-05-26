@@ -532,6 +532,11 @@ text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 650px) {
+  .caixa {
+    width: 100%; /* No celular fica um embaixo do outro */
+  }
+}
 
 /* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
 .contorno {
