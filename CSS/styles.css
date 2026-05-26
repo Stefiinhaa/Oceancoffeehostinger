@@ -505,53 +505,55 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* 1. CONTAINER GERAL (Agora organiza as linhas de cima para baixo) */
+/* 1. CONTAINER DOS CARDS */
 .container-caixas {
   display: flex;
-  flex-direction: column; /* Coloca a primeira dupla em cima e a segunda em baixo */
-  align-items: center;
-  gap: 30px; /* Espaço vertical entre a dupla de cima e a dupla de baixo */
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-/* NOVA CLASSE - A DIV PAI PARA CADA DUPLA */
-.linha-colaboradores {
-  display: flex;
-  flex-direction: row; /* Coloca os dois cartões lado a lado */
   justify-content: center;
-  gap: 30px; /* Espaço horizontal entre os dois cartões */
-  width: 100%;
+  flex-wrap: wrap; /* Fundamental: permite que os cartões desçam se faltar espaço */
+  gap: 25px; /* Espaçamento elegante entre os cartões */
+  max-width: 1200px; /* Alargado para caberem 4 cartões com conforto */
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-/* 2. OS CARDS (Ocupam metade da sua div pai) */
+/* 2. OS CARDS */
 .caixa {
-  width: 100%; 
-  max-width: 320px;
-  height: 380px; 
+  width: calc(25% - 25px); /* Faz as contas para caberem exatamente 4 por linha */
+  min-width: 220px; /* Proteção: impede que o cartão fique esmagado demais */
+  height: auto; /* Deixa a altura flexível caso tenha muito texto */
+  min-height: 380px; 
   background-color: #d8d8c5;
   border-radius: 16px;
   border: 2px solid #8b4513;
-  padding: 10px; 
+  padding: 15px; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); /* Sombra inicial subtil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavidade na animação */
 }
-@media (max-width: 650px) {
-  /* No telemóvel, as duplas quebram e ficam um em cima do outro */
-  .linha-colaboradores {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
+
+/* TOQUE PROFISSIONAL: Efeito ao passar o rato */
+.caixa:hover {
+  transform: translateY(-8px); /* Levanta o cartão ligeiramente */
+  box-shadow: 0 12px 25px rgba(139, 69, 19, 0.2); /* Sombra mais projetada com a cor do tema */
+}
   
+ /* Em Tablets ou ecrãs médios (ex: iPad), vira 2x2 */
+@media (max-width: 1050px) {
   .caixa {
-    width: 100%; /* No celular fica um embaixo do outro */
-    max-width: 350px;
+    width: calc(50% - 25px); /* Ocupa metade do espaço */
+    max-width: 320px; 
+  }
+}
+
+/* Em Telemóveis, fica 1 cartão por linha */
+@media (max-width: 650px) {
+  .caixa {
+    width: 100%; /* Ocupa todo o espaço lateral */
+    max-width: 380px;
   }
 }
 
