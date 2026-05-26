@@ -509,32 +509,34 @@ text-align: center;
    SEÇÃO DE COLABORADORES (4 EM LINHA COMPACTOS)
 ========================================================== */
 
-/* 1. CONTAINER DOS CARDS */
 .container-caixas {
   display: flex;
   justify-content: center;
   gap: 15px;
   flex-wrap: nowrap; /* Trava na mesma linha no Desktop */
-  max-width: 1050px; /* Reduzido para forçar os cards a ficarem menores */
+  max-width: 1050px;
   margin: 0 auto;
   padding: 0 10px;
 }
-
-/* 2. OS CARDS (TAMANHO REDUZIDO) */
 .caixa {
-  width: 24%;
-  max-width: 230px; /* Limite bem menor para os cards */
-  height: 380px; /* Altura reduzida */
-  background-color: #d8d8c5;
-  border-radius: 16px;
-  border: 2px solid #8b4513;
-  padding: 10px; /* Padding menor */
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 24%; /* Aproximadamente 1/4 da largura */
+  max-width: 230px;
+  /* ... */
+}
+@media (max-width: 992px) {
+  .container-caixas {
+    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
+    max-width: 700px; /* Força ficar 2x2 */
+  }
+  .caixa {
+    width: 45%; 
+    max-width: none;
+  }
+}
+@media (max-width: 650px) {
+  .caixa {
+    width: 100%; /* No celular fica um embaixo do outro */
+  }
 }
 
 /* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
