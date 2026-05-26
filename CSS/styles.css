@@ -531,21 +531,7 @@ text-align: center;
   justify-content: space-between;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-@media (max-width: 992px) {
-  .container-caixas {
-    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
-    max-width: 700px; /* Força ficar 2x2 */
-  }
-  .caixa {
-    width: 45%; 
-    max-width: none;
-  }
-}
-@media (max-width: 650px) {
-  .caixa {
-    width: 100%; /* No celular fica um embaixo do outro */
-  }
-}
+
 
 /* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
 .contorno {
