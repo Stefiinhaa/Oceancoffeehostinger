@@ -488,6 +488,7 @@ text-align: center;
   margin-bottom: 10px;
   margin-top: 50px;
 }
+/*  */
 
 /* =======================================================
    NOVA SEÇÃO DE COLABORADORES (CARROSSEL PREMIUM & CLEAN)
@@ -678,6 +679,44 @@ text-align: center;
     display: none; /* No celular, usa o arraste do dedo nativo e esconde as setas */
   }
 }
+
+
+/*  */
+
+.Colaboradores {
+  padding: 40px;
+  background-color: #f9f5e7;
+}
+
+.Colaboradores h2 {
+  font-family: Garamond;
+  font-size: 36px;
+  color: #ba391c;
+  text-align: center;
+  border-bottom: 2.5px solid #883a1b;
+  border-top: solid 2.5px #883a1b;
+  padding: 10px 0;
+  margin-bottom: 40px;
+}
+
+/* Em Tablets: Mostra 2 colaboradores por vez */
+@media (max-width: 992px) {
+  .caixa {
+    flex: 0 0 calc(50% - 10px) !important; 
+    width: auto !important;
+  }
+}
+
+/* Em Celulares: Mostra 1 colaborador por vez */
+@media (max-width: 650px) {
+  .carrossel-colaboradores-wrapper {
+    padding: 0 40px; /* Aproxima as setas */
+  }
+  .caixa {
+    flex: 0 0 100% !important; 
+  }
+}
+
 
 /* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
 .contorno {
