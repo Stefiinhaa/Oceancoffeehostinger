@@ -505,20 +505,30 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* 1. CONTAINER DOS CARDS */
+/* 1. CONTAINER GERAL (Agora organiza as linhas de cima para baixo) */
 .container-caixas {
   display: flex;
-  justify-content: center;
-  gap: 30px; /* Aumentei o espaçamento para afastar os de cima dos de baixo */
-  flex-wrap: wrap; /* Isto é o que permite que as caixas desçam para a linha seguinte */
-  max-width: 800px; /* Largura ajustada para que os 4 cartões fiquem centrados num bloco 2x2 */
+  flex-direction: column; /* Coloca a primeira dupla em cima e a segunda em baixo */
+  align-items: center;
+  gap: 30px; /* Espaço vertical entre a dupla de cima e a dupla de baixo */
+  max-width: 1050px;
   margin: 0 auto;
   padding: 0 10px;
 }
-/* 2. OS CARDS */
+
+/* NOVA CLASSE - A DIV PAI PARA CADA DUPLA */
+.linha-colaboradores {
+  display: flex;
+  flex-direction: row; /* Coloca os dois cartões lado a lado */
+  justify-content: center;
+  gap: 30px; /* Espaço horizontal entre os dois cartões */
+  width: 100%;
+}
+
+/* 2. OS CARDS (Ocupam metade da sua div pai) */
 .caixa {
-  width: calc(50% - 15px); /* Isto obriga as caixas a ocuparem metade do ecrã, forçando 2 por linha */
-  max-width: 320px; /* Como agora têm mais espaço, aumentei o limite de largura */
+  width: 100%; 
+  max-width: 320px;
   height: 380px; 
   background-color: #d8d8c5;
   border-radius: 16px;
@@ -531,10 +541,17 @@ text-align: center;
   justify-content: space-between;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 @media (max-width: 650px) {
+  /* No telemóvel, as duplas quebram e ficam um em cima do outro */
+  .linha-colaboradores {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
   .caixa {
     width: 100%; /* No celular fica um embaixo do outro */
+    max-width: 350px;
   }
 }
 
