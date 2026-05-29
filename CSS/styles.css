@@ -506,122 +506,193 @@ text-align: center;
 }
 
 /* =======================================================
-   NOVA SEÇÃO DE COLABORADORES (INDEX)
+   SEÇÃO DE COLABORADORES - CARROSSEL PREMIUM
 ========================================================== */
-
-/* 1. CONTAINER PRINCIPAL E TEXTOS */
 .Colaboradores {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background-color: #f9f5e7;
   text-align: center;
+  position: relative;
+}
+
+.colaboradores-header {
+  margin-bottom: 40px;
 }
 
 .titulo-colaboradores {
   font-family: Garamond, serif;
-  font-size: 36px;
+  font-size: 40px;
   color: #b20000;
-  text-align: center;
+  display: inline-block;
   border-bottom: 2.5px solid #883a1b;
   border-top: 2.5px solid #883a1b;
   padding: 10px 0;
-  margin-bottom: 15px;
-  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .subtitulo-colaboradores {
   font-family: 'Poppins', sans-serif;
   color: #6b6b6b;
-  font-size: 1rem;
-  margin-bottom: 40px;
+  font-size: 1.05rem;
 }
 
-/* 2. O GRID RESPONSIVO (Substitui o .container-caixas) */
-.colaboradores-grid {
-  display: grid;
-  /* O auto-fit e minmax já fazem a quebra de linha automática no celular e tablet! */
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
-  max-width: 1050px;
+/* CONTAINER DO CARROSSEL */
+.colaboradores-carousel-wrapper {
+  position: relative;
+  max-width: 1100px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
   padding: 0 10px;
 }
 
-/* 3. O CARD DO COLABORADOR (Substitui o .caixa e o .contorno) */
+/* TRILHA (ONDE OS CARDS ROLAM) */
+.colaboradores-track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 20px 10px;
+  width: 100%;
+  -ms-overflow-style: none;  /* Esconde scrollbar no IE e Edge */
+  scrollbar-width: none;  /* Esconde scrollbar no Firefox */
+}
+.colaboradores-track::-webkit-scrollbar {
+  display: none; /* Esconde scrollbar no Chrome/Safari */
+}
+
+/* O CARD PREMIUM */
 .colaborador-card {
+  flex: 0 0 auto;
+  width: 320px; /* Largura fixa do card */
+  scroll-snap-align: center;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 25px 20px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-top: 4px solid #b20000; /* Detalhe profissional na borda superior */
+  position: relative;
+  overflow: hidden;
+}
+
+.colaborador-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #b20000, #e57e25); /* Degradê na borda superior */
 }
 
 .colaborador-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 25px rgba(178, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(178, 0, 0, 0.15);
 }
 
-/* 4. ÍCONE DE ASPAS E TEXTO (Substitui o .aspas e .complemento) */
 .colaborador-quote {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  text-align: left;
 }
 
 .aspas-icon {
-  font-size: 24px;
+  font-size: 28px;
   color: #b20000;
-  opacity: 0.4;
-  margin-bottom: 12px;
+  opacity: 0.2;
+  margin-bottom: 15px;
 }
 
 .colaborador-quote p {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: #555;
   font-style: italic;
 }
 
-/* 5. PERFIL: FOTOS E NOMES */
+/* PERFIL (FOTOS MANTÉM SUAS CLASSES ORIGINAIS PARA O ZOOM FUNCIONAR) */
 .colaborador-perfil {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #f0f0f0;
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Mantemos as classes originais para o seu script de clique/ampliação continuar funcionando perfeitamente */
 .jorge1, .jorge, .user {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto 10px auto;
-  border: 3px solid #f9f5e7;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+  border: 3px solid #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
   cursor: pointer;
   transition: transform 0.3s ease;
-  display: block;
 }
 
 .jorge1:hover, .jorge:hover, .user:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .colaborador-nome {
   font-family: Garamond, serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #b20000;
-  margin: 0;
+  margin: 0 0 2px 0;
 }
 
-/* =======================================================
-   AJUSTES EXTRAS PARA TELAS MUITO PEQUENAS
-========================================================== */
+.colaborador-cargo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #883a1b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
+.carrossel-btn {
+  background-color: #b20000;
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(178, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+  position: absolute;
+  z-index: 10;
+}
+
+.carrossel-btn:hover {
+  background-color: #883a1b;
+  transform: scale(1.1);
+}
+
+.prev-btn { left: -15px; }
+.next-btn { right: -15px; }
+
+/* AJUSTES RESPONSIVOS */
+@media (max-width: 1150px) {
+  .prev-btn { left: 5px; }
+  .next-btn { right: 5px; }
+}
+
 @media (max-width: 650px) {
-  .colaboradores-grid {
-    grid-template-columns: 1fr; /* No celular, força a ficar um embaixo do outro */
+  .colaborador-card {
+    width: 280px; /* Reduz levemente o card no celular */
+  }
+  .carrossel-btn {
+    display: none; /* Esconde as setas no mobile, o usuário arrasta com o dedo */
   }
 }
 .containers {
