@@ -506,181 +506,141 @@ text-align: center;
 }
 
 /* =======================================================
-   SEÇÃO DE COLABORADORES - CARDS HORIZONTAIS
+   SEÇÃO DE COLABORADORES (4 EM LINHA - DESIGN PREMIUM)
 ========================================================== */
+
 .Colaboradores {
-  padding: 80px 20px;
+  padding: 60px 20px;
   background-color: #f9f5e7;
-  text-align: center;
 }
 
-.colaboradores-header {
-  margin-bottom: 40px;
-}
-
-.titulo-colaboradores {
+.Colaboradores h2 {
   font-family: Garamond, serif;
   font-size: 40px;
   color: #b20000;
-  display: inline-block;
+  text-align: center;
   border-bottom: 2.5px solid #883a1b;
   border-top: 2.5px solid #883a1b;
   padding: 10px 0;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
-.subtitulo-colaboradores {
-  font-family: 'Poppins', sans-serif;
-  color: #6b6b6b;
-  font-size: 1.05rem;
-}
-
-/* GRID HORIZONTAL (SUBSTITUI O CARROSSEL) */
-.colaboradores-grid {
+.container-caixas {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  max-width: 1200px;
+  gap: 25px; /* Respiro um pouquinho maior entre os cards */
+  flex-wrap: nowrap; /* Trava na mesma linha no Desktop (Garante a horizontal!) */
+  max-width: 1150px;
   margin: 0 auto;
-  flex-wrap: nowrap; /* Impede a quebra de linha no desktop, mantendo-os lado a lado */
+  padding: 0 10px;
 }
 
-/* O CARD PREMIUM */
-.colaborador-card {
-  flex: 1; /* Faz com que todos os cards tenham a mesma largura */
-  min-width: 250px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 25px 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+.caixa {
+  width: 24%; /* 1/4 da largura mantido */
+  display: flex; /* Ajuda o card interno a esticar por igual */
+}
+
+/* 3. A BORDA INTERNA E CENTRALIZAÇÃO (AGORA COM VISUAL DE CARD MODERNO) */
+.contorno {
+  background: #ffffff; /* Fundo branco para destacar */
+  border: none; /* Remove a borda preta antiga */
+  border-top: 4px solid #b20000; /* Linha de destaque elegante no topo */
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Sombreamento suave */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
+  align-items: center; 
+  width: 100%;
+  height: 100%;
+  padding: 25px 15px; /* Mais espaço interno */
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de transição */
 }
 
-.colaborador-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #b20000, #e57e25); /* Detalhe colorido no topo */
-}
-
-.colaborador-card:hover {
+/* Efeito flutuante ao passar o mouse no card */
+.contorno:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(178, 0, 0, 0.12);
+  box-shadow: 0 15px 30px rgba(178, 0, 0, 0.12);
 }
 
-.colaborador-quote {
-  margin-bottom: 20px;
-}
-
-.aspas-icon {
-  font-size: 24px;
-  color: #b20000;
-  opacity: 0.2;
+/* 4. ÍCONE DE ASPAS E TEXTO */
+.aspas {
+  width: 35px; /* Aspas mais delicadas */
+  height: auto;
   margin-bottom: 12px;
+  opacity: 0.3; /* Deixa o ícone mais sutil e profissional */
 }
 
-.colaborador-quote p {
+.complemento {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  font-weight: 400;
+  font-size: 13px;
+  font-style: italic; /* Dá um tom real de depoimento */
+  text-align: center;
+  color: #555; /* Cinza escuro para leitura mais agradável */
+  margin-bottom: auto;
   line-height: 1.6;
-  color: #555;
-  font-style: italic;
 }
 
-/* PERFIL (MANTÉM SUAS CLASSES ORIGINAIS PARA O ZOOM FUNCIONAR) */
-.colaborador-perfil {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* 5. AS FOTOS DOS COLABORADORES (MENORES) */
+/* MANTIDO EXATAMENTE IGUAL PARA O SCRIPT DE ZOOM CONTINUAR FUNCIONANDO */
 .jorge1, .jorge, .user {
-  width: 75px;
-  height: 75px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 20px auto 0 auto; 
+  border: 3px solid #f9f5e7; /* Adiciona uma bordinha extra charmosinha */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, z-index 0.3s ease;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
+/* Todas as fotos com o mesmo tamanho compacto */
+.jorge1 { width: 75px; height: 75px; }
+.jorge { width: 75px; height: 75px; }
+.user { width: 75px; height: 75px; }
+
+/* Efeito ao passar o mouse na foto (o zoom do clique já está no JS) */
 .jorge1:hover, .jorge:hover, .user:hover {
-  transform: scale(1.1);
+  transform: scale(1.08); 
 }
 
-.colaborador-nome {
+/* Mantém o zoom grande do clique (Sua configuração original) */
+.jorge1.zoomed, .jorge.zoomed, .user.zoomed {
+  transform: scale(3);
+  z-index: 9999;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+/* 6. NOMES */
+.nome, .nome2, .nome3 {
   font-family: Garamond, serif;
-  font-size: 20px;
+  font-size: 20px; 
   font-weight: bold;
   color: #b20000;
-  margin: 0 0 2px 0;
+  text-align: center;
+  margin-top: 12px;
 }
 
-.colaborador-cargo {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
-  color: #883a1b;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* AJUSTES RESPONSIVOS */
-@media (max-width: 1024px) {
-  .colaboradores-grid {
-    flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
+/* =======================================================
+   RESPONSIVIDADE: MANTÉM ORGANIZADO EM TELAS MENORES
+========================================================== */
+@media (max-width: 992px) {
+  .container-caixas {
+    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
+    max-width: 700px; /* Força ficar 2x2 */
   }
-  .colaborador-card {
-    flex: 1 1 45%; /* Fica 2x2 em tablets */
+  .caixa {
+    width: 45%; 
+    max-width: none;
   }
 }
 
 @media (max-width: 650px) {
-  .colaborador-card {
-    flex: 1 1 100%; /* Fica um embaixo do outro no celular */
+  .caixa {
+    width: 100%; /* No celular fica um embaixo do outro */
   }
 }
-
-
-/* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
-.carrossel-btn {
-  background-color: #b20000;
-  color: white;
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(178, 0, 0, 0.3);
-  transition: background-color 0.3s, transform 0.2s;
-  position: absolute;
-  z-index: 10;
-}
-
-.carrossel-btn:hover {
-  background-color: #883a1b;
-  transform: scale(1.1);
-}
-
-.prev-btn { left: -15px; }
-.next-btn { right: -15px; }
-
-
 .containers {
   width: 100%;
   height: 100%;
