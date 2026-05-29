@@ -21,7 +21,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css'>
 </head>
   <style>
     #fundo {
@@ -65,10 +66,47 @@
     .jorge1, .jorge, .user { cursor: pointer; transition: transform 0.3s ease; }
     .jorge1:hover, .jorge:hover, .user:hover { transform: scale(1.05); }
 
-    
+    /* --- CSS DO CARROSSEL DE COLABORADORES --- */
+    .carousel {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 20px;
+    }
+    .slick-slide {
+      margin: 15px; /* Espaçamento entre os cards */
+      display: flex;
+      justify-content: center;
+      outline: none; /* Remove a borda azul ao clicar */
+    }
+    /* Estilização das setas de navegação */
+    .slick-prev:before, .slick-next:before {
+      color: #005f73 !important; /* Cor primária da Ocean Coffee */
+      font-size: 24px;
+    }
+    /* Controle do Carrossel (Pontinhos) */
+    .slick-dots { 
+      bottom: -35px !important; 
+    }
+    .slick-dots li.slick-active button::before { 
+      color: #005f73 !important; 
+    }
+    .slick-dots li button::before { 
+      color: #005f73 !important; 
+      font-size: 12px; 
+    }
+    /* Ajuste para o card se comportar bem dentro do Slick */
+    .carousel .caixa {
+      width: 100% !important;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+    .Colaboradores {
+      padding-bottom: 60px; /* Espaço extra para caber os pontinhos do carrossel */
+    }
   </style>
 
-<body>
+<>
 
   <header class="navbar">
 <div class="navbar-left" style="display: flex; align-items: center; gap: 35px;">
@@ -307,15 +345,47 @@
     </div>
   </section>
  <section id="Colaboradores" class="Colaboradores">
-      <h2>Colaboradores</h2>
+    <h2>Colaboradores</h2>
     <br>
-    <div class="container-caixas">
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge1" src="IMG/jorge.png"><div class="nome2">Jorge Luiz</div></div></div>
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png"><div class="nome3">Agatha</div></div></div>
-     <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge" src="IMG/gabriel.png"><div class="nome">Gabriel</div></div></div>
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png" alt="Beatriz"><div class="nome3">Beatriz</div></div></div>
+    
+    <div class="carousel">
+      <div class="caixa">
+        <div class="contorno">
+          <img class="aspas" src="IMG/aspas.png">
+          <p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p>
+          <img class="jorge1" src="IMG/jorge.png">
+          <div class="nome2">Jorge Luiz</div>
+        </div>
+      </div>
+      
+      <div class="caixa">
+        <div class="contorno">
+          <img class="aspas" src="IMG/aspas.png">
+          <p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p>
+          <img class="user" src="IMG/user.png">
+          <div class="nome3">Agatha</div>
+        </div>
+      </div>
+      
+      <div class="caixa">
+        <div class="contorno">
+          <img class="aspas" src="IMG/aspas.png">
+          <p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p>
+          <img class="jorge" src="IMG/gabriel.png">
+          <div class="nome">Gabriel</div>
+        </div>
+      </div>
+      
+      <div class="caixa">
+        <div class="contorno">
+          <img class="aspas" src="IMG/aspas.png">
+          <p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p>
+          <img class="user" src="IMG/user.png" alt="Beatriz">
+          <div class="nome3">Beatriz</div>
+        </div>
+      </div>
     </div>
-  </section>
+    </section>
   <section id="equipamentos-destaque" class="equipamentos-destaque-section">
       <div class="equipamentos-destaque-container">
         <h2 class="equipamentos-destaque-section-title">Equipamentos em Destaque</h2>
@@ -626,6 +696,41 @@
     bannerPersonalizado.style.display = 'none';
   });
 </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.carousel').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        centerMode: true,
+        autoplay: true,          // Move sozinho (opcional, deixa mais fluido)
+        autoplaySpeed: 3000,     // Tempo para mudar de card
+        arrows: true,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              centerMode: false
+            }
+          },
+          {
+            breakpoint: 768,   // Condição MOBILE
+            settings: {
+              slidesToShow: 1,
+              centerMode: true
+            }
+          }
+        ]
+      });
+    });
+  </script>
+
 
   <script src="JS/dolar-api.js" defer></script>
   <script src="JS/weather-api.js" defer></script>
