@@ -863,6 +863,60 @@ text-align: center;
 
 
 
+/* ================= CONTROLE DE EFEITOS DO CARROSSEL SLICK ================= */
+.wrapper {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.carousel {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+/* Transição suave e opacidade nos cards não-centrais */
+.slick-slide {
+  margin: 15px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.5; /* Deixa as laterais mais discretas */
+  outline: none;
+}
+
+/* Destaque "Clean" para o Card Central */
+.slick-center {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Controle das Bolinhas (Dots) - Adaptado para o fundo creme do site */
+.wrapper .slick-dots li button:before {
+  font-size: 15px !important;
+  color: #ba391c !important; /* Cor vermelha do site */
+  opacity: 0.3;
+}
+
+.wrapper .slick-dots li.slick-active button:before {
+  color: #883a1b !important; /* Vermelho escuro no ativo */
+  opacity: 1;
+}
+
+.slick-dots {
+  bottom: -40px !important;
+}
+
+/* Controle das Setas */
+.slick-prev:before, .slick-next:before {
+  color: #ba391c !important;
+  font-size: 35px !important;
+}
+
+/* Afasta as setas para não sobrepor o conteúdo */
+.slick-prev { left: -40px; }
+.slick-next { right: -40px; }
+
+
+
 
 
 
