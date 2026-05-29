@@ -316,7 +316,7 @@
   <section class="Container2">
       <h2>Nossos Princípios</h2>
     <div class="principio-bloco">
-      <div class="card"><img class="politica" src="IMG/political-instability.png" alt="Ícone de política"><p class="number-h1">01</p><h3 class="principio-titulo">Política</h3><ul class="principio-lista"><li><strong>Saúde e Segurança:</strong> Promover um ambiente de trabalho seguro e saudável.</li><li><strong>Oportunidades Iguais:</strong> Assegurar tratamento justo e incentivo ao crescimento.</li><li><strong>Satisfação do Cliente:</strong> Atendimento personalizado e de alta qualidade.</li><li><strong>Melhoria Contínua:</strong> Inovação e aperfeiçoamento dos processos internos.</li></ul></div>
+      <div class="card"><img class="politica" src="IMG/political-instability.png" alt="Ícone de política"><p class="number-h1">01</p><h3 class="principio-titulo">Política</h3><ul class="principio-lista"><li><strong>Saúde e Segurança:</strong> Promover um ambiente de trabalho seguro e saudável.</li><li><strong>Oportunidades Iguais:</strong> Assegurar tratamento justo e incentive ao crescimento.</li><li><strong>Satisfação do Cliente:</strong> Atendimento personalizado e de alta qualidade.</li><li><strong>Melhoria Contínua:</strong> Inovação e aperfeiçoamento dos processos internos.</li></ul></div>
       <div class="card"><img class="politica" src="IMG/mission.png" alt="Ícone de política"><p class="number-h1">02</p><h3 class="principio-titulo">Missão</h3><ul class="principio-lista"><li>Ser um parceiro estratégico que compreende e atende as necessidades dos produtores e consumidores de café, oferecendo soluções que garantam a excelência em classificação, degustação e comercialização do café.</li></ul></div>
       <div class="card"><img class="politica" src="IMG/opportunity.png" alt="Ícone de política"><p class="number-h1">03</p><h3 class="principio-titulo">Visão</h3><ul class="principio-lista"><li>Tornar-se referência nacional e internacional no setor cafeeiro, destacando-se pela qualidade dos serviços, inovação tecnológica e compromisso com a sustentabilidade e transparência.</li></ul></div>
     </div>
@@ -344,10 +344,10 @@
     <h2>Colaboradores</h2>
     <br>
     <div class="slick-colaboradores">
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge1" src="IMG/jorge.png"><div class="nome2">Jorge Luiz</div></div></div>
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png"><div class="nome3">Agatha</div></div></div>
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge" src="IMG/gabriel.png"><div class="nome">Gabriel</div></div></div>
-      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mim,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png" alt="Beatriz"><div class="nome3">Beatriz</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mi,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge1" src="IMG/jorge.png"><div class="nome2">Jorge Luiz</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mi,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png"><div class="nome3">Agatha</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mi,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="jorge" src="IMG/gabriel.png"><div class="nome">Gabriel</div></div></div>
+      <div class="caixa"><div class="contorno"><img class="aspas" src="IMG/aspas.png"><p class="complemento">A Ocean Coffee não é apenas uma empresa, é a materialização de minha paixão e de um compromisso com a qualidade e com as pessoas. Para mi,cada xícara de café representa uma oportunidade de compartilhar algo que vai além do sabor</p><img class="user" src="IMG/user.png" alt="Beatriz"><div class="nome3">Beatriz</div></div></div>
     </div>
   </section>
   <section id="equipamentos-destaque" class="equipamentos-destaque-section">
@@ -454,11 +454,13 @@
   <button id="btnTopo" onclick="rolarParaTopo()"><img class="up" src="IMG/up-arrow.png"></button>
 
   <script>
-    // --- LÓGICA DO CARROSSEL DE COLABORADORES (SLICK) ---
+    // --- LÓGICA DO CARROSSEL DE COLABORADORES (SLICK COM AUTOPLAY) ---
     $(document).ready(function(){
       $('.slick-colaboradores').slick({
         slidesToShow: 3,        // Mostra 3 no Desktop
         slidesToScroll: 1,
+        autoplay: true,         // ATIVA A TRANSIÇÃO AUTOMÁTICA
+        autoplaySpeed: 3000,    // TEMPO ENTRE CADA TRANSICÃO (3 segundos)
         dots: true,             // Ativa as bolinhas
         centerMode: true,       // Centraliza o elemento principal
         focusOnSelect: true,    // Foca ao clicar na caixa
@@ -580,21 +582,17 @@
         if (!gridProdutos) return;
 
         try {
-            // No index.html, altere a linha do fetch para:
             const response = await fetch("listar_anuncios.php?t=" + new Date().getTime());
             const data = await response.json();
 
             if (data.status === true && data.produtos.length > 0) {
                 gridProdutos.innerHTML = "";
-                const produtosRecentes = data.produtos.slice(0, 3); // Limita a 3 produtos na vitrine
+                const produtosRecentes = data.produtos.slice(0, 3);
 
                 produtosRecentes.forEach(product => {
                     const priceFormatted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.preco);
-                    
-                    // Lógica da faixa de vendido para o Index
                     const faixaVendido = product.vendido == 1 ? '<div class="faixa-vendido">VENDIDO</div>' : '';
 
-                    // Adicionado style="position: relative; overflow: hidden; display: block;" no link da imagem
                     const productCard = `
                         <article class="equipamentos-destaque-product-card">
                             <a href="MarketPlace.html?id=${product.id}" class="equipamentos-destaque-product-card__image-container" style="position: relative; overflow: hidden; display: block;">
@@ -646,21 +644,18 @@
   const btnInstalar = document.getElementById('pwa-install-btn');
   const btnFechar = document.getElementById('pwa-close-btn');
 
-  // Detetar se é um dispositivo Apple (iOS)
   const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
     return /iphone|ipad|ipod/.test(userAgent);
   };
   
-  // Verifica se já está instalado (rodando como app)
   const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
-  // 1. LÓGICA PARA ANDROID (Google Chrome)
   let eventoInstalacaoOficial;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     eventoInstalacaoOficial = e;
-    bannerPersonalizado.style.display = 'block'; // Mostra o banner no Android
+    bannerPersonalizado.style.display = 'block';
   });
 
   btnInstalar.addEventListener('click', async () => {
@@ -672,21 +667,16 @@
     }
   });
 
-  // 2. LÓGICA PARA IOS (iPHONE/iPAD)
-  // No iOS, o evento 'beforeinstallprompt' não existe, então mostramos o banner manualmente
   if (isIos() && !isInStandaloneMode()) {
-    bannerPersonalizado.style.display = 'block'; // Força o banner a aparecer no iPhone
+    bannerPersonalizado.style.display = 'block';
     
-    // Mudamos o texto do botão para ensinar o utilizador
     const textoApp = bannerPersonalizado.querySelector('p:nth-child(2)');
     textoApp.innerHTML = "Toque em <b>Compartilhar</b> <i class='fas fa-share-square'></i> e depois <b>Adicionar à Tela de Início</b>";
     textoApp.style.fontSize = "11px";
     
-    // Escondemos o botão "Baixar" porque no iOS ele não funciona por código
     btnInstalar.style.display = 'none'; 
   }
 
-  // Fechar o banner
   btnFechar.addEventListener('click', () => {
     bannerPersonalizado.style.display = 'none';
   });
