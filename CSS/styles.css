@@ -699,35 +699,103 @@ text-align: center;
   margin-bottom: 40px;
 }
 
-/* Em Tablets: Mostra 2 colaboradores por vez */
-@media (max-width: 992px) {
-  .caixa {
-    flex: 0 0 calc(50% - 10px) !important; 
-    width: auto !important;
-  }
+/* =======================================================
+   NOVO CARROSSEL DE COLABORADORES (SLICK)
+========================================================== */
+
+.wrapper-colaboradores {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 0 50px 0;
 }
 
-/* Em Celulares: Mostra 1 colaborador por vez */
-@media (max-width: 650px) {
-  .carrossel-colaboradores-wrapper {
-    padding: 0 40px; /* Aproxima as setas */
-  }
-  .caixa {
-    flex: 0 0 100% !important; 
-  }
+.carousel-colaboradores {
+  width: 90%;
+  margin: 0px auto;
 }
 
+/* Espaçamento entre os slides */
+.carousel-colaboradores .slick-slide {
+  margin: 15px;
+  outline: none; /* Remove a borda azul ao clicar */
+}
 
-/* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
-.contorno {
-  border: 1px solid black;
+/* Design do Card do Colaborador */
+.caixa-colaborador {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra elegante, sem borda dura */
+  padding: 30px 20px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  width: 100%;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao focar no card central (efeito centerMode) */
+.carousel-colaboradores .slick-center .caixa-colaborador {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(186, 57, 28, 0.2); /* Sombra combinando com a cor tema */
+}
+
+.contorno-colab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   height: 100%;
-  padding: 10px 5px;
-  box-sizing: border-box;
+}
+
+.aspas {
+  width: 40px;
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.complemento {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+/* Estilização da Foto */
+.foto-colab {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px auto;
+  border: 3px solid #ba391c; /* Borda elegante vermelha/laranja da marca */
+  display: block;
+  cursor: pointer;
+}
+
+.nome-colab {
+  font-family: Garamond, serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ba391c;
+  margin-top: 5px;
+}
+
+/* Customização das Bolinhas (Dots) de navegação do Slick */
+.wrapper-colaboradores .slick-dots {
+  bottom: -35px !important;
+}
+.wrapper-colaboradores .slick-dots li button::before {
+  color: #ba391c !important; /* Cor da sua marca */
+  font-size: 14px !important;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.wrapper-colaboradores .slick-dots li.slick-active button::before {
+  color: #ba391c !important;
+  opacity: 1;
 }
 
 
