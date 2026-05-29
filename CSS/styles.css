@@ -718,6 +718,154 @@ text-align: center;
 }
 
 
+
+
+/* =======================================================
+   CARROSSEL DE COLABORADORES (SLICK CAROUSEL)
+========================================================== */
+.Colaboradores {
+  padding: 60px 20px;
+  background-color: #f9f5e7;
+  text-align: center;
+  overflow: hidden; /* Evita quebra horizontal */
+}
+
+.Colaboradores h2 {
+  font-family: Garamond, serif;
+  font-size: 36px;
+  color: #ba391c;
+  border-bottom: 2.5px solid #883a1b;
+  border-top: 2.5px solid #883a1b;
+  padding: 10px 0;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.subtitulo-colaboradores {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #6b6b6b;
+  margin-bottom: 40px;
+}
+
+/* Container do Carrossel */
+.carousel {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 40px; /* Espaço para os dots */
+}
+
+/* Espaçamento e transição suave dos cards no Slick */
+.slick-slide {
+  margin: 15px; 
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.5; /* Deixa os cards laterais mais opacos */
+}
+
+/* Destaque do card central */
+.slick-center {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Design interno do Card Clean */
+.colab-card-inner {
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 69, 19, 0.12);
+  padding: 35px 24px;
+  height: 100%;
+  min-height: 380px;
+  display: flex !important; /* Força o flexbox dentro do block do Slick */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.4s ease, border-color 0.3s;
+}
+
+.colab-card-inner:hover {
+  box-shadow: 0 20px 35px rgba(186, 57, 28, 0.1);
+  border-color: rgba(186, 57, 28, 0.25);
+}
+
+.colab-quote-icon {
+  width: 38px;
+  margin-bottom: 15px;
+  opacity: 0.85;
+}
+
+.colab-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
+.colab-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+}
+
+.colab-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f9f5e7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  margin-bottom: 10px;
+}
+
+.colab-name {
+  font-family: Garamond, serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ba391c;
+}
+
+.colab-role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #883a1b;
+  font-weight: 500;
+}
+
+/* Customização Profissional das Setas e Bolinhas (Dots) */
+.slick-dots li button:before {
+  font-size: 14px !important;
+  color: #ba391c !important;
+  opacity: 0.4;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #b20000 !important; /* Tom mais profundo no item ativo */
+  opacity: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #ba391c !important;
+  font-size: 30px;
+}
+
+.slick-prev { left: -30px; }
+.slick-next { right: -30px; }
+
+@media (max-width: 650px) {
+  .slick-prev, .slick-next { display: none !important; } /* Oculta setas no mobile por estética */
+}
+
+
+
+
+
+
 /* 3. A BORDA INTERNA E CENTRALIZAÇÃO */
 .contorno {
   border: 1px solid black;
