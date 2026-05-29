@@ -506,139 +506,173 @@ text-align: center;
 }
 
 /* =======================================================
-   SEÇÃO DE COLABORADORES (4 EM LINHA - DESIGN PREMIUM)
+   SEÇÃO DE COLABORADORES (SLIDE HORIZONTAL + DESIGN DA FOTO)
 ========================================================== */
 
 .Colaboradores {
   padding: 60px 20px;
   background-color: #f9f5e7;
+  text-align: center;
 }
 
 .Colaboradores h2 {
   font-family: Garamond, serif;
-  font-size: 40px;
+  font-size: 36px;
   color: #b20000;
-  text-align: center;
   border-bottom: 2.5px solid #883a1b;
   border-top: 2.5px solid #883a1b;
   padding: 10px 0;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  display: inline-block;
 }
 
+/* 1. O SLIDER HORIZONTAL (Aproveitando sua classe original) */
 .container-caixas {
   display: flex;
-  justify-content: center;
-  gap: 25px; /* Respiro um pouquinho maior entre os cards */
-  flex-wrap: nowrap; /* Trava na mesma linha no Desktop (Garante a horizontal!) */
-  max-width: 1150px;
+  gap: 20px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 10px;
+  overflow-x: auto; /* Cria o efeito de arrastar para os lados */
+  padding: 10px 5px 30px 5px;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  flex-wrap: nowrap !important; /* Força a ficar na horizontal */
 }
 
+.container-caixas::-webkit-scrollbar {
+  display: none; /* Esconde a barrinha de rolagem feia */
+}
+
+/* 2. O CARD (Aproveitando sua classe .caixa) */
 .caixa {
-  width: 24%; /* 1/4 da largura mantido */
-  display: flex; /* Ajuda o card interno a esticar por igual */
+  flex: 0 0 calc(25% - 15px); /* Mantém 4 na tela no Desktop */
+  min-width: 280px; /* Impede que esmaguem, forçando o slide */
+  scroll-snap-align: start;
 }
 
-/* 3. A BORDA INTERNA E CENTRALIZAÇÃO (AGORA COM VISUAL DE CARD MODERNO) */
+/* 3. DESIGN DO CARD E O TRUQUE PARA FOTO AO LADO DO NOME */
 .contorno {
-  background: #ffffff; /* Fundo branco para destacar */
-  border: none; /* Remove a borda preta antiga */
-  border-top: 4px solid #b20000; /* Linha de destaque elegante no topo */
-  border-radius: 12px; /* Cantos arredondados */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Sombreamento suave */
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
+  background: #ffffff;
+  border: none;
+  border-top: 4px solid #b20000;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   width: 100%;
   height: 100%;
-  padding: 25px 15px; /* Mais espaço interno */
+  padding: 25px;
   box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de transição */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* TRUQUE MÁGICO: Organiza os itens originais do HTML em Grid */
+  display: grid;
+  grid-template-columns: 60px 1fr; /* Coluna 1: Foto | Coluna 2: Nome */
+  grid-template-rows: auto 1fr 60px; /* Linha 1: Aspas | Linha 2: Texto | Linha 3: Foto/Nome */
+  column-gap: 15px;
+  align-items: center;
 }
 
-/* Efeito flutuante ao passar o mouse no card */
 .contorno:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(178, 0, 0, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(178, 0, 0, 0.12);
 }
 
 /* 4. ÍCONE DE ASPAS E TEXTO */
 .aspas {
-  width: 35px; /* Aspas mais delicadas */
+  grid-area: 1 / 1 / 2 / 3; /* Faz as aspas ocuparem a largura toda no topo */
+  width: 35px;
   height: auto;
-  margin-bottom: 12px;
-  opacity: 0.3; /* Deixa o ícone mais sutil e profissional */
+  margin-bottom: 15px;
+  opacity: 0.3; /* Mais elegante */
 }
 
 .complemento {
+  grid-area: 2 / 1 / 3 / 3; /* Faz o texto ocupar a largura toda no meio */
+  align-self: start;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 13px;
-  font-style: italic; /* Dá um tom real de depoimento */
-  text-align: center;
-  color: #555; /* Cinza escuro para leitura mais agradável */
-  margin-bottom: auto;
+  color: #555;
+  text-align: left; /* Alinhado à esquerda como na foto */
   line-height: 1.6;
+  margin-bottom: 25px;
+  margin-top: 0;
 }
 
-/* 5. AS FOTOS DOS COLABORADORES (MENORES) */
-/* MANTIDO EXATAMENTE IGUAL PARA O SCRIPT DE ZOOM CONTINUAR FUNCIONANDO */
+/* 5. AS FOTOS (NA PARTE DE BAIXO) */
 .jorge1, .jorge, .user {
+  grid-area: 3 / 1 / 4 / 2; /* Joga as fotos para a esquerda, na última linha */
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 20px auto 0 auto; 
-  border: 3px solid #f9f5e7; /* Adiciona uma bordinha extra charmosinha */
+  margin: 0; 
+  border: 2px solid #f9f5e7;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, z-index 0.3s ease;
-  cursor: pointer;
-  display: block;
+  cursor: pointer; /* Seu zoom vai funcionar aqui! */
 }
 
-/* Todas as fotos com o mesmo tamanho compacto */
-.jorge1 { width: 75px; height: 75px; }
-.jorge { width: 75px; height: 75px; }
-.user { width: 75px; height: 75px; }
-
-/* Efeito ao passar o mouse na foto (o zoom do clique já está no JS) */
 .jorge1:hover, .jorge:hover, .user:hover {
-  transform: scale(1.08); 
+  transform: scale(1.1); 
 }
 
-/* Mantém o zoom grande do clique (Sua configuração original) */
+/* Mantém sua configuração original de zoom ao clicar */
 .jorge1.zoomed, .jorge.zoomed, .user.zoomed {
   transform: scale(3);
   z-index: 9999;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-/* 6. NOMES */
+/* 6. NOMES (AO LADO DA FOTO) */
 .nome, .nome2, .nome3 {
+  grid-area: 3 / 2 / 4 / 3; /* Joga os nomes para a direita, ao lado da foto */
   font-family: Garamond, serif;
-  font-size: 20px; 
+  font-size: 19px; 
   font-weight: bold;
   color: #b20000;
-  text-align: center;
-  margin-top: 12px;
+  text-align: left;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* BÔNUS: Adiciona os cargos automaticamente via CSS (sem mexer no HTML!) */
+.nome::after, .nome3::after {
+  content: "Equipe Ocean";
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #883a1b;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.nome2::after {
+  content: "Proprietário"; /* Especifico para o Jorge */
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #883a1b;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
 }
 
 /* =======================================================
-   RESPONSIVIDADE: MANTÉM ORGANIZADO EM TELAS MENORES
+   RESPONSIVIDADE (GARANTE O SLIDE NO CELULAR)
 ========================================================== */
-@media (max-width: 992px) {
-  .container-caixas {
-    flex-wrap: wrap; /* Só quebra a linha em notebooks pequenos/tablets */
-    max-width: 700px; /* Força ficar 2x2 */
-  }
+@media (max-width: 1024px) {
   .caixa {
-    width: 45%; 
-    max-width: none;
+    flex: 0 0 calc(50% - 10px); /* Tablet: mostra 2 inteiros e rola o resto */
   }
 }
 
 @media (max-width: 650px) {
   .caixa {
-    width: 100%; /* No celular fica um embaixo do outro */
+    flex: 0 0 85%; /* Celular: Mostra 1 card grande, incentivando arrastar para o lado */
   }
 }
 .containers {
