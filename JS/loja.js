@@ -8,10 +8,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getCategoryFromTitle = (title) => {
         const lowerCaseTitle = title.toLowerCase();
-        if (lowerCaseTitle.includes('trator')) return 'Tratores';
+
+        // 1º PASSO: Verificar IMPLEMENTOS PRIMEIRO. 
+        // Adicione aqui palavras comuns de implementos para garantir que não caiam em Tratores.
+        if (
+            lowerCaseTitle.includes('implemento') || 
+            lowerCaseTitle.includes('rolo faca') ||
+            lowerCaseTitle.includes('roçadeira') ||
+            lowerCaseTitle.includes('rocadeira') ||
+            lowerCaseTitle.includes('arado') ||
+            lowerCaseTitle.includes('grade') ||
+            lowerCaseTitle.includes('carreta') ||
+            lowerCaseTitle.includes('pulverizador tratorizado') ||
+            lowerCaseTitle.includes('guincho') ||
+            lowerCaseTitle.includes('plantadeira')
+        ) {
+            return 'Implementos';
+        }
+
+        // 2º PASSO: Só depois verificar as máquinas principais
         if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
         if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
-        if (lowerCaseTitle.includes('implemento') || lowerCaseTitle.includes('rolo faca')) return 'Implementos';
+        if (lowerCaseTitle.includes('trator')) return 'Tratores';
+        
         return 'Outros';
     };
 
