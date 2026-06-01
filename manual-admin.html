@@ -261,6 +261,23 @@
             font-size: 1.2rem;
         }
 
+        /* Estilo da Imagem do Tutorial */
+        .tutorial-image {
+            margin: 1rem 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--oc-border);
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            background-color: #f9f9f9;
+        }
+
+        .tutorial-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .highlight {
             background-color: var(--status-success-bg);
             color: var(--status-success);
@@ -427,7 +444,6 @@
         <aside class="sidebar">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <!-- Evento oninput detecta cada mudança na barra (apagar, colar, digitar) -->
                 <input type="text" id="searchInput" oninput="searchManual()" placeholder="Digite o que procura...">
             </div>
 
@@ -484,7 +500,13 @@
                 <p class="detail-text">Quer vender seu café ou um trator? Veja como é fácil publicar seu produto na nossa vitrine.</p>
                 <ul class="action-list">
                     <li><i class="fas fa-check"></i>Certifique-se de que você já fez o Login na sua conta.</li>
-                    <li><i class="fas fa-check"></i>Procure o botão <strong>"Anuncie"</strong> ou <strong>"Criar Anúncio"</strong> no menu.</li>
+                    <li>
+                        <i class="fas fa-check"></i>Procure o botão <strong>"Anunciar Novo"</strong> no menu lateral ou clique no botão central <strong>"Anunciar Agora"</strong>, conforme ilustrado abaixo:
+                        <!-- IMAGEM INSERIDA AQUI -->
+                        <div class="tutorial-image">
+                            <img src="6b888b31-99a6-46b4-b2f9-9968ad975cda.png" alt="Onde encontrar o botão Anunciar">
+                        </div>
+                    </li>
                     <li><i class="fas fa-check"></i>Preencha as informações do produto: coloque um Título chamativo, escolha se é Grão ou Máquina, digite o Preço e faça uma breve Descrição.</li>
                     <li><i class="fas fa-check"></i>Adicione fotos nítidas do produto. Boas fotos ajudam a vender mais rápido!</li>
                     <li><i class="fas fa-check"></i>Clique em Enviar.</li>
@@ -586,17 +608,13 @@
 
         // Função de Pesquisa
         function searchManual() {
-            // Pegamos o que o usuário digitou e já removemos os acentos
             let input = removerAcentos(document.getElementById('searchInput').value);
             let sections = document.querySelectorAll('.section-card');
             let noResult = document.getElementById('no-results');
             let hasResult = false;
 
             sections.forEach(section => {
-                // textContent pega TODO o texto de dentro do card, mesmo o que está escondido no FAQ
                 let text = removerAcentos(section.textContent);
-                
-                // Compara os dois textos sem acento
                 if(text.includes(input)) {
                     section.style.display = 'block';
                     hasResult = true;
@@ -605,7 +623,6 @@
                 }
             });
 
-            // Mostra a mensagem de erro se nada for encontrado
             if(hasResult) {
                 noResult.style.display = 'none';
             } else {
