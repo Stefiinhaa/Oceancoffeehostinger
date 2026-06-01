@@ -9,26 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const getCategoryFromTitle = (title) => {
         const lowerCaseTitle = title.toLowerCase();
 
-        // 1º PASSO: Verificar IMPLEMENTOS PRIMEIRO. 
-        // Adicione aqui palavras comuns de implementos para garantir que não caiam em Tratores.
-        if (
-            lowerCaseTitle.includes('implemento') || 
-            lowerCaseTitle.includes('rolo faca') ||
-            lowerCaseTitle.includes('roçadeira') ||
-            lowerCaseTitle.includes('rocadeira') ||
-            lowerCaseTitle.includes('arado') ||
-            lowerCaseTitle.includes('grade') ||
-            lowerCaseTitle.includes('carreta') ||
-            lowerCaseTitle.includes('pulverizador tratorizado') ||
-            lowerCaseTitle.includes('guincho') ||
-            lowerCaseTitle.includes('plantadeira')
-        ) {
+        // 1. Lista de palavras que definem IMPLEMENTOS
+        const listaImplementos = [
+            'implemento', 'rolo faca', 'roçadeira', 'rocadeira', 
+            'arado', 'grade', 'carreta', 'guincho', 'plantadeira', 
+            'motosserra', 'motosera'
+        ];
+
+        // 2. Verifica se o título contém ALGUM implemento
+        const ehImplemento = listaImplementos.some(item => lowerCaseTitle.includes(item));
+
+        if (ehImplemento) {
             return 'Implementos';
         }
 
-        // 2º PASSO: Só depois verificar as máquinas principais
+        // 3. Se NÃO for implemento, verifica as categorias principais
         if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
         if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
+        
+        // 4. Só retorna 'Tratores' se a palavra 'trator' existir E NÃO for um implemento
         if (lowerCaseTitle.includes('trator')) return 'Tratores';
         
         return 'Outros';
