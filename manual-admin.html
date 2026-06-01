@@ -14,15 +14,15 @@
            PALETA DE CORES: OCEAN BLUE
            ========================================= */
         :root {
-            --oc-primary: #005b9f;         /* Azul Oceano Institucional */
-            --oc-primary-hover: #003f73;   /* Azul Escuro / Marinho */
-            --oc-dark: #1a2a3a;            /* Azul Noite (Títulos e Cabeçalho) */
-            --oc-light-accent: #338cd4;    /* Azul Claro (Destaques e Ícones) */
-            --oc-bg-light: #f4f7fb;        /* Fundo Gelo/Azulado Suave */
-            --oc-surface: #ffffff;         /* Fundo Branco (Cartões) */
-            --oc-text-main: #333333;       /* Texto Principal */
-            --oc-text-muted: #6b7280;      /* Texto Secundário */
-            --oc-border: #dbe4ed;          /* Bordas Azuladas */
+            --oc-primary: #005b9f;         
+            --oc-primary-hover: #003f73;   
+            --oc-dark: #1a2a3a;            
+            --oc-light-accent: #338cd4;    
+            --oc-bg-light: #f4f7fb;        
+            --oc-surface: #ffffff;         
+            --oc-text-main: #333333;       
+            --oc-text-muted: #6b7280;      
+            --oc-border: #dbe4ed;          
             
             --status-success: #2b6cb0;
             --status-success-bg: #ebf8ff;
@@ -30,7 +30,7 @@
             --status-warning-bg: #fffaf0;
 
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 16px -4px rgba(0,0,0,0.08);
         }
 
         * {
@@ -205,7 +205,7 @@
             border-radius: 12px;
             padding: 3rem;
             margin-bottom: 3rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
             border-top: 5px solid var(--oc-primary);
             scroll-margin-top: 100px;
             animation: fadeIn 0.4s ease;
@@ -283,6 +283,98 @@
         .alert-box i {
             color: var(--status-warning);
             font-size: 1.5rem;
+        }
+
+        /* =========================================
+           FAQ INTERATIVO (ACORDEÃO)
+           ========================================= */
+        .faq-accordion {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background-color: var(--oc-surface);
+            border: 1px solid var(--oc-border);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #a4c2df;
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--oc-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none; /* Remove a seta padrão */
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none; /* Remove a seta no Safari */
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .faq-question .icon-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-question .icon-group i {
+            color: var(--oc-primary);
+            font-size: 1.2rem;
+        }
+
+        .icon-toggle {
+            color: var(--oc-text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        /* Animação e estilo quando o FAQ está aberto */
+        .faq-item[open] {
+            border-color: var(--oc-primary);
+        }
+
+        .faq-item[open] .faq-question {
+            border-bottom: 1px solid var(--oc-border);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #f8fafc;
+            color: var(--oc-primary);
+        }
+
+        .faq-item[open] .icon-toggle {
+            transform: rotate(180deg);
+            color: var(--oc-primary);
+        }
+
+        .faq-answer {
+            padding: 1.25rem 1.5rem;
+            color: var(--oc-text-main);
+            background-color: var(--oc-surface);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            animation: slideDown 0.3s ease-out forwards;
+            transform-origin: top;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Mensagem de "Nenhum resultado" */
@@ -417,23 +509,67 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 5: FAQ -->
+            <!-- SEÇÃO 5: FAQ INTERATIVO -->
             <section id="faq" class="section-card">
                 <h2><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</h2>
+                <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas rapidamente:</p>
                 
-                <div class="faq-item">
-                    <h4><i class="fas fa-info-circle"></i> Como eu altero os dados do meu perfil?</h4>
-                    <p>Basta fazer o login, ir até a opção <strong>"Meu Perfil"</strong> e alterar seu nome, telefone ou e-mail. Não se esqueça de salvar as alterações no final da página.</p>
-                </div>
+                <div class="faq-accordion">
+                    <!-- Pergunta 1 -->
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-user-edit"></i>
+                                Como eu altero os dados do meu perfil?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Basta fazer o login, ir até a opção <strong>"Meu Perfil"</strong> e alterar seu nome, telefone ou e-mail. Não se esqueça de clicar em salvar no final da página para garantir que as alterações foram feitas com sucesso.</p>
+                        </div>
+                    </details>
 
-                <div class="faq-item">
-                    <h4><i class="fas fa-info-circle"></i> Pesquisei meu anúncio na loja e não achei. Por quê?</h4>
-                    <p>Todos os anúncios passam por uma verificação de segurança antes de irem para a loja. Se você acabou de publicar, aguarde algumas horas até que nossos administradores façam a aprovação.</p>
-                </div>
+                    <!-- Pergunta 2 -->
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-search"></i>
+                                Pesquisei meu anúncio na loja e não achei. Por quê?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Todos os anúncios passam por uma verificação rigorosa de segurança antes de irem para a loja. Se você acabou de publicar, aguarde algumas horas até que nossos administradores façam a aprovação. Você pode conferir se ele foi aprovado na aba "Meus Anúncios".</p>
+                        </div>
+                    </details>
 
-                <div class="faq-item">
-                    <h4><i class="fas fa-info-circle"></i> É seguro comprar e vender por aqui?</h4>
-                    <p>Sim! O nosso sistema de aprovação de anúncios serve exatamente para garantir que apenas ofertas reais e de produtores verificados cheguem até você.</p>
+                    <!-- Pergunta 3 -->
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-shield-alt"></i>
+                                É seguro comprar e vender por aqui?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Sim! O nosso sistema de aprovação de anúncios serve exatamente para garantir que apenas ofertas reais e de produtores verificados cheguem até você. Além disso, nós possuímos diretrizes ativas de monitoramento contra fraudes.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pergunta 4 -->
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-camera"></i>
+                                Existe um tamanho limite para as fotos do anúncio?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Recomendamos o uso de fotos nítidas e com boa iluminação. O sistema aceita a maioria dos formatos de imagem (JPG, PNG), mas tente não enviar arquivos gigantescos (acima de 5MB) para não atrasar o seu upload.</p>
+                        </div>
+                    </details>
                 </div>
             </section>
 
@@ -451,7 +587,7 @@
 
             sections.forEach(section => {
                 let text = section.innerText.toLowerCase();
-                // Se o texto do cartão contiver a palavra digitada, ele aparece. Se não, ele se esconde.
+                // Se o texto do cartão contiver a palavra digitada, ele aparece
                 if(text.includes(input)) {
                     section.style.display = 'block';
                     hasResult = true;
