@@ -261,9 +261,18 @@
             font-size: 1.2rem;
         }
 
+        .highlight {
+            background-color: var(--status-success-bg);
+            color: var(--status-success);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
         /* Estilo da Imagem do Tutorial */
         .tutorial-image {
-            margin: 1rem 0 1.5rem 0;
+            margin: 1.5rem 0;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--oc-border);
@@ -276,15 +285,6 @@
             width: 100%;
             height: auto;
             display: block;
-        }
-
-        .highlight {
-            background-color: var(--status-success-bg);
-            color: var(--status-success);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.95rem;
         }
 
         .alert-box {
@@ -361,7 +361,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Animação e estilo quando o FAQ está aberto */
         .faq-item[open] {
             border-color: var(--oc-primary);
         }
@@ -394,7 +393,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mensagem de "Nenhum resultado" */
         #no-results {
             display: none;
             text-align: center;
@@ -472,8 +470,8 @@
                 <p>Nenhum resultado encontrado para a sua pesquisa.</p>
             </div>
 
-            <!-- SEÇÃO 1: CRIAR CONTA -->
-            <section id="cadastro" class="section-card">
+            <!-- SEÇÃO 1: CRIAR CONTA (Tags: conta, registrar, cadastro, novo, criar) -->
+            <section id="cadastro" class="section-card" data-keywords="conta registrar cadastro novo perfil criar inscrever">
                 <h2><i class="fas fa-user-plus"></i> 1. Como criar sua conta (Cadastro)</h2>
                 <p class="detail-text">Antes de poder vender ou comprar, você precisa criar o seu perfil na plataforma. É rápido e gratuito!</p>
                 <ul class="action-list">
@@ -483,8 +481,8 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 2: LOGIN -->
-            <section id="login" class="section-card">
+            <!-- SEÇÃO 2: LOGIN (Tags: entrar, acessar, senha, email, esqueci, recuperar, logar) -->
+            <section id="login" class="section-card" data-keywords="entrar acessar senha email esqueci recuperar logar login">
                 <h2><i class="fas fa-sign-in-alt"></i> 2. Como entrar no site (Login)</h2>
                 <p class="detail-text">Sempre que você sair do site e voltar depois, precisará entrar novamente para acessar seus dados.</p>
                 <ul class="action-list">
@@ -494,17 +492,17 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 3: ANUNCIAR -->
-            <section id="anunciar" class="section-card">
+            <!-- SEÇÃO 3: ANUNCIAR (Tags: vender, postar, publicar, grão, trator, máquina, oferecer, mercadoria) -->
+            <section id="anunciar" class="section-card" data-keywords="vender postar publicar grao cafe trator maquina anunciar oferecer colocar mercadoria">
                 <h2><i class="fas fa-bullhorn"></i> 3. Como colocar um anúncio no site</h2>
                 <p class="detail-text">Quer vender seu café ou um trator? Veja como é fácil publicar seu produto na nossa vitrine.</p>
                 <ul class="action-list">
                     <li><i class="fas fa-check"></i>Certifique-se de que você já fez o Login na sua conta.</li>
                     <li>
-                        <i class="fas fa-check"></i>Procure o botão <strong>"Anunciar Novo"</strong> no menu lateral ou clique no botão central <strong>"Anunciar Agora"</strong>, conforme ilustrado abaixo:
+                        <i class="fas fa-check"></i>Acesse o seu painel e clique em <strong>"Meus Anúncios"</strong> no menu lateral. Caso você ainda não tenha nenhum produto publicado, clique no botão azul <strong>"Anunciar Agora"</strong> no centro da tela. Você também pode usar a opção <strong>"Anunciar Novo"</strong> diretamente no menu lateral em qualquer momento, conforme ilustrado abaixo:
                         <!-- IMAGEM INSERIDA AQUI -->
                         <div class="tutorial-image">
-                            <img src="/IMG/imagemcaminho.png" alt="Onde encontrar o botão Anunciar">
+                            <img src="image_d5a442.png" alt="Onde encontrar o botão Anunciar">
                         </div>
                     </li>
                     <li><i class="fas fa-check"></i>Preencha as informações do produto: coloque um Título chamativo, escolha se é Grão ou Máquina, digite o Preço e faça uma breve Descrição.</li>
@@ -520,8 +518,8 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 4: GERENCIAR -->
-            <section id="gerenciar" class="section-card">
+            <!-- SEÇÃO 4: GERENCIAR (Tags: editar, excluir, apagar, deletar, modificar, vendido, alterar, remover) -->
+            <section id="gerenciar" class="section-card" data-keywords="editar excluir apagar deletar modificar vendido alterar remover gerenciar">
                 <h2><i class="fas fa-tasks"></i> 4. Gerenciar meus anúncios</h2>
                 <p class="detail-text">Você tem controle total sobre os produtos que já publicou.</p>
                 <ul class="action-list">
@@ -533,13 +531,13 @@
             </section>
 
             <!-- SEÇÃO 5: FAQ -->
-            <section id="faq" class="section-card">
+            <section id="faq" class="section-card" data-keywords="duvidas perguntas suporte ajuda limite foto imagem seguranca confiavel telefone nome perfil">
                 <h2><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</h2>
                 <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas rapidamente:</p>
                 
                 <div class="faq-accordion">
                     <!-- Pergunta 1 -->
-                    <details class="faq-item">
+                    <details class="faq-item" data-keywords="nome telefone email perfil">
                         <summary class="faq-question">
                             <div class="icon-group">
                                 <i class="fas fa-user-edit"></i>
@@ -553,7 +551,7 @@
                     </details>
 
                     <!-- Pergunta 2 -->
-                    <details class="faq-item">
+                    <details class="faq-item" data-keywords="aprovar sumiu nao achei desapareceu">
                         <summary class="faq-question">
                             <div class="icon-group">
                                 <i class="fas fa-search"></i>
@@ -567,7 +565,7 @@
                     </details>
 
                     <!-- Pergunta 3 -->
-                    <details class="faq-item">
+                    <details class="faq-item" data-keywords="fraude golpe confiavel protecao">
                         <summary class="faq-question">
                             <div class="icon-group">
                                 <i class="fas fa-shield-alt"></i>
@@ -581,7 +579,7 @@
                     </details>
 
                     <!-- Pergunta 4 -->
-                    <details class="faq-item">
+                    <details class="faq-item" data-keywords="tamanho arquivo formato imagem foto mgb mb">
                         <summary class="faq-question">
                             <div class="icon-group">
                                 <i class="fas fa-camera"></i>
@@ -599,30 +597,63 @@
         </main>
     </div>
 
-    <!-- SCRIPT DE PESQUISA INTELIGENTE E HIGHLIGHT -->
+    <!-- SCRIPT DE PESQUISA INTELIGENTE (COM TAGS E HIGHLIGHT) -->
     <script>
-        // Função para remover acentos e caracteres especiais para uma busca "fuzzy"
+        // Função para remover acentos e deixar tudo minúsculo (pesquisa mais inteligente)
         function removerAcentos(texto) {
             return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         }
 
-        // Função de Pesquisa
         function searchManual() {
+            // Pega o termo digitado já sem acentos
             let input = removerAcentos(document.getElementById('searchInput').value);
             let sections = document.querySelectorAll('.section-card');
             let noResult = document.getElementById('no-results');
             let hasResult = false;
 
             sections.forEach(section => {
+                // Pega o texto da seção inteira
                 let text = removerAcentos(section.textContent);
-                if(text.includes(input)) {
+                // Pega as "tags invisíveis" que colocamos no HTML (ex: vender, apagar, deletar)
+                let keywords = removerAcentos(section.getAttribute('data-keywords') || "");
+                
+                // Se a palavra digitada estiver no texto OU nas tags invisíveis, mostre a seção
+                if(text.includes(input) || keywords.includes(input)) {
                     section.style.display = 'block';
                     hasResult = true;
+                    
+                    // Lógica especial para abrir a caixinha do FAQ automaticamente se achar algo lá dentro
+                    if (input.length > 2 && section.id === 'faq') {
+                        let faqItems = section.querySelectorAll('.faq-item');
+                        faqItems.forEach(item => {
+                            let itemText = removerAcentos(item.textContent);
+                            let itemKeywords = removerAcentos(item.getAttribute('data-keywords') || "");
+                            
+                            // Se a pesquisa bater com o texto OU tag deste FAQ específico, ele abre
+                            if (itemText.includes(input) || itemKeywords.includes(input)) {
+                                item.setAttribute('open', 'true');
+                                item.style.display = 'block';
+                            } else {
+                                item.removeAttribute('open');
+                                item.style.display = 'none'; // Esconde os outros FAQs que não combinam
+                            }
+                        });
+                    } else if (section.id === 'faq') {
+                         // Se a pessoa apagar a pesquisa, volta os FAQs ao normal
+                         let faqItems = section.querySelectorAll('.faq-item');
+                         faqItems.forEach(item => {
+                             item.style.display = 'block';
+                             item.removeAttribute('open');
+                         });
+                    }
+
                 } else {
+                    // Esconde a seção se a palavra não estiver nem no texto nem nas tags
                     section.style.display = 'none';
                 }
             });
 
+            // Gerencia a mensagem de erro
             if(hasResult) {
                 noResult.style.display = 'none';
             } else {
