@@ -79,12 +79,18 @@
             letter-spacing: 0.5px;
         }
 
-        .header-brand img {
+        /* Estilo do Ícone que substituiu a logo */
+        .header-brand .logo-icon {
+            font-size: 1.3rem;
+            color: var(--oc-primary);
+            background-color: var(--oc-surface);
+            width: 45px;
             height: 45px;
-            object-fit: contain;
-            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            padding: 3px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* =========================================
@@ -428,7 +434,8 @@
     <!-- CABEÇALHO -->
     <header>
         <div class="header-brand">
-            <img src="IMG/1.png" alt="Logo Ocean Coffee">
+            <!-- Ícone substituindo a logo de imagem -->
+            <i class="fas fa-coffee logo-icon"></i>
             Ocean Coffee | Central de Ajuda
         </div>
         <div>
@@ -502,7 +509,7 @@
                         <i class="fas fa-check"></i>Acesse o seu painel e clique em <strong>"Meus Anúncios"</strong> no menu lateral. Caso você ainda não tenha nenhum produto publicado, clique no botão azul <strong>"Anunciar Agora"</strong> no centro da tela. Você também pode usar a opção <strong>"Anunciar Novo"</strong> diretamente no menu lateral em qualquer momento, conforme ilustrado abaixo:
                         <!-- IMAGEM INSERIDA AQUI -->
                         <div class="tutorial-image">
-                            <img src="IMG/imagemcaminho.png" alt="Onde encontrar o botão Anunciar">
+                            <img src="image_d5a442.png" alt="Onde encontrar o botão Anunciar">
                         </div>
                     </li>
                     <li><i class="fas fa-check"></i>Preencha as informações do produto: coloque um Título chamativo, escolha se é Grão ou Máquina, digite o Preço e faça uma breve Descrição.</li>
@@ -565,6 +572,20 @@
                     </details>
 
                     <!-- Pergunta 3 -->
+                    <details class="faq-item" data-keywords="fraude golpe confiavel protecao">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-shield-alt"></i>
+                                É seguro comprar e vender por aqui?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Sim! O nosso sistema de aprovação de anúncios serve exatamente para garantir que apenas ofertas reais e de produtores verificados cheguem até você. Além disso, nós possuímos diretrizes ativas de monitoramento contra fraudes.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pergunta 4 -->
                     <details class="faq-item" data-keywords="tamanho arquivo formato imagem foto mgb mb">
                         <summary class="faq-question">
                             <div class="icon-group">
