@@ -574,6 +574,12 @@
             loginLinks.forEach(link => {
                 link.textContent = user.tipo === "Administrador" ? "Login" : "Meu Perfil";
                 link.href = user.tipo === "Administrador" ? "dashboard.html" : "perfil.html";
+                
+                // --- CÓDIGO NOVO: FORÇA A CENTRALIZAÇÃO DO BOTÃO VERMELHO APÓS O LOGIN ---
+                if(link.classList.contains('anuncie-btn')) {
+                    link.style.justifyContent = "center";
+                    link.style.textAlign = "center";
+                }
             });
         }
 
