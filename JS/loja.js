@@ -6,39 +6,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let allProducts = []; 
 
-   const getCategoryFromTitle = (title) => {
+    const getCategoryFromTitle = (title) => {
         const lowerCaseTitle = title.toLowerCase();
 
-        // 1. Verificação rígida de IMPLEMENTOS (prioridade total)
-        // Se o título contiver qualquer uma destas palavras, para aqui.
+        // 1º PASSO: Verificar IMPLEMENTOS PRIMEIRO. 
+        // Adicione aqui palavras comuns de implementos para garantir que não caiam em Tratores.
         if (
-            lowerCaseTitle.includes('motosserra') ||
-            lowerCaseTitle.includes('motosera') ||
-            lowerCaseTitle.includes('roçadeira') ||
-            lowerCaseTitle.includes('rocadeira') ||
             lowerCaseTitle.includes('implemento') || 
             lowerCaseTitle.includes('rolo faca') ||
+            lowerCaseTitle.includes('roçadeira') ||
+            lowerCaseTitle.includes('rocadeira') ||
             lowerCaseTitle.includes('arado') ||
             lowerCaseTitle.includes('grade') ||
             lowerCaseTitle.includes('carreta') ||
+            lowerCaseTitle.includes('pulverizador tratorizado') ||
             lowerCaseTitle.includes('guincho') ||
             lowerCaseTitle.includes('plantadeira')
         ) {
             return 'Implementos';
         }
 
-        // 2. Verificação de Máquinas Principais
-        // Só chega aqui se NÃO for um implemento da lista acima
+        // 2º PASSO: Só depois verificar as máquinas principais
         if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
         if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
-        
-        // Agora, o trator só será classificado como "Tratores" se 
-        // o título NÃO contiver as palavras de implementos acima.
         if (lowerCaseTitle.includes('trator')) return 'Tratores';
         
         return 'Outros';
     };
-    
+
     const normalizeText = (text) => {
         if (typeof text !== 'string') return '';
         return text
