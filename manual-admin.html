@@ -3,265 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Administrador - Ocean Coffee</title>
+    <title>Manual do Administrador | Ocean Coffee</title>
+    
+    <!-- Fontes e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* Paleta de Cores Oficial - Ocean Coffee */
+        /* =========================================
+           PALETA DE CORES OFICIAL OCEAN COFFEE
+           ========================================= */
         :root {
-            --color-primary: #b20000;       /* Vermelho institucional */
-            --color-primary-light: #ba391c;
-            --color-hover-primary: #883a1b; /* Marrom café */
-            --color-background: #f9f5e7;    /* Fundo creme */
-            --color-surface: #ffffff;       /* Fundo dos cartões */
-            --color-text-headings: #3e2f1c; /* Marrom escuro para títulos */
-            --color-text-body: #4a4a4a;     /* Cinza escuro para textos */
-            --color-border: #e0e0e0;
-            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08);
+            --oc-primary: #b20000;         /* Vermelho Institucional */
+            --oc-primary-hover: #8c0000;   /* Vermelho Escuro */
+            --oc-coffee: #3e2f1c;          /* Marrom Café (Títulos/Rodapé) */
+            --oc-coffee-light: #883a1b;    /* Marrom Claro (Destaques) */
+            --oc-bg-cream: #f9f5e7;        /* Fundo Creme */
+            --oc-surface: #ffffff;         /* Fundo Branco (Cartões) */
+            --oc-text-main: #333333;       /* Texto Principal */
+            --oc-text-muted: #666666;      /* Texto Secundário */
+            --oc-border: #e2e8f0;          /* Bordas */
+            
+            /* Status Colors */
+            --status-success: #2f855a;
+            --status-success-bg: #f0fff4;
+            --status-danger: #c53030;
+            --status-danger-bg: #fff5f5;
+            --status-warning: #dd6b20;
+            --status-warning-bg: #fffaf0;
+
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.05);
         }
 
+        /* =========================================
+           RESET E BASE
+           ========================================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--color-background);
-            color: var(--color-text-body);
+            background-color: var(--oc-bg-cream);
+            color: var(--oc-text-main);
             line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Cabeçalho (Hero) */
-        .admin-header {
-            background: linear-gradient(135deg, #1f1f1f 0%, #3e2f1c 100%);
-            color: #ffffff;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 6px solid var(--color-primary);
-        }
-
-        .admin-header .brand {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-primary-light);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .admin-header h1 {
-            font-size: 2.5rem;
-            font-family: Garamond, serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .admin-header p {
-            font-size: 1.1rem;
-            color: #d1d1d1;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Container Principal */
-        .container {
-            max-width: 1000px;
-            margin: -2rem auto 4rem auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Cartões de Instrução */
-        .instruction-card {
-            background-color: var(--color-surface);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-md);
-            border-left: 6px solid var(--color-primary);
-            transition: transform 0.3s ease;
-        }
-
-        .instruction-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .card-header {
+        /* =========================================
+           CABEÇALHO SUPERIOR
+           ========================================= */
+        header {
+            background-color: var(--oc-coffee);
+            color: var(--oc-surface);
+            padding: 1.5rem 3rem;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--color-border);
-            padding-bottom: 1rem;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--oc-primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
         }
 
-        .step-badge {
-            background-color: var(--color-primary);
-            color: #ffffff;
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
+        .header-brand {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(178, 0, 0, 0.2);
-        }
-
-        .card-header h2 {
+            gap: 15px;
             font-size: 1.5rem;
-            color: var(--color-text-headings);
             font-weight: 600;
         }
 
-        /* Conteúdo do Manual */
-        .content-list {
+        .header-brand i {
+            color: var(--oc-primary);
+        }
+
+        /* =========================================
+           LAYOUT DE DOCUMENTAÇÃO (SIDEBAR + CONTENT)
+           ========================================= */
+        .docs-container {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Menu Lateral */
+        .sidebar {
+            width: 300px;
+            background-color: var(--oc-surface);
+            padding: 2rem 1.5rem;
+            border-right: 1px solid var(--oc-border);
+            position: sticky;
+            top: 84px; /* Altura do header */
+            height: calc(100vh - 84px);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--oc-text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-left: 10px;
+        }
+
+        .sidebar nav ul {
             list-style: none;
         }
 
-        .content-list li {
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-left: 2rem;
+        .sidebar nav ul li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: var(--oc-text-main);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            margin-bottom: 5px;
+        }
+
+        .sidebar nav ul li a i {
+            color: var(--oc-primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar nav ul li a:hover, .sidebar nav ul li a.active {
+            background-color: var(--oc-bg-cream);
+            color: var(--oc-primary);
+        }
+
+        /* Área de Conteúdo */
+        .content {
+            flex: 1;
+            padding: 3rem 4rem;
+            background-color: var(--oc-bg-cream);
+        }
+
+        .content-intro {
+            margin-bottom: 3rem;
+        }
+
+        .content-intro h1 {
+            font-size: 2.5rem;
+            color: var(--oc-coffee);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .content-intro p {
+            font-size: 1.1rem;
+            color: var(--oc-text-muted);
+        }
+
+        /* Cartões de Seção */
+        .section-card {
+            background: var(--oc-surface);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+            border-top: 5px solid var(--oc-primary);
+            scroll-margin-top: 100px;
+        }
+
+        .section-card h2 {
+            font-size: 1.8rem;
+            color: var(--oc-coffee);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--oc-border);
+        }
+
+        .section-card h2 i {
+            color: var(--oc-primary);
+            background: var(--status-danger-bg);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.4rem;
+        }
+
+        /* Detalhamento e Listas */
+        .detail-text {
+            margin-bottom: 1.5rem;
             font-size: 1.05rem;
         }
 
-        .content-list li::before {
-            content: "✓";
+        .action-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .action-list li i {
             position: absolute;
             left: 0;
-            top: 0;
-            color: var(--color-primary);
-            font-weight: bold;
+            top: 4px;
+            color: var(--oc-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Badges de Destaque */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0 4px;
+            border: 1px solid;
+        }
+
+        .tag.approve { background: var(--status-success-bg); color: var(--status-success); border-color: #c6f6d5; }
+        .tag.reject { background: var(--status-danger-bg); color: var(--status-danger); border-color: #fed7d7; }
+        .tag.system { background: var(--oc-bg-cream); color: var(--oc-coffee-light); border-color: #e2d9c3; }
+
+        /* Alertas Profissionais */
+        .notice-panel {
+            display: flex;
+            gap: 1.5rem;
+            background-color: var(--status-warning-bg);
+            border-left: 4px solid var(--status-warning);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 2rem;
+        }
+
+        .notice-panel i {
+            color: var(--status-warning);
+            font-size: 1.8rem;
+            margin-top: 5px;
+        }
+
+        .notice-panel h4 {
+            color: #9c4221;
+            margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
 
-        .highlight {
-            background-color: var(--color-background);
-            color: var(--color-hover-primary);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 1px solid #ebdcb8;
+        /* =========================================
+           RESPONSIVIDADE
+           ========================================= */
+        @media (max-width: 1024px) {
+            .sidebar { width: 250px; }
+            .content { padding: 2rem; }
         }
 
-        .alert-box {
-            background-color: #fff4f4;
-            border-left: 4px solid var(--color-primary);
-            padding: 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .alert-box strong {
-            color: var(--color-primary);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #1f1f1f;
-            color: #a0a0a0;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            .docs-container { flex-direction: column; }
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: static; 
+                border-right: none;
+                border-bottom: 1px solid var(--oc-border);
+            }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="admin-header">
-        <div class="brand">Ocean Coffee - Gestão</div>
-        <h1>Manual Operacional do Administrador</h1>
-        <p>Guia definitivo passo a passo para curadoria de anúncios, gestão de usuários e controle total do marketplace agrícola.</p>
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-brand">
+            <i class="fas fa-seedling"></i>
+            Ocean Coffee | Central de Ajuda
+        </div>
+        <div>
+            <span style="font-size: 0.9rem; opacity: 0.8;">Acesso Administrativo</span>
+        </div>
     </header>
 
-    <main class="container">
+    <div class="docs-container">
+        
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+            <h3>Navegação do Manual</h3>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard"><i class="fas fa-chart-line"></i> 1. Visão Geral (Dashboard)</a></li>
+                    <li><a href="#moderacao"><i class="fas fa-clipboard-check"></i> 2. Moderação de Anúncios</a></li>
+                    <li><a href="#vitrine"><i class="fas fa-store"></i> 3. Gestão da Vitrine</a></li>
+                    <li><a href="#usuarios"><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</a></li>
+                    <li><a href="#auditoria"><i class="fas fa-file-contract"></i> 5. Relatórios e Auditoria</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <!-- Passo 1 -->
-        <div class="instruction-card">
-            <div class="card-header">
-                <div class="step-badge">1</div>
-                <h2>Visão Geral do Painel (Dashboard)</h2>
-            </div>
-            <ul class="content-list">
-                <li>Ao fazer login com suas credenciais de Administrador, você será direcionado automaticamente para o <strong>Painel de Controle Principal</strong>.</li>
-                <li>No topo da tela, observe os <strong>Cartões de Métricas</strong>. Eles fornecem um resumo em tempo real da saúde da plataforma, como o volume de usuários ativos e a contagem de anúncios no sistema.</li>
-                <li>Utilize o menu de navegação lateral para transitar rapidamente entre os módulos de moderação, listagem de cadastros e ferramentas de busca.</li>
-            </ul>
-        </div>
-
-        <!-- Passo 2 -->
-        <div class="instruction-card">
-            <div class="card-header">
-                <div class="step-badge">2</div>
-                <h2>Moderação de Solicitações (Anúncios Pendentes)</h2>
-            </div>
-            <ul class="content-list">
-                <li>Sempre que um produtor publica um novo item, ele não vai direto para a loja. Ele entra em uma fila de moderação. Acesse o menu <span class="highlight">Solicitações Pendentes</span>.</li>
-                <li><strong>Análise o conteúdo:</strong> Verifique se as fotos são nítidas, se a descrição condiz com o produto (grãos ou máquinas) e se o valor cobrado faz sentido para o mercado.</li>
-                <li><strong>Aprovação:</strong> Se estiver tudo correto, clique no botão de <strong>Aprovar</strong>. O anúncio ficará verde, sinalizando que agora está visível publicamente no Marketplace para todos os compradores.</li>
-                <li><strong>Rejeição:</strong> Caso o anúncio fira as políticas da plataforma (fotos falsas, descrição imprópria ou fraude), clique em <strong>Rejeitar/Excluir</strong> para removê-lo permanentemente da fila.</li>
-            </ul>
-        </div>
-
-        <!-- Passo 3 -->
-        <div class="instruction-card">
-            <div class="card-header">
-                <div class="step-badge">3</div>
-                <h2>Gestão de Anúncios Aprovados e Vitrine</h2>
-            </div>
-            <ul class="content-list">
-                <li>Acesse o menu <span class="highlight">Anúncios Aprovados</span> para visualizar o catálogo atual de tudo o que está ativo e sendo vendido na loja no momento.</li>
-                <li>Como administrador, você tem o poder de auditar o que já foi publicado. Se um produtor vendeu um lote de café fora do site e esqueceu de dar baixa, você pode intervir.</li>
-                <li>Nesta tela, você pode clicar em <strong>Marcar como Vendido</strong> ou <strong>Excluir</strong> qualquer anúncio ativo, garantindo que a vitrine da Ocean Coffee ofereça apenas produtos reais e disponíveis.</li>
-            </ul>
-        </div>
-
-        <!-- Passo 4 -->
-        <div class="instruction-card">
-            <div class="card-header">
-                <div class="step-badge">4</div>
-                <h2>Ferramenta de Busca Específica (Maquinários)</h2>
-            </div>
-            <ul class="content-list">
-                <li>O sistema possui um módulo dedicado para a localização ágil de equipamentos pesados. Acesse o menu <span class="highlight">Busca de Tratores/Máquinas</span>.</li>
-                <li>Esta ferramenta permite ao administrador filtrar rapidamente o banco de dados para encontrar colheitadeiras, tratores e implementos agrícolas específicos.</li>
-                <li>Ideal para auxiliar compradores corporativos que entram em contato direto com a administração procurando maquinário pesado.</li>
-            </ul>
-        </div>
-
-        <!-- Passo 5 -->
-        <div class="instruction-card">
-            <div class="card-header">
-                <div class="step-badge">5</div>
-                <h2>Gerenciamento de Usuários e Segurança</h2>
-            </div>
-            <ul class="content-list">
-                <li>Acesse o menu <span class="highlight">Gerenciar Usuários</span> para ter acesso à lista completa de todos os produtores e compradores cadastrados no sistema.</li>
-                <li><strong>Auditoria de Perfis:</strong> Você pode visualizar os dados de contato (Nome, E-mail) de cada integrante.</li>
-                <li><strong>Atualização e Exclusão:</strong> Se um usuário solicitar a exclusão de seus dados, ou se for identificado um perfil falso ou golpista, você possui a autoridade para clicar no botão de <strong>Excluir Usuário</strong>, bloqueando o acesso daquela conta imediatamente.</li>
-            </ul>
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="content">
             
-            <div class="alert-box">
-                <strong>Atenção às Políticas de Privacidade</strong>
-                Lembre-se que, como Administrador, você lida com dados sensíveis. Ao excluir um usuário, todos os anúncios vinculados a ele também podem ser impactados. Tenha certeza da ação antes de confirmar exclusões no banco de dados.
+            <div class="content-intro">
+                <h1>Manual de Operação do Administrador</h1>
+                <p>Este documento fornece as diretrizes detalhadas para gerenciar, auditar e manter a qualidade do ecossistema de negócios da Ocean Coffee. Leia atentamente para compreender as responsabilidades de moderação da plataforma.</p>
             </div>
-        </div>
 
-    </main>
+            <!-- SEÇÃO 1 -->
+            <section id="dashboard" class="section-card">
+                <h2><i class="fas fa-chart-line"></i> 1. Visão Geral (Dashboard)</h2>
+                <p class="detail-text">O Dashboard é o coração operacional do administrador. Ele foi desenhado para fornecer um panorama imediato sobre o volume de negócios e cadastros.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-arrow-right"></i><strong>Indicadores de Desempenho (Cards):</strong> No topo da tela inicial, você encontrará blocos numéricos. Eles exibem dados em tempo real, como o número de contas ativas, o total de anúncios no sistema e, o mais importante, quantas solicitações estão pendentes de aprovação.</li>
+                    <li><i class="fas fa-arrow-right"></i><strong>Navegação Lateral:</strong> O menu escuro à esquerda é a sua ferramenta principal de trabalho. A partir dele, você tem acesso a todos os módulos operacionais descritos abaixo.</li>
+                </ul>
+            </section>
 
-    <footer>
-        <p>&copy; 2026 Ocean Coffee. Painel de Uso Exclusivo da Administração.</p>
-    </footer>
+            <!-- SEÇÃO 2 -->
+            <section id="moderacao" class="section-card">
+                <h2><i class="fas fa-clipboard-check"></i> 2. Moderação de Anúncios</h2>
+                <p class="detail-text">Para manter a segurança e a credibilidade da Ocean Coffee, todo anúncio criado por um produtor ou vendedor precisa ser avaliado antes de ir ao ar no Marketplace.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-check-circle"></i><strong>Acessando a Fila:</strong> No menu lateral, clique na seção relacionada a <span class="tag system">Solicitações</span> ou Anúncios Pendentes.</li>
+                    <li><i class="fas fa-search"></i><strong>Análise de Qualidade:</strong> Revise cada item da lista. Verifique se as fotos têm boa resolução, se a descrição do café ou da máquina é clara e se não há indícios de fraude no preço ou nos dados informados.</li>
+                    <li><i class="fas fa-thumbs-up"></i><strong>Para Aprovar:</strong> Se a oferta for idônea, clique no botão <span class="tag approve">Aprovar</span>. Imediatamente, o sistema mudará o status do produto e ele aparecerá na vitrine pública.</li>
+                    <li><i class="fas fa-thumbs-down"></i><strong>Para Rejeitar:</strong> Se o anúncio ferir as diretrizes, estiver duplicado ou for suspeito, clique em <span class="tag reject">Rejeitar</span> ou Excluir. O anúncio será descartado.</li>
+                </ul>
+            </section>
 
+            <!-- SEÇÃO 3 -->
+            <section id="vitrine" class="section-card">
+                <h2><i class="fas fa-store"></i> 3. Gestão da Vitrine Ativa</h2>
+                <p class="detail-text">O administrador possui controle total sobre os anúncios que já foram aprovados e estão visíveis para os compradores.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-list"></i><strong>Monitoramento Contínuo:</strong> Acesse a tela de anúncios ativos para auditar as ofertas que estão no ar. É possível buscar por categorias (Grãos ou Tratores/Máquinas).</li>
+                    <li><i class="fas fa-tags"></i><strong>Dar Baixa em Produtos:</strong> Muitas vezes, um produtor vende seu maquinário fora da plataforma e esquece de retirá-lo do site. O administrador pode atuar ativamente clicando na opção para marcar um anúncio como <span class="tag system">Vendido</span>, limpando o catálogo para os demais compradores.</li>
+                    <li><i class="fas fa-trash-alt"></i><strong>Remoção de Conteúdo:</strong> Se um anúncio aprovado sofrer denúncias posteriores, você pode utilizar o botão de exclusão para tirá-lo do ar imediatamente.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 4 -->
+            <section id="usuarios" class="section-card">
+                <h2><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</h2>
+                <p class="detail-text">Administrar os perfis cadastrados é essencial para garantir uma comunidade segura de negociações agrícolas.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-user-edit"></i><strong>Visualização e Edição:</strong> No menu <span class="tag system">Usuários</span>, você verá a lista de todas as contas registradas. É possível clicar para editar informações básicas caso o usuário solicite suporte.</li>
+                    <li><i class="fas fa-user-slash"></i><strong>Suspensão/Exclusão de Conta:</strong> Ao identificar um perfil falso ou que viole as regras de comércio, utilize a ação de <span class="tag reject">Excluir Usuário</span>.</li>
+                </ul>
+
+                <div class="notice-panel">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <h4>Aviso de Impacto no Banco de Dados</h4>
+                        <p>Ao realizar a exclusão de um usuário, tenha ciência de que <strong>todos os anúncios</strong> vinculados àquela pessoa também poderão ser removidos do sistema. Execute esta ação apenas quando houver certeza da infração ou a pedido formal do cliente.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 5 -->
+            <section id="auditoria" class="section-card">
+                <h2><i class="fas fa-file-contract"></i> 5. Relatórios e Auditoria</h2>
+                <p class="detail-text">O sistema fornece ferramentas simples para auditoria e controle administrativo, essenciais para reuniões de diretoria ou fechamento de metas.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-download"></i><strong>Geração de Relatórios:</strong> Utilize a funcionalidade de emitir relatórios (disponível na aba de usuários) para baixar ou visualizar uma listagem limpa de quem opera na plataforma.</li>
+                    <li><i class="fas fa-shield-alt"></i><strong>Transparência:</strong> Mantenha a prática de revisar as métricas do painel semanalmente. O sucesso do Marketplace Ocean Coffee depende diretamente de um catálogo limpo (sem anúncios falsos) e de aprovações ágeis.</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- SCRIPT SIMPLES PARA HIGHLIGHT DO MENU LATERAL AO ROLAR -->
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
