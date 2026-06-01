@@ -427,7 +427,8 @@
         <aside class="sidebar">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" onkeyup="searchManual()" placeholder="Digite o que procura...">
+                <!-- Evento oninput detecta cada mudança na barra (apagar, colar, digitar) -->
+                <input type="text" id="searchInput" oninput="searchManual()" placeholder="Digite o que procura...">
             </div>
 
             <h3>Passo a Passo</h3>
@@ -451,7 +452,7 @@
             </div>
 
             <div id="no-results">
-                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; color: #338cd4;"></i>
                 <p>Nenhum resultado encontrado para a sua pesquisa.</p>
             </div>
 
@@ -509,7 +510,7 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 5: FAQ INTERATIVO -->
+            <!-- SEÇÃO 5: FAQ -->
             <section id="faq" class="section-card">
                 <h2><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</h2>
                 <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas rapidamente:</p>
@@ -576,18 +577,26 @@
         </main>
     </div>
 
-    <!-- SCRIPT DE PESQUISA E HIGHLIGHT -->
+    <!-- SCRIPT DE PESQUISA INTELIGENTE E HIGHLIGHT -->
     <script>
-        // Função para filtrar os cartões de acordo com o que é digitado na barra de pesquisa
+        // Função para remover acentos e caracteres especiais para uma busca "fuzzy"
+        function removerAcentos(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        // Função de Pesquisa
         function searchManual() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
+            // Pegamos o que o usuário digitou e já removemos os acentos
+            let input = removerAcentos(document.getElementById('searchInput').value);
             let sections = document.querySelectorAll('.section-card');
             let noResult = document.getElementById('no-results');
             let hasResult = false;
 
             sections.forEach(section => {
-                let text = section.innerText.toLowerCase();
-                // Se o texto do cartão contiver a palavra digitada, ele aparece
+                // textContent pega TODO o texto de dentro do card, mesmo o que está escondido no FAQ
+                let text = removerAcentos(section.textContent);
+                
+                // Compara os dois textos sem acento
                 if(text.includes(input)) {
                     section.style.display = 'block';
                     hasResult = true;
