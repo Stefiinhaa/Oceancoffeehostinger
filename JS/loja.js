@@ -9,31 +9,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const getCategoryFromTitle = (title) => {
     const lowerCaseTitle = title.toLowerCase();
 
-    // 1. Definição das listas de palavras-chave
+    // 1. Lista atualizada de implementos
     const listaImplementos = [
         'motosserra', 'motosera', 'roçadeira', 'rocadeira', 
         'implemento', 'rolo faca', 'arado', 'grade', 'carreta', 
         'guincho', 'plantadeira'
     ];
 
-    // 2. Verifica primeiro se é um Implemento
+    // 2. Verifica se o título contém QUALQUER termo de implemento
     const ehImplemento = listaImplementos.some(item => lowerCaseTitle.includes(item));
+    
+    // 3. SE for implemento, retorna "Implementos" imediatamente, 
+    // não permitindo que caia nas outras condições abaixo.
     if (ehImplemento) {
         return 'Implementos';
     }
 
-    // 3. Verificação de Máquinas Principais (só chegam aqui se NÃO forem implementos)
+    // 4. Caso contrário, verifica as outras categorias
     if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
     if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
     
-    // 4. Trator: Agora o sistema garante que "trator" só cai aqui se 
-    // o título NÃO contiver as palavras da lista de implementos acima.
+    // 5. Agora, como já filtramos os implementos acima, 
+    // esta checagem de "trator" fica protegida.
     if (lowerCaseTitle.includes('trator')) {
         return 'Tratores';
     }
     
     return 'Outros';
 };
+
     const normalizeText = (text) => {
         if (typeof text !== 'string') return '';
         return text
