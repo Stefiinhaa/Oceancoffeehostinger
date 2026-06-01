@@ -56,7 +56,7 @@
         }
 
         /* =========================================
-           CABEÇALHO SUPERIOR (COM LOGO OFICIAL)
+           CABEÇALHO SUPERIOR
            ========================================= */
         header {
             background-color: var(--oc-dark);
@@ -81,12 +81,17 @@
             letter-spacing: 0.5px;
         }
 
-        .header-brand img {
-            height: 48px;
-            object-fit: contain;
-            background-color: #ffffff;
-            padding: 4px 10px;
-            border-radius: 8px;
+        /* Estilo do Ícone que substitui a logo */
+        .header-brand .logo-icon {
+            font-size: 1.3rem;
+            color: var(--oc-primary);
+            background-color: var(--oc-surface);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
@@ -236,7 +241,6 @@
             padding: 12px;
             border-radius: 8px;
             font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 91, 159, 0.3);
         }
 
         /* Detalhamento e Listas */
@@ -272,7 +276,6 @@
             border-radius: 4px;
             font-weight: 600;
             font-size: 0.95rem;
-            border: 1px solid #bee3f8;
         }
         
         .highlight-danger {
@@ -282,7 +285,6 @@
             border-radius: 4px;
             font-weight: 600;
             font-size: 0.95rem;
-            border: 1px solid #fed7d7;
         }
 
         .alert-box {
@@ -426,9 +428,9 @@
     <!-- CABEÇALHO -->
     <header>
         <div class="header-brand">
-            <!-- Logo Oficial da Ocean Coffee -->
-            <img src="IMG/1.png" alt="Logo Ocean Coffee">
-            <span>Ocean Coffee | Painel Administrativo</span>
+            <!-- Ícone de Café igual ao do Manual do Usuário -->
+            <i class="fas fa-coffee logo-icon"></i>
+            Ocean Coffee | Painel Administrativo
         </div>
         <div>
             <span style="font-size: 0.9rem; opacity: 0.8; font-weight: 500;">Guia de Gestão</span>
@@ -521,10 +523,19 @@
                 </div>
             </section>
 
+            <!-- SEÇÃO 5: MÁQUINAS -->
+            <section id="maquinas" class="section-card" data-keywords="trator colheitadeira implemento buscar equipamento pesado categoria">
+                <h2><i class="fas fa-tractor"></i> 5. Busca de Maquinários</h2>
+                <p class="detail-text">Uma ferramenta pensada para facilitar o atendimento a grandes compradores rurais.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-search-location"></i><strong>Filtro Dedicado:</strong> No painel, você possui um link chamado <strong>Busca de Tratores/Máquinas</strong>. Esta tela ignora os grãos de café e lista apenas equipamentos pesados e veículos anunciados.</li>
+                    <li><i class="fas fa-headset"></i><strong>Uso Prático:</strong> Utilize esta tela quando um cliente entrar em contato direto com a diretoria procurando, por exemplo, "uma colheitadeira específica", permitindo que você encontre a oferta e passe o contato do vendedor rapidamente.</li>
+                </ul>
+            </section>
 
-            <!-- SEÇÃO 5: FAQ -->
+            <!-- SEÇÃO 6: FAQ -->
             <section id="faq" class="section-card" data-keywords="duvidas perguntas suporte ajuda recuperar volta apaga sai some">
-                <h2><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</h2>
+                <h2><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</h2>
                 <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas:</p>
                 
                 <div class="faq-accordion">
@@ -538,7 +549,7 @@
                             <i class="fas fa-chevron-down icon-toggle"></i>
                         </summary>
                         <div class="faq-answer">
-                            <p><strong>Não.</strong> O anúncio continua aparecendo normalmente na vitrine para que os visitantes vejam o volume de negócios do site. A única diferença é que ele recebe uma faixa visual escrita "Vendido", impedindo que clientes percam tempo tentando comprá-lo[cite: 1, 2].</p>
+                            <p><strong>Não.</strong> O anúncio continua aparecendo normalmente na vitrine para que os visitantes vejam o volume de negócios do site. A única diferença é que ele recebe uma faixa visual escrita "Vendido", impedindo que clientes percam tempo tentando comprá-lo.</p>
                         </div>
                     </details>
 
@@ -552,7 +563,7 @@
                             <i class="fas fa-chevron-down icon-toggle"></i>
                         </summary>
                         <div class="faq-answer">
-                            <p>Ele é imediatamente removido da sua fila de trabalho e nunca chegará a aparecer na loja pública[cite: 1, 2]. Utilize essa função para limpar postagens de teste feitas por usuários ou anúncios que quebram as regras.</p>
+                            <p>Ele é imediatamente removido da sua fila de trabalho e nunca chegará a aparecer na loja pública. Utilize essa função para limpar postagens de teste feitas por usuários ou anúncios que quebram as regras.</p>
                         </div>
                     </details>
 
@@ -566,7 +577,7 @@
                             <i class="fas fa-chevron-down icon-toggle"></i>
                         </summary>
                         <div class="faq-answer">
-                            <p><strong>Não.</strong> Por questões de privacidade e arquitetura do sistema, a exclusão de um usuário é definitiva e irreversível[cite: 1, 2]. Seus dados e anúncios serão apagados. Se foi um engano, o usuário terá que se cadastrar novamente do zero.</p>
+                            <p><strong>Não.</strong> Por questões de privacidade e arquitetura do sistema, a exclusão de um usuário é definitiva e irreversível. Seus dados e anúncios serão apagados. Se foi um engano, o usuário terá que se cadastrar novamente do zero.</p>
                         </div>
                     </details>
                 </div>
