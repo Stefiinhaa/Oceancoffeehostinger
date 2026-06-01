@@ -6,11 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let allProducts = []; 
 
-    const getCategoryFromTitle = (title) => {
+   const getCategoryFromTitle = (title) => {
         const lowerCaseTitle = title.toLowerCase();
 
-        // 1º PASSO: Verificar IMPLEMENTOS PRIMEIRO. 
-        // Adicione aqui palavras comuns de implementos para garantir que não caiam em Tratores.
+        // 1º PASSO: Verificar IMPLEMENTOS E EQUIPAMENTOS MENORES PRIMEIRO. 
         if (
             lowerCaseTitle.includes('implemento') || 
             lowerCaseTitle.includes('rolo faca') ||
@@ -21,7 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
             lowerCaseTitle.includes('carreta') ||
             lowerCaseTitle.includes('pulverizador tratorizado') ||
             lowerCaseTitle.includes('guincho') ||
-            lowerCaseTitle.includes('plantadeira')
+            lowerCaseTitle.includes('plantadeira') ||
+            lowerCaseTitle.includes('motosserra') || // Adicionado!
+            lowerCaseTitle.includes('motosera')      // Prevenção de erro ortográfico
         ) {
             return 'Implementos';
         }
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         return 'Outros';
     };
-
+    
     const normalizeText = (text) => {
         if (typeof text !== 'string') return '';
         return text
