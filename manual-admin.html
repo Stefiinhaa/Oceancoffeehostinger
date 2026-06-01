@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Administrador - Ocean Coffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Cores Oficial - Ocean Coffee */
+        :root {
+            --color-primary: #b20000;       /* Vermelho institucional */
+            --color-primary-light: #ba391c;
+            --color-hover-primary: #883a1b; /* Marrom café */
+            --color-background: #f9f5e7;    /* Fundo creme */
+            --color-surface: #ffffff;       /* Fundo dos cartões */
+            --color-text-headings: #3e2f1c; /* Marrom escuro para títulos */
+            --color-text-body: #4a4a4a;     /* Cinza escuro para textos */
+            --color-border: #e0e0e0;
+            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-body);
+            line-height: 1.7;
+        }
+
+        /* Cabeçalho (Hero) */
+        .admin-header {
+            background: linear-gradient(135deg, #1f1f1f 0%, #3e2f1c 100%);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-primary);
+        }
+
+        .admin-header .brand {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-primary-light);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .admin-header h1 {
+            font-size: 2.5rem;
+            font-family: Garamond, serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .admin-header p {
+            font-size: 1.1rem;
+            color: #d1d1d1;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1000px;
+            margin: -2rem auto 4rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Cartões de Instrução */
+        .instruction-card {
+            background-color: var(--color-surface);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            border-left: 6px solid var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .instruction-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 1rem;
+        }
+
+        .step-badge {
+            background-color: var(--color-primary);
+            color: #ffffff;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(178, 0, 0, 0.2);
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            color: var(--color-text-headings);
+            font-weight: 600;
+        }
+
+        /* Conteúdo do Manual */
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .content-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background-color: var(--color-background);
+            color: var(--color-hover-primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #ebdcb8;
+        }
+
+        .alert-box {
+            background-color: #fff4f4;
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .alert-box strong {
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1f1f1f;
+            color: #a0a0a0;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="brand">Ocean Coffee - Gestão</div>
+        <h1>Manual Operacional do Administrador</h1>
+        <p>Guia definitivo passo a passo para curadoria de anúncios, gestão de usuários e controle total do marketplace agrícola.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Passo 1 -->
+        <div class="instruction-card">
+            <div class="card-header">
+                <div class="step-badge">1</div>
+                <h2>Visão Geral do Painel (Dashboard)</h2>
+            </div>
+            <ul class="content-list">
+                <li>Ao fazer login com suas credenciais de Administrador, você será direcionado automaticamente para o <strong>Painel de Controle Principal</strong>.</li>
+                <li>No topo da tela, observe os <strong>Cartões de Métricas</strong>. Eles fornecem um resumo em tempo real da saúde da plataforma, como o volume de usuários ativos e a contagem de anúncios no sistema.</li>
+                <li>Utilize o menu de navegação lateral para transitar rapidamente entre os módulos de moderação, listagem de cadastros e ferramentas de busca.</li>
+            </ul>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="instruction-card">
+            <div class="card-header">
+                <div class="step-badge">2</div>
+                <h2>Moderação de Solicitações (Anúncios Pendentes)</h2>
+            </div>
+            <ul class="content-list">
+                <li>Sempre que um produtor publica um novo item, ele não vai direto para a loja. Ele entra em uma fila de moderação. Acesse o menu <span class="highlight">Solicitações Pendentes</span>.</li>
+                <li><strong>Análise o conteúdo:</strong> Verifique se as fotos são nítidas, se a descrição condiz com o produto (grãos ou máquinas) e se o valor cobrado faz sentido para o mercado.</li>
+                <li><strong>Aprovação:</strong> Se estiver tudo correto, clique no botão de <strong>Aprovar</strong>. O anúncio ficará verde, sinalizando que agora está visível publicamente no Marketplace para todos os compradores.</li>
+                <li><strong>Rejeição:</strong> Caso o anúncio fira as políticas da plataforma (fotos falsas, descrição imprópria ou fraude), clique em <strong>Rejeitar/Excluir</strong> para removê-lo permanentemente da fila.</li>
+            </ul>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="instruction-card">
+            <div class="card-header">
+                <div class="step-badge">3</div>
+                <h2>Gestão de Anúncios Aprovados e Vitrine</h2>
+            </div>
+            <ul class="content-list">
+                <li>Acesse o menu <span class="highlight">Anúncios Aprovados</span> para visualizar o catálogo atual de tudo o que está ativo e sendo vendido na loja no momento.</li>
+                <li>Como administrador, você tem o poder de auditar o que já foi publicado. Se um produtor vendeu um lote de café fora do site e esqueceu de dar baixa, você pode intervir.</li>
+                <li>Nesta tela, você pode clicar em <strong>Marcar como Vendido</strong> ou <strong>Excluir</strong> qualquer anúncio ativo, garantindo que a vitrine da Ocean Coffee ofereça apenas produtos reais e disponíveis.</li>
+            </ul>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="instruction-card">
+            <div class="card-header">
+                <div class="step-badge">4</div>
+                <h2>Ferramenta de Busca Específica (Maquinários)</h2>
+            </div>
+            <ul class="content-list">
+                <li>O sistema possui um módulo dedicado para a localização ágil de equipamentos pesados. Acesse o menu <span class="highlight">Busca de Tratores/Máquinas</span>.</li>
+                <li>Esta ferramenta permite ao administrador filtrar rapidamente o banco de dados para encontrar colheitadeiras, tratores e implementos agrícolas específicos.</li>
+                <li>Ideal para auxiliar compradores corporativos que entram em contato direto com a administração procurando maquinário pesado.</li>
+            </ul>
+        </div>
+
+        <!-- Passo 5 -->
+        <div class="instruction-card">
+            <div class="card-header">
+                <div class="step-badge">5</div>
+                <h2>Gerenciamento de Usuários e Segurança</h2>
+            </div>
+            <ul class="content-list">
+                <li>Acesse o menu <span class="highlight">Gerenciar Usuários</span> para ter acesso à lista completa de todos os produtores e compradores cadastrados no sistema.</li>
+                <li><strong>Auditoria de Perfis:</strong> Você pode visualizar os dados de contato (Nome, E-mail) de cada integrante.</li>
+                <li><strong>Atualização e Exclusão:</strong> Se um usuário solicitar a exclusão de seus dados, ou se for identificado um perfil falso ou golpista, você possui a autoridade para clicar no botão de <strong>Excluir Usuário</strong>, bloqueando o acesso daquela conta imediatamente.</li>
+            </ul>
+            
+            <div class="alert-box">
+                <strong>Atenção às Políticas de Privacidade</strong>
+                Lembre-se que, como Administrador, você lida com dados sensíveis. Ao excluir um usuário, todos os anúncios vinculados a ele também podem ser impactados. Tenha certeza da ação antes de confirmar exclusões no banco de dados.
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ocean Coffee. Painel de Uso Exclusivo da Administração.</p>
+    </footer>
+
+</body>
+</html>
