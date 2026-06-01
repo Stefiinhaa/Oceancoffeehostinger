@@ -7,32 +7,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let allProducts = []; 
 
     const getCategoryFromTitle = (title) => {
-        const lowerCaseTitle = title.toLowerCase();
+    const lowerCaseTitle = title.toLowerCase();
 
-        // 1. Lista de palavras que definem IMPLEMENTOS
-        const listaImplementos = [
-            'implemento', 'rolo faca', 'roçadeira', 'rocadeira', 
-            'arado', 'grade', 'carreta', 'guincho', 'plantadeira', 
-            'motosserra', 'motosera'
-        ];
+    // 1. Definição das listas de palavras-chave
+    const listaImplementos = [
+        'motosserra', 'motosera', 'roçadeira', 'rocadeira', 
+        'implemento', 'rolo faca', 'arado', 'grade', 'carreta', 
+        'guincho', 'plantadeira'
+    ];
 
-        // 2. Verifica se o título contém ALGUM implemento
-        const ehImplemento = listaImplementos.some(item => lowerCaseTitle.includes(item));
+    // 2. Verifica primeiro se é um Implemento
+    const ehImplemento = listaImplementos.some(item => lowerCaseTitle.includes(item));
+    if (ehImplemento) {
+        return 'Implementos';
+    }
 
-        if (ehImplemento) {
-            return 'Implementos';
-        }
-
-        // 3. Se NÃO for implemento, verifica as categorias principais
-        if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
-        if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
-        
-        // 4. Só retorna 'Tratores' se a palavra 'trator' existir E NÃO for um implemento
-        if (lowerCaseTitle.includes('trator')) return 'Tratores';
-        
-        return 'Outros';
-    };
-
+    // 3. Verificação de Máquinas Principais (só chegam aqui se NÃO forem implementos)
+    if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
+    if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
+    
+    // 4. Trator: Agora o sistema garante que "trator" só cai aqui se 
+    // o título NÃO contiver as palavras da lista de implementos acima.
+    if (lowerCaseTitle.includes('trator')) {
+        return 'Tratores';
+    }
+    
+    return 'Outros';
+};
     const normalizeText = (text) => {
         if (typeof text !== 'string') return '';
         return text
