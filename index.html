@@ -572,14 +572,24 @@
         if (usuarioLogado) {
             const user = JSON.parse(usuarioLogado);
             loginLinks.forEach(link => {
-                link.textContent = user.tipo === "Administrador" ? "Login" : "Meu Perfil";
-                link.href = user.tipo === "Administrador" ? "dashboard.html" : "perfil.html";
                 
-                // --- CÓDIGO NOVO: FORÇA A CENTRALIZAÇÃO DO BOTÃO VERMELHO APÓS O LOGIN ---
-                if(link.classList.contains('anuncie-btn')) {
+                // Verifica se é o botão grande vermelho de anunciar no final da página
+                if (link.classList.contains("anuncie-btn")) {
+                    // Mantém o texto "Anuncie agora" e o ícone intactos
+                    link.innerHTML = '<img src="IMG/Loginho.png" alt="Ícone de login" class="icon"><p class="text" style="margin: 0; margin-left: 5px;">Anuncie agora</p>';
+                    
+                    // Garante que o botão fique centralizado
                     link.style.justifyContent = "center";
-                    link.style.textAlign = "center";
+                    
+                    // Direciona o produtor para a tela de criar anúncio e o admin para o painel
+                    link.href = user.tipo === "Administrador" ? "dashboard.html" : "anuncie.html";
+                    
+                } else {
+                    // Se for o link normal do menu no topo da página
+                    link.textContent = user.tipo === "Administrador" ? "Painel Admin" : "Meu Perfil";
+                    link.href = user.tipo === "Administrador" ? "dashboard.html" : "perfil.html";
                 }
+                
             });
         }
 
