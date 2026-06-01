@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Administrador | Ocean Coffee</title>
+    
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           PALETA DE CORES: OCEAN BLUE
+           ========================================= */
+        :root {
+            --oc-primary: #005b9f;         
+            --oc-primary-hover: #003f73;   
+            --oc-dark: #1a2a3a;            
+            --oc-light-accent: #338cd4;    
+            --oc-bg-light: #f4f7fb;        
+            --oc-surface: #ffffff;         
+            --oc-text-main: #333333;       
+            --oc-text-muted: #6b7280;      
+            --oc-border: #dbe4ed;          
+            
+            --status-success: #2b6cb0;
+            --status-success-bg: #ebf8ff;
+            --status-danger: #c53030;
+            --status-danger-bg: #fff5f5;
+            --status-warning: #dd6b20;
+            --status-warning-bg: #fffaf0;
+
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 16px -4px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--oc-bg-light);
+            color: var(--oc-text-main);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* =========================================
+           CABEÇALHO SUPERIOR
+           ========================================= */
+        header {
+            background-color: var(--oc-dark);
+            color: var(--oc-surface);
+            padding: 1.2rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--oc-primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .header-brand .logo-icon {
+            font-size: 1.3rem;
+            color: var(--oc-primary);
+            background-color: var(--oc-surface);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* =========================================
+           LAYOUT PRINCIPAL
+           ========================================= */
+        .docs-container {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Menu Lateral e Barra de Pesquisa */
+        .sidebar {
+            width: 320px;
+            background-color: var(--oc-surface);
+            padding: 2rem 1.5rem;
+            border-right: 1px solid var(--oc-border);
+            position: sticky;
+            top: 84px;
+            height: calc(100vh - 84px);
+            overflow-y: auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 2px solid var(--oc-border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--oc-primary);
+            box-shadow: 0 0 0 3px rgba(0, 91, 159, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 15px;
+            color: var(--oc-text-muted);
+        }
+
+        .sidebar h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--oc-text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-left: 10px;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: var(--oc-text-main);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            margin-bottom: 5px;
+        }
+
+        .sidebar nav ul li a i {
+            color: var(--oc-primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar nav ul li a:hover, .sidebar nav ul li a.active {
+            background-color: var(--oc-bg-light);
+            color: var(--oc-primary);
+            font-weight: 600;
+        }
+
+        /* Área de Conteúdo */
+        .content {
+            flex: 1;
+            padding: 3rem 4rem;
+            background-color: var(--oc-bg-light);
+        }
+
+        .content-intro {
+            margin-bottom: 3rem;
+        }
+
+        .content-intro h1 {
+            font-size: 2.5rem;
+            color: var(--oc-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .content-intro p {
+            font-size: 1.1rem;
+            color: var(--oc-text-muted);
+        }
+
+        /* Cartões de Seção */
+        .section-card {
+            background: var(--oc-surface);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+            border-top: 5px solid var(--oc-primary);
+            scroll-margin-top: 100px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-card h2 {
+            font-size: 1.6rem;
+            color: var(--oc-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--oc-border);
+        }
+
+        .section-card h2 i {
+            color: var(--oc-surface);
+            background: var(--oc-primary);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Detalhamento e Listas */
+        .detail-text {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .action-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .action-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--oc-primary);
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            background-color: var(--status-success-bg);
+            color: var(--status-success);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .highlight-danger {
+            background-color: var(--status-danger-bg);
+            color: var(--status-danger);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .alert-box {
+            display: flex;
+            gap: 1.5rem;
+            background-color: var(--status-warning-bg);
+            border-left: 4px solid var(--status-warning);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 2rem;
+        }
+
+        .alert-box i {
+            color: var(--status-warning);
+            font-size: 1.5rem;
+        }
+
+        /* =========================================
+           FAQ INTERATIVO (ACORDEÃO)
+           ========================================= */
+        .faq-accordion {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background-color: var(--oc-surface);
+            border: 1px solid var(--oc-border);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #a4c2df;
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--oc-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none; /* Remove a seta padrão */
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none; /* Remove a seta no Safari */
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .faq-question .icon-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-question .icon-group i {
+            color: var(--oc-primary);
+            font-size: 1.2rem;
+        }
+
+        .icon-toggle {
+            color: var(--oc-text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] {
+            border-color: var(--oc-primary);
+        }
+
+        .faq-item[open] .faq-question {
+            border-bottom: 1px solid var(--oc-border);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #f8fafc;
+            color: var(--oc-primary);
+        }
+
+        .faq-item[open] .icon-toggle {
+            transform: rotate(180deg);
+            color: var(--oc-primary);
+        }
+
+        .faq-answer {
+            padding: 1.25rem 1.5rem;
+            color: var(--oc-text-main);
+            background-color: var(--oc-surface);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            animation: slideDown 0.3s ease-out forwards;
+            transform-origin: top;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            color: var(--oc-text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* =========================================
+           RESPONSIVIDADE
+           ========================================= */
+        @media (max-width: 1024px) {
+            .sidebar { width: 260px; }
+            .content { padding: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .docs-container { flex-direction: column; }
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: static; 
+                border-bottom: 1px solid var(--oc-border);
+            }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .header-brand { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-brand">
+            <i class="fas fa-coffee logo-icon"></i>
+            Ocean Coffee | Painel Administrativo
+        </div>
+        <div>
+            <span style="font-size: 0.9rem; opacity: 0.8; font-weight: 500;">Guia de Gestão</span>
+        </div>
+    </header>
+
+    <div class="docs-container">
+        
+        <!-- MENU LATERAL COM PESQUISA -->
+        <aside class="sidebar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" oninput="searchManual()" placeholder="Digite o que procura...">
+            </div>
+
+            <h3>Módulos de Gestão</h3>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard"><i class="fas fa-chart-pie"></i> 1. Visão Geral (Dashboard)</a></li>
+                    <li><a href="#moderacao"><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</a></li>
+                    <li><a href="#vitrine"><i class="fas fa-store"></i> 3. Gestão da Vitrine</a></li>
+                    <li><a href="#usuarios"><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</a></li>
+                    <li><a href="#maquinas"><i class="fas fa-tractor"></i> 5. Busca de Maquinários</a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="content">
+            
+            <div class="content-intro">
+                <h1>Manual de Operação do Sistema</h1>
+                <p>Este documento fornece as diretrizes detalhadas para gerenciar, auditar e manter a qualidade do ecossistema de negócios da Ocean Coffee. Aqui você aprenderá como aprovar anúncios, gerenciar a vitrine e monitorar os usuários.</p>
+            </div>
+
+            <div id="no-results">
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; color: #338cd4;"></i>
+                <p>Nenhum resultado encontrado para a sua pesquisa.</p>
+            </div>
+
+            <!-- SEÇÃO 1: DASHBOARD (Tags: painel, graficos, inicio, numeros, metricas, estatisticas) -->
+            <section id="dashboard" class="section-card" data-keywords="painel graficos inicio numeros metricas estatisticas inicial">
+                <h2><i class="fas fa-chart-pie"></i> 1. Visão Geral do Painel (Dashboard)</h2>
+                <p class="detail-text">O Dashboard é o coração operacional do administrador. Ele foi desenhado para fornecer um panorama imediato sobre o volume de negócios da plataforma.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-arrow-right"></i><strong>Indicadores em Tempo Real:</strong> No topo da tela inicial do seu painel, você verá blocos informativos. Eles mostram instantaneamente o total de contas criadas, o volume de anúncios na loja e a fila de postagens pendentes.</li>
+                    <li><i class="fas fa-arrow-right"></i><strong>Navegação Lateral:</strong> Para realizar qualquer tarefa (aprovar algo ou gerenciar clientes), utilize os botões que ficam sempre visíveis no menu escuro à esquerda da sua tela.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 2: MODERAÇÃO (Tags: aprovar, rejeitar, pendentes, fila, avaliar, liberar, aceitar, bloquear) -->
+            <section id="moderacao" class="section-card" data-keywords="aprovar rejeitar pendentes fila avaliar liberar aceitar bloquear analise">
+                <h2><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</h2>
+                <p class="detail-text">Nenhum anúncio vai para a loja sozinho. Todo produto cadastrado por um usuário entra em uma "fila de espera" para que você garanta a qualidade e evite fraudes.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-search"></i><strong>Onde encontrar:</strong> No seu menu lateral, clique na seção <strong>Solicitações</strong> ou <strong>Anúncios Pendentes</strong>.</li>
+                    <li><i class="fas fa-eye"></i><strong>O que avaliar:</strong> Confira se a foto do produto é nítida, se o título faz sentido e se o preço não é obviamente falso.</li>
+                    <li><i class="fas fa-check"></i><strong>Como Aprovar:</strong> Se a oferta for real, clique no botão <span class="highlight">Aprovar</span>. A partir deste segundo, o anúncio já pode ser visto e comprado por qualquer visitante do site.</li>
+                    <li><i class="fas fa-times"></i><strong>Como Rejeitar:</strong> Se a postagem for um teste, tiver fotos ilegíveis ou for uma tentativa de golpe, clique em <span class="highlight-danger">Rejeitar</span> ou Excluir. O anúncio será descartado.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 3: VITRINE (Tags: baixas, vendido, ativo, catalogo, loja, retirar, atualizar) -->
+            <section id="vitrine" class="section-card" data-keywords="baixas vendido ativo catalogo loja retirar atualizar retirar status">
+                <h2><i class="fas fa-store"></i> 3. Gestão da Vitrine Ativa</h2>
+                <p class="detail-text">Você tem controle absoluto sobre tudo o que está visível na loja neste exato momento.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-list"></i><strong>Monitoramento:</strong> Acesse a tela de <strong>Anúncios Aprovados</strong> para auditar as ofertas que estão no ar.</li>
+                    <li><i class="fas fa-tag"></i><strong>Marcar como Vendido:</strong> Muitas vezes, um produtor vende seu produto fora da plataforma e esquece de avisar. Você pode atuar ativamente clicando na opção <strong>Vendido</strong>. O anúncio <em>não sai da visualização do cliente</em>, ele apenas recebe uma etiqueta visual indicando que o produto já foi comercializado, mantendo o histórico da loja sem frustrar novos compradores.</li>
+                    <li><i class="fas fa-trash-alt"></i><strong>Exclusão de Emergência:</strong> Se um anúncio aprovado receber denúncias graves de fraude posteriormente, você pode usar o botão de exclusão para tirá-lo do ar à força.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 4: USUÁRIOS (Tags: clientes, membros, contas, apagar, deletar, banir, auditar, relatorio, lista) -->
+            <section id="usuarios" class="section-card" data-keywords="clientes membros contas apagar deletar banir auditar relatorio lista visualizar contato">
+                <h2><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</h2>
+                <p class="detail-text">O controle de quem participa da plataforma é fundamental para o sucesso das negociações.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-user-check"></i><strong>Lista de Clientes:</strong> No menu <strong>Usuários</strong>, você acessa a base completa de pessoas que usam o sistema. Você pode visualizar e-mails e contatos para eventuais suportes ou relatórios visuais.</li>
+                    <li><i class="fas fa-user-slash"></i><strong>Banir / Excluir Contas:</strong> Ao identificar um golpista ou a pedido do próprio dono da conta, você pode clicar em <span class="highlight-danger">Excluir Usuário</span>. O acesso da pessoa será revogado instantaneamente.</li>
+                </ul>
+
+                <div class="alert-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Aviso Crítico de Exclusão</strong>
+                        No nosso banco de dados, ao excluir um usuário, <strong>todos os anúncios</strong> que ele publicou também serão apagados para sempre. Portanto, só exclua contas quando tiver certeza absoluta da ação.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 5: MÁQUINAS (Tags: trator, colheitadeira, implemento, buscar, equipamento, pesado) -->
+            <section id="maquinas" class="section-card" data-keywords="trator colheitadeira implemento buscar equipamento pesado categoria">
+                <h2><i class="fas fa-tractor"></i> 5. Busca de Maquinários</h2>
+                <p class="detail-text">Uma ferramenta pensada para facilitar o atendimento a grandes compradores rurais.</p>
+                <ul class="action-list">
+                    <li><i class="fas fa-search-location"></i><strong>Filtro Dedicado:</strong> No painel, você possui um link chamado <strong>Busca de Tratores/Máquinas</strong>. Esta tela ignora os grãos de café e lista apenas equipamentos pesados e veículos anunciados.</li>
+                    <li><i class="fas fa-headset"></i><strong>Uso Prático:</strong> Utilize esta tela quando um cliente entrar em contato direto com a diretoria procurando, por exemplo, "uma colheitadeira específica", permitindo que você encontre a oferta e passe o contato do vendedor rapidamente.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 6: FAQ -->
+            <section id="faq" class="section-card" data-keywords="duvidas perguntas suporte ajuda recuperar volta apaga sai some">
+                <h2><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</h2>
+                <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas:</p>
+                
+                <div class="faq-accordion">
+                    <!-- Pergunta 1 -->
+                    <details class="faq-item" data-keywords="baixar apagar sumir excluir sumiu">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-tag"></i>
+                                Quando dou baixa como "Vendido", o anúncio some da loja?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p><strong>Não.</strong> O anúncio continua aparecendo normalmente na vitrine para que os visitantes vejam o volume de negócios do site. A única diferença é que ele recebe uma faixa visual escrita "Vendido", impedindo que clientes percam tempo tentando comprá-lo.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pergunta 2 -->
+                    <details class="faq-item" data-keywords="aprovacao rejeicao recusar recusado fila">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-times-circle"></i>
+                                O que acontece quando rejeito um anúncio pendente?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Ele é imediatamente removido da sua fila de trabalho e nunca chegará a aparecer na loja pública. Utilize essa função para limpar postagens de teste feitas por usuários ou anúncios que quebram as regras.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pergunta 3 -->
+                    <details class="faq-item" data-keywords="desfazer recuperar voltar atras apaguei deletei">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-history"></i>
+                                Posso recuperar um usuário após excluí-lo?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p><strong>Não.</strong> Por questões de privacidade e arquitetura do sistema, a exclusão de um usuário é definitiva e irreversível. Seus dados e anúncios serão apagados. Se foi um engano, o usuário terá que se cadastrar novamente do zero.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pergunta 4 -->
+                    <details class="faq-item" data-keywords="relatorio gerar baixar pdf excel exportar lista">
+                        <summary class="faq-question">
+                            <div class="icon-group">
+                                <i class="fas fa-list-alt"></i>
+                                Como gero relatórios em PDF/Excel dos usuários?
+                            </div>
+                            <i class="fas fa-chevron-down icon-toggle"></i>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Atualmente, o sistema não gera arquivos para download. A funcionalidade de relatórios consiste na <strong>visualização direta</strong> na aba "Usuários", onde você tem uma lista clara e limpa de quem opera na plataforma para consulta ou auditoria rápida na própria tela.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- SCRIPT DE PESQUISA INTELIGENTE (COM TAGS E HIGHLIGHT) -->
+    <script>
+        // Função para remover acentos e deixar tudo minúsculo (pesquisa mais inteligente)
+        function removerAcentos(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        function searchManual() {
+            // Pega o termo digitado já sem acentos
+            let input = removerAcentos(document.getElementById('searchInput').value);
+            let sections = document.querySelectorAll('.section-card');
+            let noResult = document.getElementById('no-results');
+            let hasResult = false;
+
+            sections.forEach(section => {
+                // Pega o texto da seção inteira
+                let text = removerAcentos(section.textContent);
+                // Pega as "tags invisíveis" que colocamos no HTML (ex: vender, apagar, deletar)
+                let keywords = removerAcentos(section.getAttribute('data-keywords') || "");
+                
+                // Se a palavra digitada estiver no texto OU nas tags invisíveis, mostre a seção
+                if(text.includes(input) || keywords.includes(input)) {
+                    section.style.display = 'block';
+                    hasResult = true;
+                    
+                    // Lógica especial para abrir a caixinha do FAQ automaticamente se achar algo lá dentro
+                    if (input.length > 2 && section.id === 'faq') {
+                        let faqItems = section.querySelectorAll('.faq-item');
+                        faqItems.forEach(item => {
+                            let itemText = removerAcentos(item.textContent);
+                            let itemKeywords = removerAcentos(item.getAttribute('data-keywords') || "");
+                            
+                            // Se a pesquisa bater com o texto OU tag deste FAQ específico, ele abre
+                            if (itemText.includes(input) || itemKeywords.includes(input)) {
+                                item.setAttribute('open', 'true');
+                                item.style.display = 'block';
+                            } else {
+                                item.removeAttribute('open');
+                                item.style.display = 'none'; // Esconde os outros FAQs que não combinam
+                            }
+                        });
+                    } else if (section.id === 'faq') {
+                         // Se a pessoa apagar a pesquisa, volta os FAQs ao normal
+                         let faqItems = section.querySelectorAll('.faq-item');
+                         faqItems.forEach(item => {
+                             item.style.display = 'block';
+                             item.removeAttribute('open');
+                         });
+                    }
+
+                } else {
+                    // Esconde a seção se a palavra não estiver nem no texto nem nas tags
+                    section.style.display = 'none';
+                }
+            });
+
+            // Gerencia a mensagem de erro
+            if(hasResult) {
+                noResult.style.display = 'none';
+            } else {
+                noResult.style.display = 'block';
+            }
+        }
+
+        // Script para deixar o menu lateral ativo conforme a rolagem da página
+        const sectionsList = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sectionsList.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
