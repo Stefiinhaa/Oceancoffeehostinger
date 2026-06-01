@@ -56,7 +56,7 @@
         }
 
         /* =========================================
-           CABEÇALHO SUPERIOR
+           CABEÇALHO SUPERIOR (COM LOGO OFICIAL)
            ========================================= */
         header {
             background-color: var(--oc-dark);
@@ -81,16 +81,12 @@
             letter-spacing: 0.5px;
         }
 
-        .header-brand .logo-icon {
-            font-size: 1.3rem;
-            color: var(--oc-primary);
-            background-color: var(--oc-surface);
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+        .header-brand img {
+            height: 48px;
+            object-fit: contain;
+            background-color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
@@ -240,6 +236,7 @@
             padding: 12px;
             border-radius: 8px;
             font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 91, 159, 0.3);
         }
 
         /* Detalhamento e Listas */
@@ -275,6 +272,7 @@
             border-radius: 4px;
             font-weight: 600;
             font-size: 0.95rem;
+            border: 1px solid #bee3f8;
         }
         
         .highlight-danger {
@@ -284,6 +282,7 @@
             border-radius: 4px;
             font-weight: 600;
             font-size: 0.95rem;
+            border: 1px solid #fed7d7;
         }
 
         .alert-box {
@@ -427,8 +426,9 @@
     <!-- CABEÇALHO -->
     <header>
         <div class="header-brand">
-            <i class="fas fa-coffee logo-icon"></i>
-            Ocean Coffee | Painel Administrativo
+            <!-- Logo Oficial da Ocean Coffee -->
+            <img src="IMG/1.png" alt="Logo Ocean Coffee">
+            <span>Ocean Coffee | Painel Administrativo</span>
         </div>
         <div>
             <span style="font-size: 0.9rem; opacity: 0.8; font-weight: 500;">Guia de Gestão</span>
@@ -462,7 +462,7 @@
             
             <div class="content-intro">
                 <h1>Manual de Operação do Sistema</h1>
-                <p>Este documento fornece as diretrizes detalhadas para gerenciar, auditar e manter a qualidade do ecossistema de negócios da Ocean Coffee. Aqui você aprenderá como aprovar anúncios, gerenciar a vitrine e monitorar os usuários.</p>
+                <p>Este documento fornece as diretrizes detalhadas para gerenciar, auditar e manter a qualidade do ecossistema de negócios da Ocean Coffee. Aqui você aprenderá como aprovar anúncios, gerenciar a vitrine e monitorar os usuários de forma segura.</p>
             </div>
 
             <div id="no-results">
@@ -470,7 +470,7 @@
                 <p>Nenhum resultado encontrado para a sua pesquisa.</p>
             </div>
 
-            <!-- SEÇÃO 1: DASHBOARD (Tags: painel, graficos, inicio, numeros, metricas, estatisticas) -->
+            <!-- SEÇÃO 1: DASHBOARD -->
             <section id="dashboard" class="section-card" data-keywords="painel graficos inicio numeros metricas estatisticas inicial">
                 <h2><i class="fas fa-chart-pie"></i> 1. Visão Geral do Painel (Dashboard)</h2>
                 <p class="detail-text">O Dashboard é o coração operacional do administrador. Ele foi desenhado para fornecer um panorama imediato sobre o volume de negócios da plataforma.</p>
@@ -480,7 +480,7 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 2: MODERAÇÃO (Tags: aprovar, rejeitar, pendentes, fila, avaliar, liberar, aceitar, bloquear) -->
+            <!-- SEÇÃO 2: MODERAÇÃO -->
             <section id="moderacao" class="section-card" data-keywords="aprovar rejeitar pendentes fila avaliar liberar aceitar bloquear analise">
                 <h2><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</h2>
                 <p class="detail-text">Nenhum anúncio vai para a loja sozinho. Todo produto cadastrado por um usuário entra em uma "fila de espera" para que você garanta a qualidade e evite fraudes.</p>
@@ -492,8 +492,8 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 3: VITRINE (Tags: baixas, vendido, ativo, catalogo, loja, retirar, atualizar) -->
-            <section id="vitrine" class="section-card" data-keywords="baixas vendido ativo catalogo loja retirar atualizar retirar status">
+            <!-- SEÇÃO 3: VITRINE -->
+            <section id="vitrine" class="section-card" data-keywords="baixas vendido ativo catalogo loja retirar atualizar status">
                 <h2><i class="fas fa-store"></i> 3. Gestão da Vitrine Ativa</h2>
                 <p class="detail-text">Você tem controle absoluto sobre tudo o que está visível na loja neste exato momento.</p>
                 <ul class="action-list">
@@ -503,12 +503,12 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 4: USUÁRIOS (Tags: clientes, membros, contas, apagar, deletar, banir, auditar, relatorio, lista) -->
-            <section id="usuarios" class="section-card" data-keywords="clientes membros contas apagar deletar banir auditar relatorio lista visualizar contato">
+            <!-- SEÇÃO 4: USUÁRIOS -->
+            <section id="usuarios" class="section-card" data-keywords="clientes membros contas apagar deletar banir auditar visualizar contato">
                 <h2><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</h2>
                 <p class="detail-text">O controle de quem participa da plataforma é fundamental para o sucesso das negociações.</p>
                 <ul class="action-list">
-                    <li><i class="fas fa-user-check"></i><strong>Lista de Clientes:</strong> No menu <strong>Usuários</strong>, você acessa a base completa de pessoas que usam o sistema. Você pode visualizar e-mails e contatos para eventuais suportes ou relatórios visuais.</li>
+                    <li><i class="fas fa-user-check"></i><strong>Lista de Clientes:</strong> No menu <strong>Usuários</strong>, você acessa a base completa de pessoas que usam o sistema. Você pode visualizar e-mails e contatos para eventuais suportes ou consultas rápidas.</li>
                     <li><i class="fas fa-user-slash"></i><strong>Banir / Excluir Contas:</strong> Ao identificar um golpista ou a pedido do próprio dono da conta, você pode clicar em <span class="highlight-danger">Excluir Usuário</span>. O acesso da pessoa será revogado instantaneamente.</li>
                 </ul>
 
@@ -521,7 +521,7 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 5: MÁQUINAS (Tags: trator, colheitadeira, implemento, buscar, equipamento, pesado) -->
+            <!-- SEÇÃO 5: MÁQUINAS -->
             <section id="maquinas" class="section-card" data-keywords="trator colheitadeira implemento buscar equipamento pesado categoria">
                 <h2><i class="fas fa-tractor"></i> 5. Busca de Maquinários</h2>
                 <p class="detail-text">Uma ferramenta pensada para facilitar o atendimento a grandes compradores rurais.</p>
@@ -547,7 +547,7 @@
                             <i class="fas fa-chevron-down icon-toggle"></i>
                         </summary>
                         <div class="faq-answer">
-                            <p><strong>Não.</strong> O anúncio continua aparecendo normalmente na vitrine para que os visitantes vejam o volume de negócios do site. A única diferença é que ele recebe uma faixa visual escrita "Vendido", impedindo que clientes percam tempo tentando comprá-lo.</p>
+                            <p><strong>Não.</strong> O anúncio continua aparecendo normalmente na vitrine para que os visitantes vejam o volume de negócios do site. A única diferença é que ele recebe uma faixa visual escrita "Vendido", impedindo que clientes percam tempo tentando comprá-lo[cite: 1, 2].</p>
                         </div>
                     </details>
 
@@ -561,7 +561,7 @@
                             <i class="fas fa-chevron-down icon-toggle"></i>
                         </summary>
                         <div class="faq-answer">
-                            <p>Ele é imediatamente removido da sua fila de trabalho e nunca chegará a aparecer na loja pública. Utilize essa função para limpar postagens de teste feitas por usuários ou anúncios que quebram as regras.</p>
+                            <p>Ele é imediatamente removido da sua fila de trabalho e nunca chegará a aparecer na loja pública[cite: 1, 2]. Utilize essa função para limpar postagens de teste feitas por usuários ou anúncios que quebram as regras.</p>
                         </div>
                     </details>
 
@@ -575,21 +575,7 @@
                             <i class="fas fa-chevron-down icon-toggle"></i>
                         </summary>
                         <div class="faq-answer">
-                            <p><strong>Não.</strong> Por questões de privacidade e arquitetura do sistema, a exclusão de um usuário é definitiva e irreversível. Seus dados e anúncios serão apagados. Se foi um engano, o usuário terá que se cadastrar novamente do zero.</p>
-                        </div>
-                    </details>
-
-                    <!-- Pergunta 4 -->
-                    <details class="faq-item" data-keywords="relatorio gerar baixar pdf excel exportar lista">
-                        <summary class="faq-question">
-                            <div class="icon-group">
-                                <i class="fas fa-list-alt"></i>
-                                Como gero relatórios em PDF/Excel dos usuários?
-                            </div>
-                            <i class="fas fa-chevron-down icon-toggle"></i>
-                        </summary>
-                        <div class="faq-answer">
-                            <p>Atualmente, o sistema não gera arquivos para download. A funcionalidade de relatórios consiste na <strong>visualização direta</strong> na aba "Usuários", onde você tem uma lista clara e limpa de quem opera na plataforma para consulta ou auditoria rápida na própria tela.</p>
+                            <p><strong>Não.</strong> Por questões de privacidade e arquitetura do sistema, a exclusão de um usuário é definitiva e irreversível[cite: 1, 2]. Seus dados e anúncios serão apagados. Se foi um engano, o usuário terá que se cadastrar novamente do zero.</p>
                         </div>
                     </details>
                 </div>
@@ -615,7 +601,7 @@
             sections.forEach(section => {
                 // Pega o texto da seção inteira
                 let text = removerAcentos(section.textContent);
-                // Pega as "tags invisíveis" que colocamos no HTML (ex: vender, apagar, deletar)
+                // Pega as "tags invisíveis" que colocamos no HTML
                 let keywords = removerAcentos(section.getAttribute('data-keywords') || "");
                 
                 // Se a palavra digitada estiver no texto OU nas tags invisíveis, mostre a seção
