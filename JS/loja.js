@@ -9,27 +9,31 @@ document.addEventListener('DOMContentLoaded', () => {
    const getCategoryFromTitle = (title) => {
         const lowerCaseTitle = title.toLowerCase();
 
-        // 1º PASSO: Verificar IMPLEMENTOS E EQUIPAMENTOS MENORES PRIMEIRO. 
+        // 1. Verificação rígida de IMPLEMENTOS (prioridade total)
+        // Se o título contiver qualquer uma destas palavras, para aqui.
         if (
-            lowerCaseTitle.includes('implemento') || 
-            lowerCaseTitle.includes('rolo faca') ||
+            lowerCaseTitle.includes('motosserra') ||
+            lowerCaseTitle.includes('motosera') ||
             lowerCaseTitle.includes('roçadeira') ||
             lowerCaseTitle.includes('rocadeira') ||
+            lowerCaseTitle.includes('implemento') || 
+            lowerCaseTitle.includes('rolo faca') ||
             lowerCaseTitle.includes('arado') ||
             lowerCaseTitle.includes('grade') ||
             lowerCaseTitle.includes('carreta') ||
-            lowerCaseTitle.includes('pulverizador tratorizado') ||
             lowerCaseTitle.includes('guincho') ||
-            lowerCaseTitle.includes('plantadeira') ||
-            lowerCaseTitle.includes('motosserra') || // Adicionado!
-            lowerCaseTitle.includes('motosera')      // Prevenção de erro ortográfico
+            lowerCaseTitle.includes('plantadeira')
         ) {
             return 'Implementos';
         }
 
-        // 2º PASSO: Só depois verificar as máquinas principais
+        // 2. Verificação de Máquinas Principais
+        // Só chega aqui se NÃO for um implemento da lista acima
         if (lowerCaseTitle.includes('colheitadeira')) return 'Colheitadeiras';
         if (lowerCaseTitle.includes('pulverizador')) return 'Pulverizadores';
+        
+        // Agora, o trator só será classificado como "Tratores" se 
+        // o título NÃO contiver as palavras de implementos acima.
         if (lowerCaseTitle.includes('trator')) return 'Tratores';
         
         return 'Outros';
