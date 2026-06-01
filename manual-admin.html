@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Administrador | Ocean Coffee</title>
+    <title>Central de Ajuda | Ocean Coffee</title>
     
     <!-- Fontes e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,24 +11,21 @@
 
     <style>
         /* =========================================
-           PALETA DE CORES OFICIAL OCEAN COFFEE
+           PALETA DE CORES: OCEAN BLUE
            ========================================= */
         :root {
-            --oc-primary: #b20000;         /* Vermelho Institucional */
-            --oc-primary-hover: #8c0000;   /* Vermelho Escuro */
-            --oc-coffee: #3e2f1c;          /* Marrom Café (Títulos/Rodapé) */
-            --oc-coffee-light: #883a1b;    /* Marrom Claro (Destaques) */
-            --oc-bg-cream: #f9f5e7;        /* Fundo Creme */
+            --oc-primary: #005b9f;         /* Azul Oceano Institucional */
+            --oc-primary-hover: #003f73;   /* Azul Escuro / Marinho */
+            --oc-dark: #1a2a3a;            /* Azul Noite (Títulos e Cabeçalho) */
+            --oc-light-accent: #338cd4;    /* Azul Claro (Destaques e Ícones) */
+            --oc-bg-light: #f4f7fb;        /* Fundo Gelo/Azulado Suave */
             --oc-surface: #ffffff;         /* Fundo Branco (Cartões) */
             --oc-text-main: #333333;       /* Texto Principal */
-            --oc-text-muted: #666666;      /* Texto Secundário */
-            --oc-border: #e2e8f0;          /* Bordas */
+            --oc-text-muted: #6b7280;      /* Texto Secundário */
+            --oc-border: #dbe4ed;          /* Bordas Azuladas */
             
-            /* Status Colors */
-            --status-success: #2f855a;
-            --status-success-bg: #f0fff4;
-            --status-danger: #c53030;
-            --status-danger-bg: #fff5f5;
+            --status-success: #2b6cb0;
+            --status-success-bg: #ebf8ff;
             --status-warning: #dd6b20;
             --status-warning-bg: #fffaf0;
 
@@ -36,9 +33,6 @@
             --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.05);
         }
 
-        /* =========================================
-           RESET E BASE
-           ========================================= */
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +45,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--oc-bg-cream);
+            background-color: var(--oc-bg-light);
             color: var(--oc-text-main);
             line-height: 1.7;
             display: flex;
@@ -63,9 +57,9 @@
            CABEÇALHO SUPERIOR
            ========================================= */
         header {
-            background-color: var(--oc-coffee);
+            background-color: var(--oc-dark);
             color: var(--oc-surface);
-            padding: 1.5rem 3rem;
+            padding: 1.2rem 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -80,16 +74,21 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        .header-brand i {
-            color: var(--oc-primary);
+        .header-brand img {
+            height: 45px;
+            object-fit: contain;
+            background-color: #ffffff;
+            border-radius: 50%;
+            padding: 3px;
         }
 
         /* =========================================
-           LAYOUT DE DOCUMENTAÇÃO (SIDEBAR + CONTENT)
+           LAYOUT PRINCIPAL
            ========================================= */
         .docs-container {
             display: flex;
@@ -99,16 +98,44 @@
             width: 100%;
         }
 
-        /* Menu Lateral */
+        /* Menu Lateral e Barra de Pesquisa */
         .sidebar {
-            width: 300px;
+            width: 320px;
             background-color: var(--oc-surface);
             padding: 2rem 1.5rem;
             border-right: 1px solid var(--oc-border);
             position: sticky;
-            top: 84px; /* Altura do header */
+            top: 84px;
             height: calc(100vh - 84px);
             overflow-y: auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 2px solid var(--oc-border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--oc-primary);
+            box-shadow: 0 0 0 3px rgba(0, 91, 159, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 15px;
+            color: var(--oc-text-muted);
         }
 
         .sidebar h3 {
@@ -144,15 +171,16 @@
         }
 
         .sidebar nav ul li a:hover, .sidebar nav ul li a.active {
-            background-color: var(--oc-bg-cream);
+            background-color: var(--oc-bg-light);
             color: var(--oc-primary);
+            font-weight: 600;
         }
 
         /* Área de Conteúdo */
         .content {
             flex: 1;
             padding: 3rem 4rem;
-            background-color: var(--oc-bg-cream);
+            background-color: var(--oc-bg-light);
         }
 
         .content-intro {
@@ -161,7 +189,7 @@
 
         .content-intro h1 {
             font-size: 2.5rem;
-            color: var(--oc-coffee);
+            color: var(--oc-dark);
             margin-bottom: 1rem;
             font-weight: 700;
         }
@@ -180,11 +208,17 @@
             box-shadow: var(--shadow-md);
             border-top: 5px solid var(--oc-primary);
             scroll-margin-top: 100px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section-card h2 {
-            font-size: 1.8rem;
-            color: var(--oc-coffee);
+            font-size: 1.6rem;
+            color: var(--oc-dark);
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
@@ -194,11 +228,11 @@
         }
 
         .section-card h2 i {
-            color: var(--oc-primary);
-            background: var(--status-danger-bg);
+            color: var(--oc-surface);
+            background: var(--oc-primary);
             padding: 12px;
             border-radius: 8px;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
         }
 
         /* Detalhamento e Listas */
@@ -227,45 +261,16 @@
             font-size: 1.2rem;
         }
 
-        /* Badges de Destaque */
-        .tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.9rem;
+        .highlight {
+            background-color: var(--status-success-bg);
+            color: var(--status-success);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
             font-weight: 600;
-            margin: 0 4px;
-            border: 1px solid;
+            font-size: 0.95rem;
         }
 
-        .tag.approve { background: var(--status-success-bg); color: var(--status-success); border-color: #c6f6d5; }
-        .tag.reject { background: var(--status-danger-bg); color: var(--status-danger); border-color: #fed7d7; }
-        .tag.system { background: var(--oc-bg-cream); color: var(--oc-coffee-light); border-color: #e2d9c3; }
-
-        /* FAQ Styling */
-        .faq-item {
-            background-color: var(--oc-bg-cream);
-            border-left: 4px solid var(--oc-primary);
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .faq-item h4 {
-            color: var(--oc-coffee);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .faq-item h4 i {
-            color: var(--oc-primary);
-        }
-
-        /* Alertas Profissionais */
-        .notice-panel {
+        .alert-box {
             display: flex;
             gap: 1.5rem;
             background-color: var(--status-warning-bg);
@@ -275,23 +280,25 @@
             margin-top: 2rem;
         }
 
-        .notice-panel i {
+        .alert-box i {
             color: var(--status-warning);
-            font-size: 1.8rem;
-            margin-top: 5px;
+            font-size: 1.5rem;
         }
 
-        .notice-panel h4 {
-            color: #9c4221;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+        /* Mensagem de "Nenhum resultado" */
+        #no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            color: var(--oc-text-muted);
+            font-size: 1.2rem;
         }
 
         /* =========================================
            RESPONSIVIDADE
            ========================================= */
         @media (max-width: 1024px) {
-            .sidebar { width: 250px; }
+            .sidebar { width: 260px; }
             .content { padding: 2rem; }
         }
 
@@ -301,11 +308,11 @@
                 width: 100%; 
                 height: auto; 
                 position: static; 
-                border-right: none;
                 border-bottom: 1px solid var(--oc-border);
             }
             .content { padding: 1.5rem; }
             .section-card { padding: 1.5rem; }
+            .header-brand { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -314,27 +321,31 @@
     <!-- CABEÇALHO -->
     <header>
         <div class="header-brand">
-            <i class="fas fa-seedling"></i>
+            <img src="IMG/1.png" alt="Logo Ocean Coffee">
             Ocean Coffee | Central de Ajuda
         </div>
         <div>
-            <span style="font-size: 0.9rem; opacity: 0.8;">Acesso Administrativo</span>
+            <span style="font-size: 0.9rem; opacity: 0.8; font-weight: 500;">Guia do Usuário</span>
         </div>
     </header>
 
     <div class="docs-container">
         
-        <!-- MENU LATERAL -->
+        <!-- MENU LATERAL COM PESQUISA -->
         <aside class="sidebar">
-            <h3>Navegação do Manual</h3>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" onkeyup="searchManual()" placeholder="Digite o que procura...">
+            </div>
+
+            <h3>Passo a Passo</h3>
             <nav>
                 <ul>
-                    <li><a href="#dashboard"><i class="fas fa-chart-line"></i> 1. Visão Geral</a></li>
-                    <li><a href="#moderacao"><i class="fas fa-clipboard-check"></i> 2. Moderação</a></li>
-                    <li><a href="#vitrine"><i class="fas fa-store"></i> 3. Gestão da Vitrine</a></li>
-                    <li><a href="#usuarios"><i class="fas fa-users-cog"></i> 4. Usuários</a></li>
-                    <li><a href="#auditoria"><i class="fas fa-shield-alt"></i> 5. Auditoria</a></li>
-                    <li><a href="#faq"><i class="fas fa-question-circle"></i> 6. FAQ / Dúvidas</a></li>
+                    <li><a href="#cadastro"><i class="fas fa-user-plus"></i> 1. Como criar sua conta</a></li>
+                    <li><a href="#login"><i class="fas fa-sign-in-alt"></i> 2. Como entrar no site</a></li>
+                    <li><a href="#anunciar"><i class="fas fa-bullhorn"></i> 3. Como colocar um anúncio</a></li>
+                    <li><a href="#gerenciar"><i class="fas fa-tasks"></i> 4. Gerenciar meus anúncios</a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</a></li>
                 </ul>
             </nav>
         </aside>
@@ -343,106 +354,129 @@
         <main class="content">
             
             <div class="content-intro">
-                <h1>Manual de Operação do Administrador</h1>
-                <p>Este documento fornece as diretrizes detalhadas para gerenciar, auditar e manter a qualidade do ecossistema de negócios da Ocean Coffee. Leia atentamente para compreender as responsabilidades de moderação da plataforma.</p>
+                <h1>Bem-vindo à Ocean Coffee</h1>
+                <p>Nós preparamos este guia simples para te ajudar a dar os primeiros passos na nossa plataforma. Siga as instruções abaixo para criar sua conta e começar a anunciar seus grãos e máquinas agrícolas.</p>
             </div>
 
-            <!-- SEÇÃO 1 -->
-            <section id="dashboard" class="section-card">
-                <h2><i class="fas fa-chart-line"></i> 1. Visão Geral do Painel (Dashboard)</h2>
-                <p class="detail-text">O Dashboard é o coração operacional do administrador. Ele foi desenhado para fornecer um panorama imediato sobre o volume de negócios e cadastros.</p>
+            <div id="no-results">
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                <p>Nenhum resultado encontrado para a sua pesquisa.</p>
+            </div>
+
+            <!-- SEÇÃO 1: CRIAR CONTA -->
+            <section id="cadastro" class="section-card">
+                <h2><i class="fas fa-user-plus"></i> 1. Como criar sua conta (Cadastro)</h2>
+                <p class="detail-text">Antes de poder vender ou comprar, você precisa criar o seu perfil na plataforma. É rápido e gratuito!</p>
                 <ul class="action-list">
-                    <li><i class="fas fa-arrow-right"></i><strong>Indicadores de Desempenho (Cards):</strong> No topo da tela inicial, você encontrará blocos numéricos. Eles exibem dados em tempo real, como o número de contas ativas, o total de anúncios no sistema e, o mais importante, quantas solicitações estão pendentes de aprovação.</li>
-                    <li><i class="fas fa-arrow-right"></i><strong>Navegação Lateral:</strong> O menu à esquerda é a sua ferramenta principal de trabalho. A partir dele, você tem acesso a todos os módulos operacionais descritos abaixo.</li>
+                    <li><i class="fas fa-check"></i>Acesse a página inicial da Ocean Coffee e procure pelo botão <strong>"Cadastre-se"</strong> na parte superior da tela.</li>
+                    <li><i class="fas fa-check"></i>Preencha os campos com os seus dados reais: <strong>Nome completo, E-mail e crie uma Senha</strong> que você não vá esquecer.</li>
+                    <li><i class="fas fa-check"></i>Clique no botão de confirmação. Pronto! Sua conta foi criada com sucesso e você já faz parte da nossa comunidade.</li>
                 </ul>
             </section>
 
-            <!-- SEÇÃO 2 -->
-            <section id="moderacao" class="section-card">
-                <h2><i class="fas fa-clipboard-check"></i> 2. Moderação de Anúncios</h2>
-                <p class="detail-text">Para manter a segurança e a credibilidade da Ocean Coffee, todo anúncio criado por um produtor ou vendedor precisa ser avaliado antes de ir ao ar no Marketplace.</p>
+            <!-- SEÇÃO 2: LOGIN -->
+            <section id="login" class="section-card">
+                <h2><i class="fas fa-sign-in-alt"></i> 2. Como entrar no site (Login)</h2>
+                <p class="detail-text">Sempre que você sair do site e voltar depois, precisará entrar novamente para acessar seus dados.</p>
                 <ul class="action-list">
-                    <li><i class="fas fa-check-circle"></i><strong>Acessando a Fila:</strong> No menu lateral, clique na seção relacionada a <span class="tag system">Solicitações</span> ou Anúncios Pendentes.</li>
-                    <li><i class="fas fa-search"></i><strong>Análise de Qualidade:</strong> Revise cada item da lista. Verifique se as fotos têm boa resolução, se a descrição do café ou da máquina é clara e se não há indícios de fraude no preço ou nos dados informados.</li>
-                    <li><i class="fas fa-thumbs-up"></i><strong>Para Aprovar:</strong> Se a oferta for idônea, clique no botão <span class="tag approve">Aprovar</span>. Imediatamente, o sistema disponibilizará o anúncio na vitrine pública.</li>
-                    <li><i class="fas fa-thumbs-down"></i><strong>Para Rejeitar:</strong> Se o anúncio ferir as diretrizes, estiver duplicado ou for suspeito, clique em <span class="tag reject">Rejeitar</span>. O anúncio será descartado.</li>
+                    <li><i class="fas fa-check"></i>Clique no botão <strong>"Login"</strong> ou <strong>"Entrar"</strong>.</li>
+                    <li><i class="fas fa-check"></i>Digite o e-mail e a senha que você escolheu na hora do cadastro.</li>
+                    <li><i class="fas fa-check"></i>Caso tenha esquecido sua senha, não se preocupe! Basta clicar em <span class="highlight">"Esqueci minha senha"</span>, colocar seu e-mail e nós enviaremos as instruções para você criar uma nova.</li>
                 </ul>
             </section>
 
-            <!-- SEÇÃO 3 -->
-            <section id="vitrine" class="section-card">
-                <h2><i class="fas fa-store"></i> 3. Gestão da Vitrine Ativa</h2>
-                <p class="detail-text">O administrador possui controle sobre os anúncios que já foram aprovados e estão visíveis para os compradores.</p>
+            <!-- SEÇÃO 3: ANUNCIAR -->
+            <section id="anunciar" class="section-card">
+                <h2><i class="fas fa-bullhorn"></i> 3. Como colocar um anúncio no site</h2>
+                <p class="detail-text">Quer vender seu café ou um trator? Veja como é fácil publicar seu produto na nossa vitrine.</p>
                 <ul class="action-list">
-                    <li><i class="fas fa-list"></i><strong>Monitoramento Contínuo:</strong> Acesse a tela de anúncios ativos para auditar as ofertas que estão no ar. É possível buscar por categorias, como Grãos ou Tratores/Máquinas.</li>
-                    <li><i class="fas fa-tags"></i><strong>Dar Baixa em Produtos:</strong> É comum que um produtor venda seu maquinário fora da plataforma e esqueça de retirá-lo do site. O administrador pode atuar ativamente clicando na opção para marcar um anúncio como <span class="tag system">Vendido</span>. <strong>Atenção:</strong> O anúncio não sai da visualização do cliente, ele apenas recebe uma "flag" (etiqueta) de destaque indicando que o produto já foi negociado.</li>
-                    <li><i class="fas fa-trash-alt"></i><strong>Remoção de Conteúdo:</strong> Se um anúncio aprovado sofrer denúncias posteriores e for comprovadamente malicioso, você pode utilizar o botão de exclusão para removê-lo.</li>
-                </ul>
-            </section>
-
-            <!-- SEÇÃO 4 -->
-            <section id="usuarios" class="section-card">
-                <h2><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</h2>
-                <p class="detail-text">Administrar os perfis cadastrados é essencial para garantir uma comunidade segura de negociações agrícolas.</p>
-                <ul class="action-list">
-                    <li><i class="fas fa-user-edit"></i><strong>Visualização e Edição:</strong> No menu <span class="tag system">Usuários</span>, você verá a lista de todas as contas registradas. É possível clicar para editar informações básicas caso o usuário solicite suporte.</li>
-                    <li><i class="fas fa-user-slash"></i><strong>Suspensão/Exclusão de Conta:</strong> Ao identificar um perfil falso ou que viole as regras de comércio, utilize a ação de <span class="tag reject">Excluir</span> para bloquear o acesso daquela conta ao sistema.</li>
+                    <li><i class="fas fa-check"></i>Certifique-se de que você já fez o Login na sua conta.</li>
+                    <li><i class="fas fa-check"></i>Procure o botão <strong>"Anuncie"</strong> ou <strong>"Criar Anúncio"</strong> no menu.</li>
+                    <li><i class="fas fa-check"></i>Preencha as informações do produto: coloque um Título chamativo, escolha se é Grão ou Máquina, digite o Preço e faça uma breve Descrição.</li>
+                    <li><i class="fas fa-check"></i>Adicione fotos nítidas do produto. Boas fotos ajudam a vender mais rápido!</li>
+                    <li><i class="fas fa-check"></i>Clique em Enviar.</li>
                 </ul>
 
-                <div class="notice-panel">
-                    <i class="fas fa-exclamation-triangle"></i>
+                <div class="alert-box">
+                    <i class="fas fa-clock"></i>
                     <div>
-                        <h4>Aviso de Impacto no Banco de Dados</h4>
-                        <p>Ao realizar a exclusão de um usuário, tenha ciência de que <strong>todos os anúncios</strong> vinculados àquela pessoa também poderão ser removidos permanentemente. Execute esta ação apenas quando houver certeza da infração.</p>
+                        <strong>Aviso Importante:</strong> Após enviar, seu anúncio não aparece na hora. Ele vai para uma análise da nossa equipe de moderação (para evitar fraudes). Assim que aprovado, ele ficará visível para todos os compradores!
                     </div>
                 </div>
             </section>
 
-            <!-- SEÇÃO 5 -->
-            <section id="auditoria" class="section-card">
-                <h2><i class="fas fa-shield-alt"></i> 5. Auditoria e Boas Práticas</h2>
-                <p class="detail-text">Manter a Ocean Coffee saudável exige um olhar atento por parte da administração. Siga estas diretrizes operacionais:</p>
+            <!-- SEÇÃO 4: GERENCIAR -->
+            <section id="gerenciar" class="section-card">
+                <h2><i class="fas fa-tasks"></i> 4. Gerenciar meus anúncios</h2>
+                <p class="detail-text">Você tem controle total sobre os produtos que já publicou.</p>
                 <ul class="action-list">
-                    <li><i class="fas fa-eye"></i><strong>Transparência:</strong> Mantenha a prática de revisar as métricas do painel diariamente. O sucesso do Marketplace depende de aprovações ágeis para que os produtores não desistam da plataforma.</li>
-                    <li><i class="fas fa-search-dollar"></i><strong>Busca de Maquinários:</strong> Utilize as ferramentas de busca específicas de máquinas e tratores para auxiliar compradores corporativos que entram em contato direto com a administração procurando por equipamentos pontuais.</li>
+                    <li><i class="fas fa-check"></i>Acesse o seu painel e clique em <strong>"Meus Anúncios"</strong>. Lá estará a lista de tudo que você já enviou.</li>
+                    <li><i class="fas fa-check"></i><strong>Editar:</strong> Escreveu algo errado ou quer baixar o preço? Basta clicar em editar e salvar as novas informações.</li>
+                    <li><i class="fas fa-check"></i><strong>Vendido:</strong> Vendeu o produto? Maravilha! Altere o status dele para "Vendido" para que outros clientes saibam que ele não está mais disponível.</li>
+                    <li><i class="fas fa-check"></i><strong>Exclusão:</strong> Caso tenha desistido de vender, você pode usar a opção de exclusão para apagar o anúncio do site.</li>
                 </ul>
             </section>
 
-            <!-- SEÇÃO 6: FAQ -->
+            <!-- SEÇÃO 5: FAQ -->
             <section id="faq" class="section-card">
-                <h2><i class="fas fa-question-circle"></i> 6. Perguntas Frequentes (FAQ)</h2>
-                <p class="detail-text">Dúvidas rápidas sobre a operação do sistema administrativo.</p>
+                <h2><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</h2>
                 
                 <div class="faq-item">
-                    <h4><i class="fas fa-comment-dots"></i> O que acontece quando clico em "Marcar como Vendido"?</h4>
-                    <p>O anúncio <strong>não é excluído</strong> do site. Ele continua aparecendo na loja para que os clientes vejam o histórico da plataforma, mas ganha uma etiqueta visual clara informando que o produto já foi comercializado e não está mais disponível para contato.</p>
+                    <h4><i class="fas fa-info-circle"></i> Como eu altero os dados do meu perfil?</h4>
+                    <p>Basta fazer o login, ir até a opção <strong>"Meu Perfil"</strong> e alterar seu nome, telefone ou e-mail. Não se esqueça de salvar as alterações no final da página.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4><i class="fas fa-comment-dots"></i> O que acontece quando rejeito um anúncio pendente?</h4>
-                    <p>O anúncio é removido da fila de "Solicitações Pendentes" do seu painel e é impedido de ir para a vitrine pública do Marketplace. Use isso para barrar testes, fotos ilegíveis ou produtos proibidos.</p>
+                    <h4><i class="fas fa-info-circle"></i> Pesquisei meu anúncio na loja e não achei. Por quê?</h4>
+                    <p>Todos os anúncios passam por uma verificação de segurança antes de irem para a loja. Se você acabou de publicar, aguarde algumas horas até que nossos administradores façam a aprovação.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4><i class="fas fa-comment-dots"></i> Posso recuperar um usuário após excluí-lo?</h4>
-                    <p>Não. A exclusão de um usuário na aba "Usuários" é uma ação definitiva no banco de dados e rompe o acesso da pessoa. Certifique-se de que a exclusão é o caminho correto antes de confirmar a ação.</p>
+                    <h4><i class="fas fa-info-circle"></i> É seguro comprar e vender por aqui?</h4>
+                    <p>Sim! O nosso sistema de aprovação de anúncios serve exatamente para garantir que apenas ofertas reais e de produtores verificados cheguem até você.</p>
                 </div>
             </section>
 
         </main>
     </div>
 
-    <!-- SCRIPT SIMPLES PARA HIGHLIGHT DO MENU LATERAL AO ROLAR -->
+    <!-- SCRIPT DE PESQUISA E HIGHLIGHT -->
     <script>
-        const sections = document.querySelectorAll('section');
+        // Função para filtrar os cartões de acordo com o que é digitado na barra de pesquisa
+        function searchManual() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let sections = document.querySelectorAll('.section-card');
+            let noResult = document.getElementById('no-results');
+            let hasResult = false;
+
+            sections.forEach(section => {
+                let text = section.innerText.toLowerCase();
+                // Se o texto do cartão contiver a palavra digitada, ele aparece. Se não, ele se esconde.
+                if(text.includes(input)) {
+                    section.style.display = 'block';
+                    hasResult = true;
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Mostra a mensagem de erro se nada for encontrado
+            if(hasResult) {
+                noResult.style.display = 'none';
+            } else {
+                noResult.style.display = 'block';
+            }
+        }
+
+        // Script para deixar o menu lateral ativo conforme a rolagem da página
+        const sectionsList = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar nav ul li a');
 
         window.addEventListener('scroll', () => {
             let current = '';
-            sections.forEach(section => {
+            sectionsList.forEach(section => {
                 const sectionTop = section.offsetTop;
-                // Ajuste o valor para calibrar quando a aba muda no menu lateral
-                if (scrollY >= sectionTop - 180) {
+                if (scrollY >= sectionTop - 150) {
                     current = section.getAttribute('id');
                 }
             });
