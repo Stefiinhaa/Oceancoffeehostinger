@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link class="novo" rel="icon" href="IMG/Loginho2.png" type="image/png">
+     <link class="novo" rel="icon" href="IMG/Loginho2.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central de Ajuda | Ocean Coffee</title>
     
@@ -43,11 +43,10 @@
             scroll-behavior: smooth;
         }
 
-        .novo {
+        .novo{
             width: 64px;
             height: 64px;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--oc-bg-light);
@@ -98,7 +97,7 @@
         }
 
         /* =========================================
-           LAYOUT PRINCIPAL E SIDEBAR RECOLHÍVEL
+           LAYOUT PRINCIPAL
            ========================================= */
         .docs-container {
             display: flex;
@@ -108,7 +107,7 @@
             width: 100%;
         }
 
-        /* Menu Lateral Estilo Admin */
+        /* Menu Lateral e Barra de Pesquisa (Estilo Manual Admin) */
         .sidebar {
             width: 320px;
             background-color: var(--oc-surface);
@@ -118,45 +117,59 @@
             top: 84px;
             height: calc(100vh - 84px);
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            transition: width 0.3s ease, padding 0.3s ease; /* Transição suave igual ao Admin */
+            transition: all 0.3s ease;
         }
 
-        /* O comportamento idêntico quando colapsado */
-        .sidebar.collapsed {
-            width: 75px;
-            padding: 2rem 0.5rem;
-        }
-
-        /* Botão para encolher/expandir colocado de forma elegante */
+        /* Botão estilizado idêntico ao Admin */
         .sidebar-toggle-btn {
             background: none;
-            border: none;
-            color: var(--oc-primary);
-            font-size: 1.2rem;
+            border: 1px solid var(--oc-border);
+            border-radius: 6px;
+            color: var(--oc-text-main);
+            padding: 8px 12px;
             cursor: pointer;
-            margin-bottom: 1.5rem;
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding-left: 10px;
-            outline: none;
-            transition: transform 0.3s ease;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
         }
         .sidebar-toggle-btn:hover {
-            color: var(--oc-primary-hover);
+            background-color: var(--oc-bg-light);
+            color: var(--oc-primary);
+            border-color: var(--oc-primary);
+        }
+
+        /* Regras aplicadas quando a classe .collapsed é adicionada */
+        .sidebar.collapsed {
+            width: 80px;
+            padding: 2rem 0.8rem;
+        }
+        .sidebar.collapsed .search-box,
+        .sidebar.collapsed h3,
+        .sidebar.collapsed .sidebar-toggle-btn span,
+        .sidebar.collapsed .sidebar-nav-text {
+            display: none !important;
         }
         .sidebar.collapsed .sidebar-toggle-btn {
+            padding: 8px 0;
+        }
+        .sidebar.collapsed nav ul li a {
             justify-content: center;
-            padding-left: 0;
-            transform: rotate(180deg); /* Inverte as setinhas */
+            padding: 12px 0;
+        }
+        .sidebar.collapsed nav ul li a i {
+            font-size: 1.3rem;
+            width: auto;
         }
 
         .search-box {
             position: relative;
             margin-bottom: 2rem;
-            transition: opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
         }
 
         .search-box input {
@@ -182,15 +195,6 @@
             color: var(--oc-text-muted);
         }
 
-        /* Esconde a barra de pesquisa graciosamente ao recolher */
-        .sidebar.collapsed .search-box {
-            opacity: 0;
-            height: 0;
-            margin-bottom: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
         .sidebar h3 {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -198,14 +202,6 @@
             letter-spacing: 1px;
             margin-bottom: 1rem;
             padding-left: 10px;
-            white-space: nowrap;
-            transition: opacity 0.3s ease;
-        }
-        .sidebar.collapsed h3 {
-            opacity: 0;
-            height: 0;
-            margin-bottom: 0;
-            overflow: hidden;
         }
 
         .sidebar nav ul {
@@ -221,35 +217,14 @@
             text-decoration: none;
             font-weight: 500;
             border-radius: 8px;
-            transition: background 0.3s ease, color 0.3s ease, padding 0.3s ease, justify-content 0.3s ease;
+            transition: all 0.2s ease;
             margin-bottom: 5px;
-            white-space: nowrap;
         }
 
         .sidebar nav ul li a i {
             color: var(--oc-primary);
             width: 20px;
-            min-width: 20px;
             text-align: center;
-            font-size: 1.1rem;
-        }
-
-        /* Gerencia o texto igual ao admin usando span */
-        .sidebar nav ul li a span {
-            transition: opacity 0.3s ease;
-            opacity: 1;
-        }
-
-        /* Estilos quando recolhido */
-        .sidebar.collapsed nav ul li a {
-            justify-content: center;
-            padding: 12px 0;
-        }
-        .sidebar.collapsed nav ul li a span {
-            opacity: 0;
-            width: 0;
-            display: inline-block;
-            overflow: hidden;
         }
 
         .sidebar nav ul li a:hover, .sidebar nav ul li a.active {
@@ -258,12 +233,12 @@
             font-weight: 600;
         }
 
-        /* Área de Conteúdo adaptável */
+        /* Área de Conteúdo */
         .content {
             flex: 1;
             padding: 3rem 4rem;
             background-color: var(--oc-bg-light);
-            transition: padding 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .content-intro {
@@ -487,8 +462,7 @@
            RESPONSIVIDADE
            ========================================= */
         @media (max-width: 1024px) {
-            .sidebar { width: 280px; }
-            .sidebar.collapsed { width: 75px; }
+            .sidebar { width: 260px; }
             .content { padding: 2rem; }
         }
 
@@ -499,13 +473,12 @@
                 height: auto; 
                 position: static; 
                 border-bottom: 1px solid var(--oc-border);
-                padding: 1.5rem !important;
+                padding: 2rem 1.5rem !important;
             }
-            .sidebar-toggle-btn { display: none; } /* Oculta botão toggle no celular */
-            .sidebar.collapsed { width: 100% !important; padding: 1.5rem !important; }
-            .sidebar h3, .sidebar nav ul li a span, .search-box { display: block !important; opacity: 1 !important; height: auto !important; margin-bottom: unset !important;}
-            .search-box { margin-bottom: 2rem !important; }
-            .sidebar nav ul li a { justify-content: flex-start !important; }
+            .sidebar-toggle-btn { display: none; }
+            .sidebar.collapsed .search-box,
+            .sidebar.collapsed h3,
+            .sidebar.collapsed .sidebar-nav-text { display: block !important; }
             .content { padding: 1.5rem; }
             .section-card { padding: 1.5rem; }
             .header-brand { font-size: 1.1rem; }
@@ -526,9 +499,10 @@
 
     <div class="docs-container">
         
-        <aside class="sidebar" id="userSidebar">
-            <button class="sidebar-toggle-btn" id="btnToggle" title="Recolher/Expandir menu">
-                <i class="fas fa-angles-left"></i>
+        <aside class="sidebar" id="manualSidebar">
+            <button class="sidebar-toggle-btn" id="toggleSidebarBtn">
+                <i class="fas fa-bars" id="toggleIcon"></i>
+                <span>Recolher Menu</span>
             </button>
 
             <div class="search-box">
@@ -539,11 +513,36 @@
             <h3>Passo a Passo</h3>
             <nav>
                 <ul>
-                    <li><a href="#cadastro"><i class="fas fa-user-plus"></i> <span>1. Como criar sua conta</span></a></li>
-                    <li><a href="#login"><i class="fas fa-sign-in-alt"></i> <span>2. Como entrar no site</span></a></li>
-                    <li><a href="#anunciar"><i class="fas fa-bullhorn"></i> <span>3. Como colocar um anúncio</span></a></li>
-                    <li><a href="#gerenciar"><i class="fas fa-tasks"></i> <span>4. Gerenciar meus anúncios</span></a></li>
-                    <li><a href="#faq"><i class="fas fa-question-circle"></i> <span>5. Dúvidas Frequentes</span></a></li>
+                    <li>
+                        <a href="#cadastro" target="_self">
+                            <i class="fas fa-user-plus"></i> 
+                            <span class="sidebar-nav-text">1. Como criar sua conta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#login" target="_self">
+                            <i class="fas fa-sign-in-alt"></i> 
+                            <span class="sidebar-nav-text">2. Como entrar no site</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#anunciar" target="_self">
+                            <i class="fas fa-bullhorn"></i> 
+                            <span class="sidebar-nav-text">3. Como colocar um anúncio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gerenciar" target="_self">
+                            <i class="fas fa-tasks"></i> 
+                            <span class="sidebar-nav-text">4. Gerenciar meus anúncios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#faq" target="_self">
+                            <i class="fas fa-question-circle"></i> 
+                            <span class="sidebar-nav-text">5. Dúvidas Frequentes</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -617,7 +616,7 @@
 
             <section id="faq" class="section-card" data-keywords="duvidas perguntas suporte ajuda limite foto imagem seguranca confiavel telefone nome perfil">
                 <h2><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</h2>
-                <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas rapidamente:</p>
+                <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas:</p>
                 
                 <div class="faq-accordion">
                     <details class="faq-item" data-keywords="nome telefone email perfil">
@@ -665,20 +664,32 @@
     </div>
 
     <script>
-        // Lógica idêntica ao Admin para alternar recolhimento do Menu
-        const sidebar = document.getElementById('userSidebar');
-        const btnToggle = document.getElementById('btnToggle');
+        // --- LÓGICA DO BOTÃO PARA RECOLHER O MENU LATERAL (Idêntico ao Admin) ---
+        const sidebar = document.getElementById('manualSidebar');
+        const toggleBtn = document.getElementById('toggleSidebarBtn');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const btnText = toggleBtn.querySelector('span');
 
-        btnToggle.addEventListener('click', () => {
+        toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
+            
+            // Altera o ícone e o texto dinamicamente de forma idêntica ao Administrador
+            if(sidebar.classList.contains('collapsed')) {
+                toggleIcon.className = "fas fa-expand-alt";
+                btnText.textContent = "";
+            } else {
+                toggleIcon.className = "fas fa-bars";
+                btnText.textContent = "Recolher Menu";
+            }
         });
+        // ----------------------------------------------------
 
         // Função para remover acentos e deixar tudo minúsculo
         function removerAcentos(texto) {
             return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         }
 
-        // Sistema de Pesquisa Inteligente
+        // Sistema de Pesquisa
         function searchManual() {
             let input = removerAcentos(document.getElementById('searchInput').value);
             let sections = document.querySelectorAll('.section-card');
@@ -727,7 +738,7 @@
             }
         }
 
-        // Monitor de Scroll para ativar links do menu lateral dinamicamente
+        // Monitor de Scroll para ativar links do menu lateral
         const sectionsList = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar nav ul li a');
 
