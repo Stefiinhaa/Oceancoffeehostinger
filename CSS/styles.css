@@ -1130,15 +1130,25 @@ text-align: center;
     line-height: 1.6;
 }
 
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
 .social-icons a {
     color: #ccc;
-    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-decoration: none; /* <-- ESSA LINHA REMOVE O SUBLINHADO DE VEZ */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     transition: color 0.3s, transform 0.3s;
+}
+
+/* Controla o tamanho apenas do ícone */
+.social-icons a i {
+    font-size: 20px; 
+}
+
+.social-icons a:hover {
+    color: #fff;
+    transform: translateX(3px);
 }
 
 .social-icons a:hover {
