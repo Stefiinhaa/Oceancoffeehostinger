@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual do Administrador | Ocean Coffee</title>
     
-    <!-- Fontes e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -47,9 +46,9 @@
         }
 
         .novo{
-  width: 64px;
-  height: 64px;
-}
+            width: 64px;
+            height: 64px;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--oc-bg-light);
@@ -430,10 +429,8 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
     <header>
         <div class="header-brand">
-            <!-- Ícone de Café igual ao do Manual do Usuário -->
             <i class="fas fa-coffee logo-icon"></i>
             Ocean Coffee | Painel Administrativo
         </div>
@@ -444,7 +441,6 @@
 
     <div class="docs-container">
         
-        <!-- MENU LATERAL COM PESQUISA -->
         <aside class="sidebar">
             <div class="search-box">
                 <i class="fas fa-search"></i>
@@ -454,18 +450,15 @@
             <h3>Módulos de Gestão</h3>
             <nav>
                 <ul>
-                    <li><a href="#dashboard"><i class="fas fa-chart-pie"></i> 1. Visão Geral (Dashboard)</a></li>
-                    <li><a href="#moderacao"><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</a></li>
-                    <li><a href="#vitrine"><i class="fas fa-store"></i> 3. Gestão da Vitrine</a></li>
-                    <li><a href="#usuarios"><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</a></li>
-                    <li><a href="#maquinas"><i class="fas fa-tractor"></i> 5. Busca de Maquinários</a></li>
-                    <li><a href="#faq"><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</a></li>
+                    <li><a href="#dashboard" target="_self"><i class="fas fa-chart-pie"></i> 1. Visão Geral (Dashboard)</a></li>
+                    <li><a href="#moderacao" target="_self"><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</a></li>
+                    <li><a href="#vitrine" target="_self"><i class="fas fa-store"></i> 3. Gestão da Vitrine</a></li>
+                    <li><a href="#usuarios" target="_self"><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</a></li>
+                    <li><a href="#maquinas" target="_self"><i class="fas fa-tractor"></i> 5. Busca de Maquinários</a></li>
+                    <li><a href="#faq" target="_self"><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</a></li>
                 </ul>
             </nav>
-        </aside>
-
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main class="content">
+        </aside> <main class="content">
             
             <div class="content-intro">
                 <h1>Manual de Operação do Sistema</h1>
@@ -477,17 +470,15 @@
                 <p>Nenhum resultado encontrado para a sua pesquisa.</p>
             </div>
 
-            <!-- SEÇÃO 1: DASHBOARD -->
             <section id="dashboard" class="section-card" data-keywords="painel graficos inicio numeros metricas estatisticas inicial">
                 <h2><i class="fas fa-chart-pie"></i> 1. Visão Geral do Painel (Dashboard)</h2>
-                <p class="detail-text">O Dashboard é o coração operacional do administrador. Ele foi desenhado para fornecer um panorama imediato sobre o volume de negócios da plataforma.</p>
+                <p class="detail-text">O Dashboard é o coração operational do administrador. Ele foi desenhado para fornecer um panorama imediato sobre o volume de negócios da plataforma.</p>
                 <ul class="action-list">
                     <li><i class="fas fa-arrow-right"></i><strong>Indicadores em Tempo Real:</strong> No topo da tela inicial do seu painel, você verá blocos informativos. Eles mostram instantaneamente o total de contas criadas, o volume de anúncios na loja e a fila de postagens pendentes.</li>
                     <li><i class="fas fa-arrow-right"></i><strong>Navegação Lateral:</strong> Para realizar qualquer tarefa (aprovar algo ou gerenciar clientes), utilize os botões que ficam sempre visíveis no menu escuro à esquerda da sua tela.</li>
                 </ul>
             </section>
 
-            <!-- SEÇÃO 2: MODERAÇÃO -->
             <section id="moderacao" class="section-card" data-keywords="aprovar rejeitar pendentes fila avaliar liberar aceitar bloquear analise">
                 <h2><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</h2>
                 <p class="detail-text">Nenhum anúncio vai para a loja sozinho. Todo produto cadastrado por um usuário entra em uma "fila de espera" para que você garanta a qualidade e evite fraudes.</p>
@@ -499,7 +490,6 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 3: VITRINE -->
             <section id="vitrine" class="section-card" data-keywords="baixas vendido ativo catalogo loja retirar atualizar status">
                 <h2><i class="fas fa-store"></i> 3. Gestão da Vitrine Ativa</h2>
                 <p class="detail-text">Você tem controle absoluto sobre tudo o que está visível na loja neste exato momento.</p>
@@ -510,7 +500,6 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 4: USUÁRIOS -->
             <section id="usuarios" class="section-card" data-keywords="clientes membros contas apagar deletar banir auditar visualizar contato">
                 <h2><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</h2>
                 <p class="detail-text">O controle de quem participa da plataforma é fundamental para o sucesso das negociações.</p>
@@ -528,7 +517,6 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 5: MÁQUINAS -->
             <section id="maquinas" class="section-card" data-keywords="trator colheitadeira implemento buscar equipamento pesado categoria">
                 <h2><i class="fas fa-tractor"></i> 5. Busca de Maquinários</h2>
                 <p class="detail-text">Uma ferramenta pensada para facilitar o atendimento a grandes compradores rurais.</p>
@@ -538,13 +526,11 @@
                 </ul>
             </section>
 
-            <!-- SEÇÃO 6: FAQ -->
             <section id="faq" class="section-card" data-keywords="duvidas perguntas suporte ajuda recuperar volta apaga sai some">
                 <h2><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</h2>
                 <p class="detail-text">Clique nas perguntas abaixo para revelar as respostas:</p>
                 
                 <div class="faq-accordion">
-                    <!-- Pergunta 1 -->
                     <details class="faq-item" data-keywords="baixar apagar sumir excluir sumiu">
                         <summary class="faq-question">
                             <div class="icon-group">
@@ -558,7 +544,6 @@
                         </div>
                     </details>
 
-                    <!-- Pergunta 2 -->
                     <details class="faq-item" data-keywords="aprovacao rejeicao recusar recusado fila">
                         <summary class="faq-question">
                             <div class="icon-group">
@@ -572,7 +557,6 @@
                         </div>
                     </details>
 
-                    <!-- Pergunta 3 -->
                     <details class="faq-item" data-keywords="desfazer recuperar voltar atras apaguei deletei">
                         <summary class="faq-question">
                             <div class="icon-group">
@@ -591,7 +575,6 @@
         </main>
     </div>
 
-    <!-- SCRIPT DE PESQUISA INTELIGENTE (COM TAGS E HIGHLIGHT) -->
     <script>
         // Função para remover acentos e deixar tudo minúsculo (pesquisa mais inteligente)
         function removerAcentos(texto) {
@@ -599,41 +582,34 @@
         }
 
         function searchManual() {
-            // Pega o termo digitado já sem acentos
             let input = removerAcentos(document.getElementById('searchInput').value);
             let sections = document.querySelectorAll('.section-card');
             let noResult = document.getElementById('no-results');
             let hasResult = false;
 
             sections.forEach(section => {
-                // Pega o texto da seção inteira
                 let text = removerAcentos(section.textContent);
-                // Pega as "tags invisíveis" que colocamos no HTML
                 let keywords = removerAcentos(section.getAttribute('data-keywords') || "");
                 
-                // Se a palavra digitada estiver no texto OU nas tags invisíveis, mostre a seção
                 if(text.includes(input) || keywords.includes(input)) {
                     section.style.display = 'block';
                     hasResult = true;
                     
-                    // Lógica especial para abrir a caixinha do FAQ automaticamente se achar algo lá dentro
                     if (input.length > 2 && section.id === 'faq') {
                         let faqItems = section.querySelectorAll('.faq-item');
                         faqItems.forEach(item => {
                             let itemText = removerAcentos(item.textContent);
                             let itemKeywords = removerAcentos(item.getAttribute('data-keywords') || "");
                             
-                            // Se a pesquisa bater com o texto OU tag deste FAQ específico, ele abre
                             if (itemText.includes(input) || itemKeywords.includes(input)) {
                                 item.setAttribute('open', 'true');
                                 item.style.display = 'block';
                             } else {
                                 item.removeAttribute('open');
-                                item.style.display = 'none'; // Esconde os outros FAQs que não combinam
+                                item.style.display = 'none';
                             }
                         });
                     } else if (section.id === 'faq') {
-                         // Se a pessoa apagar a pesquisa, volta os FAQs ao normal
                          let faqItems = section.querySelectorAll('.faq-item');
                          faqItems.forEach(item => {
                              item.style.display = 'block';
@@ -642,12 +618,10 @@
                     }
 
                 } else {
-                    // Esconde a seção se a palavra não estiver nem no texto nem nas tags
                     section.style.display = 'none';
                 }
             });
 
-            // Gerencia a mensagem de erro
             if(hasResult) {
                 noResult.style.display = 'none';
             } else {
