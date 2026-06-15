@@ -1144,6 +1144,7 @@ text-align: center;
 /* Controla o tamanho apenas do ícone */
 .social-icons a i {
     font-size: 20px; 
+    text-decoration: none;
 }
 
 .social-icons a:hover {
