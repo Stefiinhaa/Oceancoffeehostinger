@@ -120,7 +120,56 @@
             top: 84px;
             height: calc(100vh - 84px);
             overflow-y: auto;
+            transition: all 0.3s ease; /* Transição suave ao diminuir */
         }
+
+        /* --- ESTILOS ADICIONADOS PARA RECOLHER A SIDEBAR --- */
+        .sidebar-toggle-btn {
+            background: none;
+            border: 1px solid var(--oc-border);
+            border-radius: 6px;
+            color: var(--oc-text-main);
+            padding: 8px 12px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .sidebar-toggle-btn:hover {
+            background-color: var(--oc-bg-light);
+            color: var(--oc-primary);
+            border-color: var(--oc-primary);
+        }
+
+        /* Regras aplicadas quando a classe .collapsed é adicionada via JS */
+        .sidebar.collapsed {
+            width: 80px;
+            padding: 2rem 0.8rem;
+        }
+        .sidebar.collapsed .search-box,
+        .sidebar.collapsed h3,
+        .sidebar.collapsed .sidebar-toggle-btn span,
+        .sidebar.collapsed .sidebar-nav-text {
+            display: none !important; /* Esconde elementos de texto */
+        }
+        .sidebar.collapsed .sidebar-toggle-btn {
+            padding: 8px 0;
+        }
+        .sidebar.collapsed nav ul li a {
+            justify-content: center;
+            padding: 12px 0;
+        }
+        .sidebar.collapsed nav ul li a i {
+            font-size: 1.3rem; /* Aumenta levemente o ícone quando recolhido */
+            width: auto;
+        }
+        /* -------------------------------------------------- */
 
         .search-box {
             position: relative;
@@ -193,6 +242,7 @@
             flex: 1;
             padding: 3rem 4rem;
             background-color: var(--oc-bg-light);
+            transition: all 0.3s ease;
         }
 
         .content-intro {
@@ -416,11 +466,16 @@
         @media (max-width: 768px) {
             .docs-container { flex-direction: column; }
             .sidebar { 
-                width: 100%; 
+                width: 100% !important; 
                 height: auto; 
                 position: static; 
                 border-bottom: 1px solid var(--oc-border);
+                padding: 2rem 1.5rem !important;
             }
+            .sidebar-toggle-btn { display: none; } /* Esconde o botão no mobile */
+            .sidebar.collapsed .search-box,
+            .sidebar.collapsed h3,
+            .sidebar.collapsed .sidebar-nav-text { display: block !important; }
             .content { padding: 1.5rem; }
             .section-card { padding: 1.5rem; }
             .header-brand { font-size: 1.1rem; }
@@ -441,7 +496,12 @@
 
     <div class="docs-container">
         
-        <aside class="sidebar">
+        <aside class="sidebar" id="manualSidebar">
+            <button class="sidebar-toggle-btn" id="toggleSidebarBtn">
+                <i class="fas fa-bars" id="toggleIcon"></i>
+                <span>Recolher Menu</span>
+            </button>
+
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" oninput="searchManual()" placeholder="Digite o que procura...">
@@ -450,15 +510,47 @@
             <h3>Módulos de Gestão</h3>
             <nav>
                 <ul>
-                    <li><a href="#dashboard" target="_self"><i class="fas fa-chart-pie"></i> 1. Visão Geral (Dashboard)</a></li>
-                    <li><a href="#moderacao" target="_self"><i class="fas fa-check-double"></i> 2. Moderação de Anúncios</a></li>
-                    <li><a href="#vitrine" target="_self"><i class="fas fa-store"></i> 3. Gestão da Vitrine</a></li>
-                    <li><a href="#usuarios" target="_self"><i class="fas fa-users-cog"></i> 4. Gestão de Usuários</a></li>
-                    <li><a href="#maquinas" target="_self"><i class="fas fa-tractor"></i> 5. Busca de Maquinários</a></li>
-                    <li><a href="#faq" target="_self"><i class="fas fa-question-circle"></i> 6. Dúvidas Frequentes</a></li>
+                    <li>
+                        <a href="#dashboard" target="_self">
+                            <i class="fas fa-chart-pie"></i> 
+                            <span class="sidebar-nav-text">1. Visão Geral (Dashboard)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#moderacao" target="_self">
+                            <i class="fas fa-check-double"></i> 
+                            <span class="sidebar-nav-text">2. Moderação de Anúncios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#vitrine" target="_self">
+                            <i class="fas fa-store"></i> 
+                            <span class="sidebar-nav-text">3. Gestão da Vitrine</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#usuarios" target="_self">
+                            <i class="fas fa-users-cog"></i> 
+                            <span class="sidebar-nav-text">4. Gestão de Usuários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#maquinas" target="_self">
+                            <i class="fas fa-tractor"></i> 
+                            <span class="sidebar-nav-text">5. Busca de Maquinários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#faq" target="_self">
+                            <i class="fas fa-question-circle"></i> 
+                            <span class="sidebar-nav-text">6. Dúvidas Frequentes</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-        </aside> <main class="content">
+        </aside>
+
+        <main class="content">
             
             <div class="content-intro">
                 <h1>Manual de Operação do Sistema</h1>
@@ -578,6 +670,26 @@
     </div>
 
     <script>
+        // --- LÓGICA DO BOTÃO PARA RECOLHER O MENU LATERAL ---
+        const sidebar = document.getElementById('manualSidebar');
+        const toggleBtn = document.getElementById('toggleSidebarBtn');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const btnText = toggleBtn.querySelector('span');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            
+            // Altera o ícone e o texto dinamicamente para melhorar a experiência do usuário
+            if(sidebar.classList.contains('collapsed')) {
+                toggleIcon.className = "fas fa-expand-alt";
+                btnText.textContent = "";
+            } else {
+                toggleIcon.className = "fas fa-bars";
+                btnText.textContent = "Recolher Menu";
+            }
+        });
+        // ----------------------------------------------------
+
         // Função para remover acentos e deixar tudo minúsculo (pesquisa mais inteligente)
         function removerAcentos(texto) {
             return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
