@@ -244,6 +244,93 @@
         .team-card img { 
             cursor: pointer; 
         }
+        /* --- ESTILO DO RODAPÉ CORRIGIDO --- */
+.footer {
+    background-color: #1f1f1f;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1130px;
+    margin: auto;
+    gap: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 220px;
+    padding: 0 15px;
+}
+
+.footer-column h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ba391c;
+    padding-bottom: 10px;
+}
+
+.footer-logo {
+    width: 137px;
+    margin-bottom: 15px;
+}
+
+.footer-about p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+.footer-company-info p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* --- ESTILO DO LINK DO INSTAGRAM (SEM SUBLINHADO) --- */
+.social-icons a {
+    color: #ccc;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none !important; /* O !important barra o sublinhado padrão do Bootstrap */
+    transition: color 0.3s, transform 0.3s;
+}
+
+/* Controla o tamanho apenas do ícone da câmera */
+.social-icons a i {
+    font-size: 20px; 
+}
+
+/* Garante que nenhum estado (hover/focus) traga o sublinhado de volta */
+.social-icons a:hover, 
+.social-icons a:focus,
+.social-icons a:active {
+    color: #fff;
+    text-decoration: none !important;
+    /* Unificando seus dois efeitos: agora ele cresce levemente e move para o lado ao mesmo tempo! */
+    transform: scale(1.05) translateX(3px); 
+}
     </style>
 </head>
 <body>
