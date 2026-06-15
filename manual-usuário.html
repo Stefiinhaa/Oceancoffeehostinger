@@ -79,7 +79,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Estilo do Ícone que substituiu a logo */
         .header-brand .logo-icon {
             font-size: 1.3rem;
             color: var(--oc-primary);
@@ -94,7 +93,7 @@
         }
 
         /* =========================================
-           LAYOUT PRINCIPAL
+           LAYOUT PRINCIPAL E SIDEBAR RECOLHÍVEL
            ========================================= */
         .docs-container {
             display: flex;
@@ -104,7 +103,7 @@
             width: 100%;
         }
 
-        /* Menu Lateral e Barra de Pesquisa */
+        /* Menu Lateral */
         .sidebar {
             width: 320px;
             background-color: var(--oc-surface);
@@ -114,11 +113,34 @@
             top: 84px;
             height: calc(100vh - 84px);
             overflow-y: auto;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        }
+
+        /* Botão Toggle de recolher menu */
+        .btn-toggle-sidebar {
+            background: none;
+            border: none;
+            color: var(--oc-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding-left: 10px;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-toggle-sidebar:hover {
+            color: var(--oc-primary-hover);
         }
 
         .search-box {
             position: relative;
             margin-bottom: 2rem;
+            transition: opacity 0.2s ease;
         }
 
         .search-box input {
@@ -151,6 +173,8 @@
             letter-spacing: 1px;
             margin-bottom: 1rem;
             padding-left: 10px;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
         }
 
         .sidebar nav ul {
@@ -168,12 +192,18 @@
             border-radius: 8px;
             transition: all 0.2s ease;
             margin-bottom: 5px;
+            white-space: nowrap;
         }
 
         .sidebar nav ul li a i {
             color: var(--oc-primary);
             width: 20px;
+            min-width: 20px;
             text-align: center;
+        }
+
+        .sidebar nav ul li a span {
+            transition: opacity 0.2s ease;
         }
 
         .sidebar nav ul li a:hover, .sidebar nav ul li a.active {
@@ -182,11 +212,39 @@
             font-weight: 600;
         }
 
+        /* =========================================
+           ESTADOS DO MENU RECOLHIDO (COLLAPSED)
+           ========================================= */
+        .sidebar.collapsed {
+            width: 80px;
+            padding: 2rem 0.8rem;
+        }
+
+        .sidebar.collapsed .btn-toggle-sidebar {
+            justify-content: center;
+            padding-left: 0;
+            transform: rotate(180deg);
+        }
+
+        .sidebar.collapsed .search-box,
+        .sidebar.collapsed h3,
+        .sidebar.collapsed nav ul li a span {
+            opacity: 0;
+            pointer-events: none;
+            display: none;
+        }
+
+        .sidebar.collapsed nav ul li a {
+            justify-content: center;
+            padding: 12px 0;
+        }
+
         /* Área de Conteúdo */
         .content {
             flex: 1;
             padding: 3rem 4rem;
             background-color: var(--oc-bg-light);
+            transition: padding 0.3s ease;
         }
 
         .content-intro {
@@ -276,7 +334,6 @@
             font-size: 0.95rem;
         }
 
-        /* Estilo da Imagem do Tutorial */
         .tutorial-image {
             margin: 1.5rem 0;
             border-radius: 8px;
@@ -338,12 +395,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            list-style: none; /* Remove a seta padrão */
+            list-style: none;
             transition: background-color 0.3s ease;
         }
 
         .faq-question::-webkit-details-marker {
-            display: none; /* Remove a seta no Safari */
+            display: none;
         }
 
         .faq-question:hover {
@@ -412,17 +469,22 @@
            ========================================= */
         @media (max-width: 1024px) {
             .sidebar { width: 260px; }
+            .sidebar.collapsed { width: 80px; }
             .content { padding: 2rem; }
         }
 
         @media (max-width: 768px) {
             .docs-container { flex-direction: column; }
             .sidebar { 
-                width: 100%; 
+                width: 100% !important; 
                 height: auto; 
                 position: static; 
                 border-bottom: 1px solid var(--oc-border);
+                padding: 1.5rem !important;
             }
+            .btn-toggle-sidebar { display: none; } /* Esconde o botão no telemóvel/mobile */
+            .sidebar h3, .sidebar nav ul li a span, .search-box { display: block !important; opacity: 1 !important; }
+            .sidebar nav ul li a { justify-content: flex-start; }
             .content { padding: 1.5rem; }
             .section-card { padding: 1.5rem; }
             .header-brand { font-size: 1.1rem; }
@@ -443,7 +505,11 @@
 
     <div class="docs-container">
         
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
+            <button class="btn-toggle-sidebar" id="toggleSidebar" title="Recolher/Expandir Menu">
+                <i class="fas fa-angles-left"></i>
+            </button>
+
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" oninput="searchManual()" placeholder="Digite o que procura...">
@@ -452,11 +518,11 @@
             <h3>Passo a Passo</h3>
             <nav>
                 <ul>
-                    <li><a href="#cadastro"><i class="fas fa-user-plus"></i> 1. Como criar sua conta</a></li>
-                    <li><a href="#login"><i class="fas fa-sign-in-alt"></i> 2. Como entrar no site</a></li>
-                    <li><a href="#anunciar"><i class="fas fa-bullhorn"></i> 3. Como colocar um anúncio</a></li>
-                    <li><a href="#gerenciar"><i class="fas fa-tasks"></i> 4. Gerenciar meus anúncios</a></li>
-                    <li><a href="#faq"><i class="fas fa-question-circle"></i> 5. Dúvidas Frequentes</a></li>
+                    <li><a href="#cadastro"><i class="fas fa-user-plus"></i> <span>1. Como criar sua conta</span></a></li>
+                    <li><a href="#login"><i class="fas fa-sign-in-alt"></i> <span>2. Como entrar no site</span></a></li>
+                    <li><a href="#anunciar"><i class="fas fa-bullhorn"></i> <span>3. Como colocar um anúncio</span></a></li>
+                    <li><a href="#gerenciar"><i class="fas fa-tasks"></i> <span>4. Gerenciar meus anúncios</span></a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i> <span>5. Dúvidas Frequentes</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -499,7 +565,7 @@
                 <ul class="action-list">
                     <li><i class="fas fa-check"></i>Certifique-se de que você já fez o Login na sua conta.</li>
                     <li>
-                        <i class="fas fa-check"></i>Acesse o seu painel e clique em <strong>"Meus Anúncios"</strong> no menu lateral. Caso você ainda não tenha nenhum produto publicado, clique no botão azul <strong>"Anunciar Agora"</strong> no centro da tela. Você também pode usar a option <strong>"Anunciar Novo"</strong> diretamente no menu lateral em qualquer momento, conforme ilustrado abaixo:
+                        <i class="fas fa-check"></i>Acesse o seu painel e clique em <strong>"Meus Anúncios"</strong> no menu lateral. Caso você ainda não tenha nenhum produto publicado, clique no botão azul <strong>"Anunciar Agora"</strong> no centro da tela. Você também pode usar a opção <strong>"Anunciar Novo"</strong> diretamente no menu lateral em qualquer momento, conforme ilustrado abaixo:
                         <div class="tutorial-image">
                             <img src="IMG/imagemcaminho.png" alt="Onde encontrar o botão Anunciar">
                         </div>
@@ -578,11 +644,20 @@
     </div>
 
     <script>
+        // Lógica para Recolher / Expandir o Menu Lateral
+        const sidebar = document.getElementById('sidebar');
+        const toggleSidebarBtn = document.getElementById('toggleSidebar');
+
+        toggleSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
         // Função para remover acentos e deixar tudo minúsculo
         function removerAcentos(texto) {
             return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         }
 
+        // Sistema de Pesquisa
         function searchManual() {
             let input = removerAcentos(document.getElementById('searchInput').value);
             let sections = document.querySelectorAll('.section-card');
@@ -631,7 +706,7 @@
             }
         }
 
-        // Script para deixar o menu lateral ativo conforme a rolagem da página
+        // Monitor de Scroll para ativar links do menu lateral
         const sectionsList = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar nav ul li a');
 
