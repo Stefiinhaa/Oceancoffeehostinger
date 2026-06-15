@@ -1130,6 +1130,7 @@ text-align: center;
     line-height: 1.6;
 }
 
+/* --- ESTILO DO LINK DO INSTAGRAM (SEM SUBLINHADO) --- */
 .social-icons a {
     color: #ccc;
     font-family: 'Poppins', sans-serif;
@@ -1137,29 +1138,24 @@ text-align: center;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none !important; /* O !important barra o sublinhado padrão do Bootstrap */
     transition: color 0.3s, transform 0.3s;
-    text-decoration: none;
 }
 
-/* Controla o tamanho apenas do ícone */
+/* Controla o tamanho apenas do ícone da câmera */
 .social-icons a i {
     font-size: 20px; 
-    text-decoration: none;
-  
 }
 
-.social-icons a:hover {
+/* Garante que nenhum estado (hover/focus) traga o sublinhado de volta */
+.social-icons a:hover, 
+.social-icons a:focus,
+.social-icons a:active {
     color: #fff;
-    transform: translateX(3px);
-    text-decoration: none;
+    text-decoration: none !important;
+    /* Unificando seus dois efeitos: agora ele cresce levemente e move para o lado ao mesmo tempo! */
+    transform: scale(1.05) translateX(3px); 
 }
-
-.social-icons a:hover {
-    color: #fff;
-    transform: scale(1.1);
-    text-decoration: none;
-}
-
 
 #btnTopo {
   position: fixed;
